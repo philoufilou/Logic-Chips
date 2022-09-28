@@ -20,6 +20,7 @@ Welcome to Logic Gates, a mod offering:
 - XOR Gate
 - XNOR Gate
 <hr>
+
 - Support for Minecraft 1.17: planned Forge & Fabric
 - Support for Minecraft 1.18: planned Forge & Fabric
 - Support for Minecraft 1.19: planned Forge & Fabric
