@@ -1,6 +1,0 @@
-{
-  "parent": "logicgates:block/gate_frame/chips/chip",
-  "textures": {
-    "texture": "logicgates:item/or_gate"
-  }
-}

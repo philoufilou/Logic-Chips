@@ -1,0 +1,6 @@
+{
+  "parent": "logicchips:block/gate_frame/chips/chip2",
+  "textures": {
+    "texture": "logicchips:item/xnor_gate_3"
+  }
+}

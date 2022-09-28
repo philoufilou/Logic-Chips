@@ -1,6 +1,0 @@
-{
-  "parent": "logicgates:block/gate_frame/output/signal",
-  "textures": {
-    "texture": "logicgates:block/gate_frame/signal_off"
-  }
-}

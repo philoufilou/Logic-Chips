@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "logicgates:item/nor_gate_3"
-  }
-}

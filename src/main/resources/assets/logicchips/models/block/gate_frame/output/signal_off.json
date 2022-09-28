@@ -1,0 +1,6 @@
+{
+  "parent": "logicchips:block/gate_frame/output/signal",
+  "textures": {
+    "texture": "logicchips:block/gate_frame/signal_off"
+  }
+}

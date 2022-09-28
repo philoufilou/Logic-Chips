@@ -13,8 +13,8 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 version = '1.16.5-0.1.0'
-group = 'com.ichphilipp.logicgates' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'logicgates'
+group = 'com.ichphilipp.logicchips' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'logicchips'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(8) // Mojang ships Java 8 to end users, so your mod should target Java 8.
 
@@ -59,7 +59,7 @@ minecraft {
             //property 'mixin.env.remapRefMap', 'true'
             //property 'mixin.env.refMapRemappingFile', "${project.projectDir}/createSrgToMcp/output.srg"
             mods {
-                logicgates {
+                logicchips {
                     source sourceSets.main
                 }
             }
@@ -82,7 +82,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                logicgates {
+                logicchips {
                     source sourceSets.main
                 }
             }
@@ -104,10 +104,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'logicgates', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'logicchips', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                logicgates {
+                logicchips {
                     source sourceSets.main
                 }
             }

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group":"NOT Gates",
+  "ingredients": [
+	{
+	  "item":"logicchips:chip"
+	},
+	{
+	  "item":"logicchips:chip"
+	},
+	{
+	  "item":"logicchips:chip"
+	},
+	{
+	  "item":"logicchips:chip"
+	},
+	{
+	  "item":"minecraft:fermented_spider_eye"
+	}
+  ],
+  "result": {
+    "item": "logicchips:not_gate"
+  }
+}

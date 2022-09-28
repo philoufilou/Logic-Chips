@@ -1,0 +1,27 @@
+{
+"key":
+    {
+    "A":
+        {
+        "item": "minecraft:stone"
+        },
+    "B":
+        {
+        "item": "minecraft:redstone_torch"
+        },
+    "C":
+        {
+        "item": "minecraft:redstone"
+        }
+    },
+"pattern":
+    [
+    "BC ",
+    "AAA"
+    ],
+"result":
+    {
+    "item": "logicchips:gate_frame"
+    },
+"type": "minecraft:crafting_shaped"
+}

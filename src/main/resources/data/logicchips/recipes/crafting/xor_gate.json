@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group":"XOR Gates",
+  "ingredients": [
+	{
+	  "item":"logicchips:chip"
+	},
+	{
+	  "item":"logicchips:chip"
+	},
+	{
+	  "item":"logicchips:chip"
+	},
+	{
+	  "item":"logicchips:chip"
+	},
+	{
+	  "item":"minecraft:magma_cream"
+	}
+  ],
+  "result": {
+    "item": "logicchips:xor_gate"
+  }
+}

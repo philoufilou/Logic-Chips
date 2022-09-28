@@ -1,6 +1,0 @@
-{
-  "parent": "logicgates:block/gate_frame/basic_gate",
-  "textures": {
-    "texture": "logicgates:block/gate_frame/1_0"
-  }
-}
