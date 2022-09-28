@@ -3,8 +3,10 @@
 
 Welcome to Logic Gates, a mod offering:
 
-2 input:
+1 input:
 - NOT Gate
+
+2 input:
 - AND Gate
 - NAND Gate
 - NOR Gate
