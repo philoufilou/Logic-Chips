@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group":"NOR Gates",
+  "ingredients": [
+	{
+	  "item":"logicgates:chip"
+	},
+	{
+	  "item":"logicgates:chip"
+	},
+	{
+	  "item":"logicgates:chip"
+	},
+	{
+	  "item":"logicgates:chip"
+	},
+	{
+	  "item":"minecraft:blaze_powder"
+	}
+  ],
+  "result": {
+    "item": "logicgates:nor_gate"
+  }
+}
