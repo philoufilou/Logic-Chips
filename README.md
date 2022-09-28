@@ -1,7 +1,7 @@
 <p align="center"><img src="https://i.imgur.com/VreScyE.png" alt="Logo" width="200"></p>
-<h1 align="center">Logic Gates</h1>
+<h1 align="center">Logic Chips</h1>
 
-Welcome to Logic Gates, a mod offering:
+Welcome to Logic Chips, a mod offering:
 
 1 input:
 - NOT Gate
