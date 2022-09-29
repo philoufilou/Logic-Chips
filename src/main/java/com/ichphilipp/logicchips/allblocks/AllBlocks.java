@@ -2,7 +2,6 @@ package com.ichphilipp.logicchips.allblocks;
 
 import com.ichphilipp.logicchips.LogicChips;
 import com.ichphilipp.logicchips.allitems.AllItems;
-import com.ichphilipp.logicchips.utils.ITEM_GROUP;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -28,7 +27,7 @@ public class AllBlocks {
         return toReturn;
     }
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
-        return AllItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(ITEM_GROUP.ITEM_GROUP)));
+        return AllItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(LogicChips.ITEM_GROUP)));
     }
     // -------------------------------------------------------------------------------------------------------
     public static void register(IEventBus eventBus) {

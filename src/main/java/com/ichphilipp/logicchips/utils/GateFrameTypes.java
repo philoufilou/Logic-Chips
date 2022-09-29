@@ -32,7 +32,7 @@ public enum GateFrameTypes implements StringRepresentable {
     }
     public int canConnectTo() {
         return this.canconnect;
-    }// TODO: TO change Redstone dust connection
+    }
     public String toString() {
         return this.name;
     }
