@@ -21,7 +21,6 @@ import org.jetbrains.annotations.NotNull;
 public class LogicChips {
     public static final String MOD_ID = "logicchips";
     public static final Logger LOGGER = LogManager.getLogger();
-    public static final Config config = new Config();
     public static final ItemGroup ITEM_GROUP = (new ItemGroup(MOD_ID) {
         @Override
         public @NotNull ItemStack makeIcon() {
@@ -30,7 +29,6 @@ public class LogicChips {
     });
     public LogicChips() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, LogicChips.config.defaultConfig);
 
         AllItems.register(eventBus);
         AllBlocks.register(eventBus);

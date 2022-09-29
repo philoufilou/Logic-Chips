@@ -3,7 +3,6 @@ package com.ichphilipp.logicchips.allitems;
 import com.ichphilipp.logicchips.LogicChips;
 import com.ichphilipp.logicchips.utils.*;
 import com.ichphilipp.logicchips.allblocks.ChipFrame;
-import com.ichphilipp.logicchips.utils.GateFrameTypes;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
@@ -15,9 +14,9 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.List;
 public class Chip extends Item {
-    public Chip(Properties properties, GateFrameTypes types, TriFunction<Boolean,Boolean,Boolean,Boolean> TRI, int[] ints) {
+    public Chip(Properties properties, GateFrameTypes types) {
         super(properties);
-        ChipFrame.add(types,this, TRI, ints);
+        ChipFrame.add(types,this);
     }
     @Override
     public void appendHoverText(@NotNull ItemStack pStack, @Nullable World pLevel, @NotNull List<ITextComponent> pTooltipComponents, @NotNull ITooltipFlag pIsAdvanced) {

@@ -1,34 +1,41 @@
 package com.ichphilipp.logicchips.utils;
 
-import net.minecraft.util.IStringSerializable;
 import org.jetbrains.annotations.NotNull;
+import net.minecraft.util.IStringSerializable;
 
 public enum GateFrameTypes implements IStringSerializable {
-    Empty("empty"),
-    NOT("not"),
-    AND("and"),
-    NAND("nand"),
-    OR("or"),
-    NOR("nor"),
-    XOR("xor"),
-    XNOR("xnor"),
-    AND_3("and_3"),
-    NAND_3("nand_3"),
-    OR_3("or_3"),
-    NOR_3("nor_3"),
-    XOR_3("xor_3"),
-    XNOR_3("xnor_3");
 
+    empty("empty",(L, B, R) -> false, 0),
+    not("not",(L, B, R) -> !B, 1),
+    and("and",(L, B, R) -> L && R, 2),
+    nand("nand",(L, B, R) -> !(L && R), 2),
+    or("or",(L, B, R) -> L || R, 2),
+    nor("nor",(L, B, R) -> !(L || R), 2),
+    xor("xor",(L, B, R) -> L ^ R, 2),
+    xnor("xnor",(L, B, R) -> L == R, 2),
+    and_3("and_3",(L, B, R) -> L && B && R, 2),
+    nand_3("nand_3",(L, B, R) -> !(L && B && R), 3),
+    or_3("or_3",(L, B, R) -> L || B || R, 3),
+    nor_3("nor_3",(L, B, R) -> !(L || B || R), 3),
+    xor_3("xor_3",(L, B, R) ->  ((L ? 1 : 0) + (B ? 1 : 0) + (R ? 1 : 0)) % 2 == 1, 3),
+    xnor_3("xnor_3",(L, B, R) -> ((L ? 1 : 0) + (B ? 1 : 0) + (R ? 1 : 0)) % 2 == 0, 3);
     private final String name;
-
-    GateFrameTypes(String p_i49337_3_) {
-        this.name = p_i49337_3_;
+    private final TriFunction<Boolean,Boolean,Boolean,Boolean> formel;
+    private final int canconnect;
+    GateFrameTypes(String blockstate, TriFunction<Boolean,Boolean,Boolean,Boolean> formel, int canconnect) {
+        this.name = blockstate;
+        this.formel = formel;
+        this.canconnect = canconnect;
     }
-
+    public TriFunction<Boolean,Boolean,Boolean,Boolean> Outputformal() {
+        return this.formel;
+    }
+    public int canConnectTo() {
+        return this.canconnect;
+    }
     public String toString() {
         return this.name;
     }
-
     @Override
     public @NotNull String getSerializedName() {
         return this.name;
