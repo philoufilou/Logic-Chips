@@ -1,5 +1,5 @@
 <p align="center"><img src="https://i.imgur.com/VreScyE.png" alt="Logo" width="200"></p>
-<h1 align="center">Logic Chips</h1>
+<h1 align="center">Logic Chips 1.16.5 Forge</h1>
 
 Welcome to Logic Chips, a mod offering:
 
