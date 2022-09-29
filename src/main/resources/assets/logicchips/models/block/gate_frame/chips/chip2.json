@@ -4,6 +4,7 @@
 	"textures": {
 		"particle": "#texture"
 	},
+	"render_type": "cutout",
 	"elements": [
 		{
 			"from": [4.5, 2.25, 4.5],

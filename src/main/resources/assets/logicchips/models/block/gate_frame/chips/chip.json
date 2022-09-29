@@ -5,6 +5,7 @@
 		"particle": "logicchips:item/and_gate",
 		"texture": "logicchips:item/and_gate"
 	},
+	"render_type": "cutout",
 	"elements": [
 		{
 			"from": [5, 2.25, 5],

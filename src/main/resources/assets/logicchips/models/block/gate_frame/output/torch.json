@@ -4,6 +4,7 @@
 	"textures": {
 		"particle": "#texture"
 	},
+	"render_type": "cutout",
 	"elements": [
 		{
 			"name": "Front Torch",
