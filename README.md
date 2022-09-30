@@ -25,4 +25,4 @@ Welcome to Logic Chips, a mod offering:
 
 - Support for Minecraft 1.17: planned Forge & Fabric
 - Support for Minecraft 1.18: planned Forge & Fabric
-- Support for Minecraft 1.19: planned Forge & Fabric
+- Support for Minecraft 1.19: planned Fabric
