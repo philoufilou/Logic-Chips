@@ -1,0 +1,37 @@
+{
+  "itemGroup.logicchips": "Logic Chips",
+
+  "block.logicchips.gate_frame": "Logikgatter Rahmen",
+
+  "item.logicchips.chip": "Chip",
+
+  "item.logicchips.not_gate": "NOT Chip §c1 Eingang",
+  "item.logicchips.and_gate": "AND Chip §c2 Eingänge",
+  "item.logicchips.nand_gate": "NAND Chip §c2 Eingänge",
+  "item.logicchips.or_gate": "OR Chip §c2 Eingänge",
+  "item.logicchips.nor_gate": "NOR Chip §c2 Eingänge",
+  "item.logicchips.xor_gate": "XOR Chip §c2 Eingänge",
+  "item.logicchips.xnor_gate": "XNOR Chip §c2 Eingänge",
+  "item.logicchips.and_gate_3": "AND Chip §c3 Eingänge",
+  "item.logicchips.nand_gate_3": "NAND Chip §c3 Eingänge",
+  "item.logicchips.or_gate_3": "OR Chip §c3 Eingänge",
+  "item.logicchips.nor_gate_3": "NOR Chip §c3 Eingänge",
+  "item.logicchips.xor_gate_3": "XOR Chip §c3 Eingänge",
+  "item.logicchips.xnor_gate_3": "XNOR Chip §c3 Eingänge",
+
+  "tooltip.shift": "§fDrücke §eShift §ffür mehr Informationen",
+
+  "tooltip.logicchips.not_gate": "Der §eNOT Chip§r “invertiert” das Eingangssignal",
+  "tooltip.logicchips.and_gate": "Der §eAND Chip§r gibt nur ein Signal ab, wenn alle Eingänge ein Signal haben",
+  "tooltip.logicchips.nand_gate": "Der §eNAND Chip§r gibt ein Signal ab, solange nicht alle Eingänge ein Signal haben",
+  "tooltip.logicchips.or_gate": "Der §eOR Chip§r gibt ein Signal ab, wenn irgendein Eingang ein Signal hat",
+  "tooltip.logicchips.nor_gate": "Der §eNOR Chip§r gibt ein Signal ab, wenn kein Eingangssignal vorhanden ist",
+  "tooltip.logicchips.xor_gate": "Der §eXOR Chip§r gibt ein Signal ab, wenn die Anzahl der Eingangssignale eine ungerade Zahl ergibt",
+  "tooltip.logicchips.xnor_gate": "Der §eXNOR Chip§r gibt ein Signal ab, wenn die Anzahl der Eingangssignale eine gerade Zahl ergibt",
+  "tooltip.logicchips.and_gate_3": "Der §eAND Chip§r gibt nur ein Signal ab, wenn alle Eingänge ein Signal haben",
+  "tooltip.logicchips.nand_gate_3": "Der §eNAND Chip§r gibt ein Signal ab, solange nicht alle Eingänge ein Signal haben",
+  "tooltip.logicchips.or_gate_3": "Der §eOR Chip§r gibt ein Signal ab, wenn irgendein Eingang ein Signal hat",
+  "tooltip.logicchips.nor_gate_3": "Der §eNOR Chip§r gibt ein Signal ab, wenn kein Eingangssignal vorhanden ist",
+  "tooltip.logicchips.xor_gate_3": "Der §eXOR Chip§r gibt ein Signal ab, wenn die Anzahl der Eingangssignale eine ungerade Zahl ergibt",
+  "tooltip.logicchips.xnor_gate_3": "Der §eXNOR Chip§r gibt ein Signal ab, wenn die Anzahl der Eingangssignale eine gerade Zahl ergibt"
+}
