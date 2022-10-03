@@ -1,6 +1,9 @@
 <p align="center"><img src="https://i.imgur.com/VreScyE.png" alt="Logo" width="200"></p>
-<h1 align="center">Logic Chips 1.16.5 Forge</h1>
-
+<h1 align="center">Logic Chips 1.16.5 Forge <br>
+<a href="https://www.curseforge.com/minecraft/mc-mods/logic-chips/files"><img src="https://img.shields.io/badge/Available%20for-MC%201.16.5%20and%201.19.2-c70039" alt="Supported Versions"></a>
+<a href="https://github.com/philoufilou/Logic-Chips/blob/1.16.5/LICENSE"><img src="https://img.shields.io/github/license/philoufilou/Logic-Chips?style=flat&color=900c3f" alt="License"></a>
+<a href="https://www.curseforge.com/minecraft/mc-mods/logic-chips"><img src="https://cf.way2muchnoise.eu/682497.svg" alt="CF"></a>
+</h1>
 Welcome to Logic Chips, a mod offering:
 
 1 input:
