@@ -45,52 +45,52 @@ public class AllItems {
                 AND_GATE = ITEM_REG.register(
                                 "and_gate", () -> new Chip(
                                                 new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                                                GateFrameTypes.not));
+                                                GateFrameTypes.and));
                 NAND_GATE = ITEM_REG.register(
                                 "nand_gate", () -> new Chip(
                                                 new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                                                GateFrameTypes.not));
+                                                GateFrameTypes.nand));
                 OR_GATE = ITEM_REG.register(
                                 "or_gate", () -> new Chip(
                                                 new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                                                GateFrameTypes.not));
+                                                GateFrameTypes.or));
                 NOR_GATE = ITEM_REG.register(
                                 "nor_gate", () -> new Chip(
                                                 new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                                                GateFrameTypes.not));
+                                                GateFrameTypes.nor));
                 XOR_GATE = ITEM_REG.register(
                                 "xor_gate", () -> new Chip(
                                                 new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                                                GateFrameTypes.not));
+                                                GateFrameTypes.xor));
                 XNOR_GATE = ITEM_REG.register(
                                 "xnor_gate", () -> new Chip(
                                                 new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                                                GateFrameTypes.not));
+                                                GateFrameTypes.xnor));
 
                 AND_GATE_3 = ITEM_REG.register(
                                 "and_gate_3", () -> new Chip(
                                                 new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                                                GateFrameTypes.not));
+                                                GateFrameTypes.and_3));
                 NAND_GATE_3 = ITEM_REG.register(
                                 "nand_gate_3", () -> new Chip(
                                                 new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                                                GateFrameTypes.not));
+                                                GateFrameTypes.nand_3));
                 OR_GATE_3 = ITEM_REG.register(
                                 "or_gate_3", () -> new Chip(
                                                 new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                                                GateFrameTypes.not));
+                                                GateFrameTypes.or_3));
                 NOR_GATE_3 = ITEM_REG.register(
                                 "nor_gate_3", () -> new Chip(
                                                 new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                                                GateFrameTypes.not));
+                                                GateFrameTypes.nor_3));
                 XOR_GATE_3 = ITEM_REG.register(
                                 "xor_gate_3", () -> new Chip(
                                                 new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                                                GateFrameTypes.not));
+                                                GateFrameTypes.xor_3));
                 XNOR_GATE_3 = ITEM_REG.register(
                                 "xnor_gate_3", () -> new Chip(
                                                 new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                                                GateFrameTypes.not));
+                                                GateFrameTypes.xnor_3));
 
         }
 }
