@@ -15,7 +15,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.examplemod.fabric.ExampleModFabric"
+      "com.ichphilipp.logicchips.LogicChipsFabric"
     ]
   },
   "depends": {
