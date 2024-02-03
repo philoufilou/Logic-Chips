@@ -97,8 +97,10 @@ public class ChipFrame extends DiodeBlock {
     // }
     @Override
     public void wasExploded(Level world, BlockPos pos, Explosion explosion) {
+        // this.dropChip(world, pos, world.getBlockState(pos));
+        // TODO: How to make installed chip drop when exploded
+        // When wasExploded() is called, such block is already `air`
         super.wasExploded(world, pos, explosion);
-        this.dropChip(world, pos, world.getBlockState(pos));
     }
 
     public boolean isPowered(@NotNull BlockState blockstate, Level world, @NotNull BlockPos blockpos){
