@@ -20,7 +20,8 @@ import com.ichphilipp.logicchips.allblocks.ChipFrame;
 // import net.minecraft.util.text.TranslationTextComponent;
 // import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.List;
 public class Chip extends Item {
     public Chip(Properties properties, GateFrameTypes types) {
