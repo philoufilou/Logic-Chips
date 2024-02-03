@@ -6,11 +6,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-// import net.minecraft.block.Block;
-// import net.minecraft.block.BlockState;
-// import net.minecraft.block.RedstoneDiodeBlock;
-// import net.minecraft.entity.item.ItemEntity;
-// import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -90,18 +85,10 @@ public class ChipFrame extends DiodeBlock {
         }
     }
 
-    // @Override
-    // public void onBlockExploded(BlockState state, Level world, BlockPos pos, Explosion explosion) {
-    //     super.onBlockExploded(state, world, pos, explosion);
-    //     this.dropChip(world, pos, state);
+    // public void wasExploded(Level world, BlockPos pos, Explosion explosion) {
+    //     // We don't need this to get our chip back when exploded because onRemove() already did this
+    //     // Tested on Forge36.2.41
     // }
-    @Override
-    public void wasExploded(Level world, BlockPos pos, Explosion explosion) {
-        // this.dropChip(world, pos, world.getBlockState(pos));
-        // TODO: How to make installed chip drop when exploded
-        // When wasExploded() is called, such block is already `air`
-        super.wasExploded(world, pos, explosion);
-    }
 
     public boolean isPowered(@NotNull BlockState blockstate, Level world, @NotNull BlockPos blockpos){
         Direction facing = blockstate.getValue(FACING);
