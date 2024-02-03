@@ -1,6 +1,5 @@
 package com.ichphilipp.logicchips.utils;
 
-import com.ichphilipp.logicchips.LogicChips;
 import java.util.Objects;
 import java.util.function.Function;
 
