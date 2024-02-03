@@ -9,17 +9,19 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import com.ichphilipp.logicchips.blocks.AllBlocks;
+import com.ichphilipp.logicchips.items.AllItems;
 
-import me.shedaniel.architectury.event.events.client.ClientLifecycleEvent;
 import me.shedaniel.architectury.platform.forge.EventBuses;
 
 @Mod(LogicChips.MOD_ID)
 public class LogicChipsForge {
 
     public LogicChipsForge() {
-        EventBuses.registerModEventBus(LogicChips.MOD_ID, FMLJavaModLoadingContext.get().getModEventBus());
-
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        EventBuses.registerModEventBus(LogicChips.MOD_ID, eventBus);
+
+        AllBlocks.init();
+        AllItems.init();
 
         eventBus.addListener(this::onClientSetup);
         MinecraftForge.EVENT_BUS.register(this);
