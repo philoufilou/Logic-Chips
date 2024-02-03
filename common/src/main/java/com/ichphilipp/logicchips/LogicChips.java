@@ -21,8 +21,6 @@ public class LogicChips {
     public static final CreativeModeTab ITEM_GROUP = CreativeTabs.create(
         new ResourceLocation(MOD_ID, "tab"), ()->new ItemStack(AllItems.AND_GATE.get())
     );
-    
-
     public LogicChips() {
         // IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 

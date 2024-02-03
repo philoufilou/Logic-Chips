@@ -28,16 +28,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-// import net.minecraft.particles.RedstoneParticleData;
-// import net.minecraft.state.BooleanProperty;
-// import net.minecraft.state.EnumProperty;
-// import net.minecraft.state.StateContainer;
-import net.minecraft.util.*;
-// import net.minecraft.util.math.BlockPos;
-// import net.minecraft.util.math.BlockRayTraceResult;
-// import net.minecraft.world.Explosion;
-// import net.minecraft.world.IBlockReader;
-// import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
