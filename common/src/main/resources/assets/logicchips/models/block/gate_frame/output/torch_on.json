@@ -1,0 +1,6 @@
+{
+  "parent": "logicchips:block/gate_frame/output/torch",
+  "textures": {
+    "texture": "minecraft:block/redstone_torch"
+  }
+}
