@@ -75,7 +75,7 @@ public class ChipFrame extends DiodeBlock {
         arg.add(FACING, TYPE, POWERED, LEFT_INPUT, RIGHT_INPUT, BOTTOM_INPUT);
     }
 
-    @Override
+    // TODO: @Override at canConnectRedstone()
     public boolean canConnectRedstone(BlockState blockState, BlockGetter world, BlockPos pos, @Nullable Direction direction) {
         Comparable<GateFrameTypes> type = blockState.getValue(TYPE);
         int connect = GateFrameTypes.valueOf(type.toString()).canConnectTo();
@@ -99,10 +99,15 @@ public class ChipFrame extends DiodeBlock {
         }
     }
 
+    // @Override
+    // public void onBlockExploded(BlockState state, Level world, BlockPos pos, Explosion explosion) {
+    //     super.onBlockExploded(state, world, pos, explosion);
+    //     this.dropChip(world, pos, state);
+    // }
     @Override
-    public void onBlockExploded(BlockState state, Level world, BlockPos pos, Explosion explosion) {
-        super.onBlockExploded(state, world, pos, explosion);
-        this.dropChip(world, pos, state);
+    public void wasExploded(Level world, BlockPos pos, Explosion explosion) {
+        super.wasExploded(world, pos, explosion);
+        this.dropChip(world, pos, world.getBlockState(pos));
     }
 
     public boolean isPowered(@NotNull BlockState blockstate, Level world, @NotNull BlockPos blockpos){

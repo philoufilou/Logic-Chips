@@ -16,7 +16,7 @@ import net.minecraft.world.item.Item;
 
 public class AllItems {
 
-  private static final me.shedaniel.architectury.registry.Registry<Item> ITEM_REG = Registries
+  public static final me.shedaniel.architectury.registry.Registry<Item> ITEM_REG = Registries
       .get(LogicChips.MOD_ID)
       .get(Registry.ITEM_REGISTRY);
   // base chip
