@@ -65,14 +65,15 @@ public class ChipFrame extends DiodeBlock {
         arg.add(FACING, TYPE, POWERED, LEFT_INPUT, RIGHT_INPUT, BOTTOM_INPUT);
     }
 
-    // TODO: @Override at canConnectRedstone()
-    public boolean canConnectRedstone(BlockState blockState, BlockGetter world, BlockPos pos, @Nullable Direction direction) {
+    // TODO: Should we @Override at canConnectRedstone()
+    public boolean canConnectRedstone(BlockState blockState, BlockGetter world, BlockPos pos, @Nullable Direction side) {
         Comparable<GateFrameTypes> type = blockState.getValue(TYPE);
         int connect = GateFrameTypes.valueOf(type.toString()).canConnectTo();
-        return direction == blockState.getValue(FACING) ||
-                ( direction == blockState.getValue(FACING).getClockWise() && (connect == 2 || connect == 3) )||
-                ( direction == blockState.getValue(FACING).getCounterClockWise() && (connect == 2 || connect == 3) )||
-                ( direction == blockState.getValue(FACING).getOpposite() && (connect == 1 || connect == 3) );
+        Direction facing = blockState.getValue(FACING);
+        return side == facing ||
+                ( side == facing.getClockWise() && (connect == 2 || connect == 3) )||
+                ( side == facing.getCounterClockWise() && (connect == 2 || connect == 3) )||
+                ( side == facing.getOpposite() && (connect == 1 || connect == 3) );
     }
     @Override
     protected int getInputSignal(@NotNull Level world, @NotNull BlockPos pos, @NotNull BlockState state) {
