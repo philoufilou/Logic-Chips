@@ -9,7 +9,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DiodeBlock;
@@ -60,7 +59,6 @@ public class ChipFrame extends DiodeBlock {
         arg.add(FACING, TYPE, POWERED, LEFT_INPUT, RIGHT_INPUT, BOTTOM_INPUT);
     }
 
-    // TODO: Should we @Override at canConnectRedstone()
     public boolean canConnectRedstone(BlockState blockState, BlockGetter world, BlockPos pos, @Nullable Direction side) {
         Comparable<GateFrameTypes> type = blockState.getValue(TYPE);
         int connect = GateFrameTypes.valueOf(type.toString()).canConnectTo();
