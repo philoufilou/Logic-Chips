@@ -1,17 +1,19 @@
 modLoader = "javafml"
 loaderVersion = "[36,)"
 #issueTrackerURL = ""
-license = "Insert License Here"
+license = "MIT"
 
 [[mods]]
 modId = "logicchips"
 version = "${version}"
-displayName = "Example Mod"
-authors = "Me!"
+displayName = "Logic Chips"
+authors = "IchPhilipp"
 description = '''
-This is an example description! Tell everyone what your mod is about!
+Logic Gates with 2 or 3 inputs
 '''
-#logoFile = ""
+issueTrackerURL="https://github.com/philoufilou/Logic-Chips/issues" #optional
+displayURL="https://github.com/philoufilou/Logic-Chips" #optional
+logoFile="icon.png" #optional
 
 [[dependencies.logicchips]]
 modId = "forge"

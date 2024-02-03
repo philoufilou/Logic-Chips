@@ -1,18 +1,17 @@
 {
   "schemaVersion": 1,
-  "id": "examplemod",
+  "id": "logicchips",
   "version": "${version}",
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "Logic Chips",
+  "description": "Logic Gates with 2 or 3 inputs",
   "authors": [
-    "Me!"
+    "IchPhilipp"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "sources": "https://github.com/philoufilou/Logic-Chips"
   },
-  "license": "Insert License Here",
-  "icon": "assets/examplemod/icon.png",
+  "license": "MIT",
+  "icon": "assets/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
