@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "logicchips:item/nand_gate_3"
-  }
-}
