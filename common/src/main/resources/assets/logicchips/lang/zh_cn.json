@@ -1,0 +1,37 @@
+{
+    "itemGroup.logicchips": "逻辑芯片",
+  
+    "block.logicchips.gate_frame": "逻辑门框架",
+  
+    "item.logicchips.chip": "芯片",
+  
+    "item.logicchips.not_gate": "非门芯片 §c1个输入端",
+    "item.logicchips.and_gate": "与门芯片 §c2个输入端",
+    "item.logicchips.nand_gate": "与非门芯片 §c2个输入端",
+    "item.logicchips.or_gate": "或门芯片 §c2个输入端",
+    "item.logicchips.nor_gate": "或非门芯片 §c2个输入端",
+    "item.logicchips.xor_gate": "异或门芯片 §c2个输入端",
+    "item.logicchips.xnor_gate": "同或门芯片 §c2个输入端",
+    "item.logicchips.and_gate_3": "与门芯片 §c3个输入端",
+    "item.logicchips.nand_gate_3": "与非门芯片 §c3个输入端",
+    "item.logicchips.or_gate_3": "或门芯片 §c3个输入端",
+    "item.logicchips.nor_gate_3": "或非门芯片 §c3个输入端",
+    "item.logicchips.xor_gate_3": "异或门芯片 §c3个输入端",
+    "item.logicchips.xnor_gate_3": "同或门芯片 §c3个输入端",
+  
+    "tooltip.shift": "§f按 §eShift §f来获取更多信息",
+  
+    "tooltip.logicchips.not_gate": "§e非门芯片§r “反转” 输入信号并将结果输出",
+    "tooltip.logicchips.and_gate": "§e与门芯片§r 只在所有输入端都有信号时输出信号",
+    "tooltip.logicchips.nand_gate": "§e与非门芯片§r 只要有输入端无输入信号，就能输出信号",
+    "tooltip.logicchips.or_gate": "§e或门芯片§r 只要任何一个输入端有输入信号，就能输出信号",
+    "tooltip.logicchips.nor_gate": "§e或非门芯片§r 在无任何输入信号时输出信号",
+    "tooltip.logicchips.xor_gate": "§e异或门芯片§r 只在所有输入信号的值之和为奇数时输出信号",
+    "tooltip.logicchips.xnor_gate": "§e同或门芯片§r 只在所有输入信号的值之和为偶数时输出信号",
+    "tooltip.logicchips.and_gate_3": "§e与门芯片§r 只在所有输入端都有信号时输出信号",
+    "tooltip.logicchips.nand_gate_3": "§e与非门芯片§r 只要有输入端无输入信号，就能输出信号",
+    "tooltip.logicchips.or_gate_3": "§e或门芯片§r 只要任何一个输入端有输入信号，就能输出信号",
+    "tooltip.logicchips.nor_gate_3": "§e或非门芯片§r 在无任何输入信号时输出信号",
+    "tooltip.logicchips.xor_gate_3": "§e异或门芯片§r 只在所有输入信号的值之和为奇数时输出信号",
+    "tooltip.logicchips.xnor_gate_3": "§e同或门芯片§r 只在所有输入信号的值之和为偶数时输出信号"
+}

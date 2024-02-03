@@ -1,0 +1,22 @@
+{
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"smooth_stone": "minecraft:block/smooth_stone",
+		"particle": "#texture"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 2, 16],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 2], "texture": "#smooth_stone", "cullface": "north"},
+				"east": {"uv": [14, 0, 16, 16], "rotation": 270, "texture": "#smooth_stone", "cullface": "east"},
+				"south": {"uv": [0, 14, 16, 16], "rotation": 180, "texture": "#smooth_stone", "cullface": "south"},
+				"west": {"uv": [0, 0, 2, 16], "rotation": 90, "texture": "#smooth_stone", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#texture"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#smooth_stone", "cullface": "down"}
+			}
+		}
+	]
+}

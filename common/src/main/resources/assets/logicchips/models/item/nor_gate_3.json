@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "logicchips:item/nor_gate_3"
+  }
+}

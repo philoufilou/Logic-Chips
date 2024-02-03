@@ -1,0 +1,53 @@
+{
+  "itemGroup.logicchips": "Logic Chips",
+
+  "block.logicchips.gate_frame": "Logic Gate Frame",
+
+  "item.logicchips.chip": "Chip",
+
+  "item.logicchips.not_gate": "NOT Chip §c1 input",
+  "item.logicchips.and_gate": "AND Chip §c2 inputs",
+  "item.logicchips.nand_gate": "NAND Chip §c2 inputs",
+  "item.logicchips.or_gate": "OR Chip §c2 inputs",
+  "item.logicchips.nor_gate": "NOR Chip §c2 inputs",
+  "item.logicchips.xor_gate": "XOR Chip §c2 inputs",
+  "item.logicchips.xnor_gate": "XNOR Chip §c2 inputs",
+  "item.logicchips.and_gate_3": "AND Chip §c3 inputs",
+  "item.logicchips.nand_gate_3": "NAND Chip §c3 inputs",
+  "item.logicchips.or_gate_3": "OR Chip §c3 inputs",
+  "item.logicchips.nor_gate_3": "NOR Chip §c3 inputs",
+  "item.logicchips.xor_gate_3": "XOR Chip §c3 inputs",
+  "item.logicchips.xnor_gate_3": "XNOR Chip §c3 inputs",
+
+  "tooltip.shift": "§fPress §eShift §ffor more Informations",
+
+  "tooltip.logicchips.not_gate": "The §eNOT Chip§r “inverts” its input signal",
+  "tooltip.logicchips.and_gate": "The §eAND Chip§r gives only an Output, when all inputs have a signal",
+  "tooltip.logicchips.nand_gate": "The §eNAND Chip§r gives an Output, as long not all inputs have a signal",
+  "tooltip.logicchips.or_gate": "The §eOR Chip§r gives an Output, as long there is anywere a input signal",
+  "tooltip.logicchips.nor_gate": "The §eNOR Chip§r gives an Output, when there is no input signal",
+  "tooltip.logicchips.xor_gate": "The §eXOR Chip§r gives an Output, only when the total input signals is an odd number",
+  "tooltip.logicchips.xnor_gate": "The §eXNOR Chip§r gives an Output, only when the total input signals is an even number",
+  "tooltip.logicchips.and_gate_3": "The §eAND Chip§r gives only an Output, when all inputs have a signal",
+  "tooltip.logicchips.nand_gate_3": "The §eNAND Chip§r gives an Output, as long not all inputs have a signal",
+  "tooltip.logicchips.or_gate_3": "The §eOR Chip§r gives an Output, as long there is anywere a input signal",
+  "tooltip.logicchips.nor_gate_3": "The §eNOR Chip§r gives an Output, when there is no input signal",
+  "tooltip.logicchips.xor_gate_3": "The §eXOR Chip§r gives an Output, only when the total input signals is an odd number",
+  "tooltip.logicchips.xnor_gate_3": "The §eXNOR Chip§r gives an Output, only when the total input signals is an even number",
+
+  "item.logicchips.cap_1": "Capacitor §c1 RPL/S*",
+  "item.logicchips.cap_05": "Capacitor §c0.5 RPL/S*",
+  "item.logicchips.cap_02": "Capacitor §c0.2 RPL/S*",
+  "item.logicchips.cap_01": "Capacitor §c0.1 RPL/S*",
+  "item.logicchips.cap_005": "Capacitor §c0.05 RPL/S*",
+  "item.logicchips.cap_002": "Capacitor §c0.02 RPL/S*",
+  "item.logicchips.cap_001": "Capacitor §c0.01 RPL/S*",
+  "item.logicchips.cap_0005": "Capacitor §c0.005 RPL/S*",
+  "item.logicchips.cap_0002": "Capacitor §c0.002 RPL/S*",
+  "item.logicchips.cap_0001": "Capacitor §c0.001 RPL/S*",
+
+  "tooltip.logicchips.cap_rpl": "§c* R§redstone §cP$rower §cL$evel §cper$ §cS$econd",
+  "tooltip.logicchips.cap_release": "the Capacitor releases the energy again after it is fully charged.",
+  "tooltip.logicchips.cap_charge": "the Capacitor charges per Input with the §cRPL/S*§r formel"
+
+}

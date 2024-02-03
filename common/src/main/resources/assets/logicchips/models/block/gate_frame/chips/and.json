@@ -1,0 +1,6 @@
+{
+  "parent": "logicchips:block/gate_frame/chips/chip",
+  "textures": {
+    "texture": "logicchips:item/and_gate"
+  }
+}

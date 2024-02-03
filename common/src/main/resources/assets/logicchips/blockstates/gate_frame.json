@@ -1,0 +1,1643 @@
+{
+"multipart":
+    [
+	    {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/output/signal_on",
+            "y": 180
+            },
+        "when":
+            {
+            "powered": "true"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/output/signal_off",
+            "y": 180
+            },
+        "when":
+            {
+				"powered": "false"
+            }
+        },
+		
+		
+		
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/output/torch_on",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "powered": "true"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/output/torch_off",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "powered": "false"
+            }
+        },
+		
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/output/torch_on",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "powered": "true"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/output/torch_off",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "powered": "false"
+            }
+        },
+		
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/output/torch_on",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "powered": "true"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/output/torch_off",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "powered": "false"
+            }
+        },
+		
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/output/torch_on",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "powered": "true"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/output/torch_off",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "powered": "false"
+            }
+        },		
+		
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/0",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "type": "empty"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/0",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "type": "empty"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/0",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "type": "empty"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/0",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "type": "empty"
+            }
+        },
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/1_0",
+            "y": 180
+            },
+        "when":
+            {
+            "bottom": "false",
+            "facing": "north",
+            "type": "not"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/1_1",
+            "y": 180
+            },
+        "when":
+            {
+            "bottom": "true",
+            "facing": "north",
+            "type": "not"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/2_0",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "left": "false",
+            "right": "false",
+            "type": "and|nand|or|nor|xor|xnor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/2_left",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "left": "true",
+            "right": "false",
+            "type": "and|nand|or|nor|xor|xnor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/2_right",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "left": "false",
+            "right": "true",
+            "type": "and|nand|or|nor|xor|xnor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/2_1",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "left": "true",
+            "right": "true",
+            "type": "and|nand|or|nor|xor|xnor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_0",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "left": "false",
+            "bottom": "false",
+            "right": "false",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_left",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "left": "true",
+            "bottom": "false",
+            "right": "false",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_bottom",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "left": "false",
+            "bottom": "true",
+            "right": "false",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_right",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "left": "false",
+            "bottom": "false",
+            "right": "true",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_right_left",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "left": "true",
+            "bottom": "false",
+            "right": "true",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_left_bottom",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "left": "true",
+            "bottom": "true",
+            "right": "false",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_right_bottom",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "left": "false",
+            "bottom": "true",
+            "right": "true",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_1",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "left": "true",
+            "bottom": "true",
+            "right": "true",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/1_0",
+            "y": 0
+            },
+        "when":
+            {
+            "bottom": "false",
+            "facing": "south",
+            "type": "not"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/1_1",
+            "y": 0
+            },
+        "when":
+            {
+            "bottom": "true",
+            "facing": "south",
+            "type": "not"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/2_0",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "left": "false",
+            "right": "false",
+            "type": "and|nand|or|nor|xor|xnor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/2_left",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "left": "true",
+            "right": "false",
+            "type": "and|nand|or|nor|xor|xnor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/2_right",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "left": "false",
+            "right": "true",
+            "type": "and|nand|or|nor|xor|xnor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/2_1",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "left": "true",
+            "right": "true",
+            "type": "and|nand|or|nor|xor|xnor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_0",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "left": "false",
+            "bottom": "false",
+            "right": "false",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_left",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "left": "true",
+            "bottom": "false",
+            "right": "false",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_bottom",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "left": "false",
+            "bottom": "true",
+            "right": "false",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_right",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "left": "false",
+            "bottom": "false",
+            "right": "true",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_right_left",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "left": "true",
+            "bottom": "false",
+            "right": "true",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_left_bottom",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "left": "true",
+            "bottom": "true",
+            "right": "false",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_right_bottom",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "left": "false",
+            "bottom": "true",
+            "right": "true",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_1",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "left": "true",
+            "bottom": "true",
+            "right": "true",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/1_0",
+            "y": 270
+            },
+        "when":
+            {
+            "bottom": "false",
+            "facing": "east",
+            "type": "not"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/1_1",
+            "y": 270
+            },
+        "when":
+            {
+            "bottom": "true",
+            "facing": "east",
+            "type": "not"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/2_0",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "left": "false",
+            "right": "false",
+            "type": "and|nand|or|nor|xor|xnor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/2_left",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "left": "true",
+            "right": "false",
+            "type": "and|nand|or|nor|xor|xnor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/2_right",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "left": "false",
+            "right": "true",
+            "type": "and|nand|or|nor|xor|xnor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/2_1",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "left": "true",
+            "right": "true",
+            "type": "and|nand|or|nor|xor|xnor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_0",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "left": "false",
+            "bottom": "false",
+            "right": "false",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_left",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "left": "true",
+            "bottom": "false",
+            "right": "false",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_bottom",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "left": "false",
+            "bottom": "true",
+            "right": "false",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_right",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "left": "false",
+            "bottom": "false",
+            "right": "true",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_right_left",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "left": "true",
+            "bottom": "false",
+            "right": "true",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_left_bottom",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "left": "true",
+            "bottom": "true",
+            "right": "false",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_right_bottom",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "left": "false",
+            "bottom": "true",
+            "right": "true",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_1",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "left": "true",
+            "bottom": "true",
+            "right": "true",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/1_0",
+            "y": 90
+            },
+        "when":
+            {
+            "bottom": "false",
+            "facing": "west",
+            "type": "not"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/1_1",
+            "y": 90
+            },
+        "when":
+            {
+            "bottom": "true",
+            "facing": "west",
+            "type": "not"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/2_0",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "left": "false",
+            "right": "false",
+            "type": "and|nand|or|nor|xor|xnor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/2_left",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "left": "true",
+            "right": "false",
+            "type": "and|nand|or|nor|xor|xnor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/2_right",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "left": "false",
+            "right": "true",
+            "type": "and|nand|or|nor|xor|xnor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/2_1",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "left": "true",
+            "right": "true",
+            "type": "and|nand|or|nor|xor|xnor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_0",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "left": "false",
+            "bottom": "false",
+            "right": "false",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_left",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "left": "true",
+            "bottom": "false",
+            "right": "false",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_bottom",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "left": "false",
+            "bottom": "true",
+            "right": "false",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_right",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "left": "false",
+            "bottom": "false",
+            "right": "true",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_right_left",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "left": "true",
+            "bottom": "false",
+            "right": "true",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_left_bottom",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "left": "true",
+            "bottom": "true",
+            "right": "false",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_right_bottom",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "left": "false",
+            "bottom": "true",
+            "right": "true",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/gates/3_1",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "left": "true",
+            "bottom": "true",
+            "right": "true",
+            "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+            }
+        },
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/not",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "type": "not"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/and",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "type": "and"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/nand",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "type": "nand"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/or",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "type": "or"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/nor",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "type": "nor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/xor",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "type": "xor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/xnor",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "type": "xnor"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/and_3",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "type": "and_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/nand_3",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "type": "nand_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/or_3",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "type": "or_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/nor_3",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "type": "nor_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/xor_3",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "type": "xor_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/xnor_3",
+            "y": 180
+            },
+        "when":
+            {
+            "facing": "north",
+            "type": "xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/not",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "type": "not"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/and",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "type": "and"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/nand",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "type": "nand"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/or",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "type": "or"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/nor",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "type": "nor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/xor",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "type": "xor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/xnor",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "type": "xnor"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/and_3",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "type": "and_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/nand_3",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "type": "nand_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/or_3",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "type": "or_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/nor_3",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "type": "nor_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/xor_3",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "type": "xor_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/xnor_3",
+            "y": 270
+            },
+        "when":
+            {
+            "facing": "east",
+            "type": "xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/not",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "type": "not"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/and",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "type": "and"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/nand",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "type": "nand"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/or",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "type": "or"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/nor",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "type": "nor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/xor",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "type": "xor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/xnor",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "type": "xnor"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/and_3",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "type": "and_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/nand_3",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "type": "nand_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/or_3",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "type": "or_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/nor_3",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "type": "nor_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/xor_3",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "type": "xor_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/xnor_3",
+            "y": 90
+            },
+        "when":
+            {
+            "facing": "west",
+            "type": "xnor_3"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/not",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "type": "not"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/and",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "type": "and"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/nand",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "type": "nand"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/or",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "type": "or"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/nor",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "type": "nor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/xor",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "type": "xor"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/xnor",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "type": "xnor"
+            }
+        },
+		{
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/and_3",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "type": "and_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/nand_3",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "type": "nand_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/or_3",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "type": "or_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/nor_3",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "type": "nor_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/xor_3",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "type": "xor_3"
+            }
+        },
+        {
+        "apply":
+            {
+            "model": "logicchips:block/gate_frame/chips/xnor_3",
+            "y": 0
+            },
+        "when":
+            {
+            "facing": "south",
+            "type": "xnor_3"
+            }
+        }
+    ]
+}

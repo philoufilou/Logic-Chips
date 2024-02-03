@@ -1,0 +1,28 @@
+{
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"particle": "logicchips:item/and_gate",
+		"texture": "logicchips:item/and_gate"
+	},
+	"elements": [
+		{
+			"from": [5, 2.25, 5],
+			"to": [11, 3.25, 11],
+			"faces": {
+				"north": {"uv": [2, 2, 13, 3], "rotation": 180, "texture": "#texture"},
+				"east": {"uv": [12, 2, 13, 13], "rotation": 90, "texture": "#texture"},
+				"south": {"uv": [2, 12, 13, 13], "texture": "#texture"},
+				"west": {"uv": [2, 2, 3, 13], "rotation": 270, "texture": "#texture"},
+				"up": {"uv": [2, 2, 13, 13], "texture": "#texture"}
+			}
+		},
+		{
+			"from": [4.5, 3.1, 4.5],
+			"to": [11.5, 3.1, 11.5],
+			"faces": {
+				"up": {"uv": [1, 1, 14, 14], "texture": "#texture"}
+			}
+		}
+	]
+}

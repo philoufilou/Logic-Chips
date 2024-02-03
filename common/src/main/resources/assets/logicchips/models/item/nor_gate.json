@@ -1,0 +1,14 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "logicchips:item/nor_gate"
+  },
+  "display":{
+	  "gui":{
+		  "translation":[0.5,-0.5,0]
+	  },
+	  "fixed":{
+		  "translation":[0.5,-0.5,0]
+	  }
+  }
+}
