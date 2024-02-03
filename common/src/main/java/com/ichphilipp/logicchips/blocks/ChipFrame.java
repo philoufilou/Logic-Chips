@@ -1,4 +1,4 @@
-package com.ichphilipp.logicchips.allblocks;
+package com.ichphilipp.logicchips.blocks;
 
 import com.ichphilipp.logicchips.utils.GateFrameTypes;
 

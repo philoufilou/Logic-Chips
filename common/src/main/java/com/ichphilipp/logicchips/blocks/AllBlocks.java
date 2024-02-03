@@ -1,7 +1,7 @@
-package com.ichphilipp.logicchips.allblocks;
+package com.ichphilipp.logicchips.blocks;
 
 import com.ichphilipp.logicchips.LogicChips;
-import com.ichphilipp.logicchips.allitems.AllItems;
+import com.ichphilipp.logicchips.items.AllItems;
 
 import me.shedaniel.architectury.registry.Registry;
 import me.shedaniel.architectury.registry.Registries;

@@ -1,6 +1,7 @@
-package com.ichphilipp.logicchips.allitems;
+package com.ichphilipp.logicchips.items;
 
 import com.ichphilipp.logicchips.LogicChips;
+import com.ichphilipp.logicchips.blocks.ChipFrame;
 import com.ichphilipp.logicchips.utils.*;
 
 import net.minecraft.client.gui.screens.Screen;
@@ -11,7 +12,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 
-import com.ichphilipp.logicchips.allblocks.ChipFrame;
 // import net.minecraft.client.gui.screen.Screen;
 // import net.minecraft.client.util.ITooltipFlag;
 // import net.minecraft.item.Item;

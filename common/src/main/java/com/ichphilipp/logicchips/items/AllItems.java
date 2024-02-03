@@ -1,7 +1,7 @@
-package com.ichphilipp.logicchips.allitems;
+package com.ichphilipp.logicchips.items;
 
 import com.ichphilipp.logicchips.LogicChips;
-import com.ichphilipp.logicchips.allitems.Chip;
+import com.ichphilipp.logicchips.items.Chip;
 import com.ichphilipp.logicchips.utils.GateFrameTypes;
 import java.util.function.Supplier;
 import me.shedaniel.architectury.registry.Registries;
