@@ -1,0 +1,37 @@
+modLoader = "javafml"
+loaderVersion = "[36,)"
+#issueTrackerURL = ""
+license = "MIT"
+
+[[mods]]
+modId = "logicchips"
+version = "${version}"
+displayName = "Logic Chips"
+authors = "IchPhilipp"
+description = '''
+Logic Gates with 2 or 3 inputs
+'''
+issueTrackerURL="https://github.com/philoufilou/Logic-Chips/issues" #optional
+displayURL="https://github.com/philoufilou/Logic-Chips" #optional
+logoFile="icon.png" #optional
+
+[[dependencies.logicchips]]
+modId = "forge"
+mandatory = true
+versionRange = "[36,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.logicchips]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.16.5,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.logicchips]]
+modId = "architectury"
+mandatory = true
+versionRange = "[1.32.68,)"
+ordering = "AFTER"
+side = "BOTH"

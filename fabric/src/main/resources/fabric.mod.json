@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "logicchips",
+  "version": "${version}",
+  "name": "Logic Chips",
+  "description": "Logic Gates with 2 or 3 inputs",
+  "authors": [
+    "IchPhilipp"
+  ],
+  "contact": {
+    "sources": "https://github.com/philoufilou/Logic-Chips"
+  },
+  "license": "MIT",
+  "icon": "assets/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.ichphilipp.logicchips.LogicChipsFabric"
+    ]
+  },
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=1.16.5",
+    "architectury": ">=1.32.68"
+  }
+}
