@@ -11,7 +11,7 @@
     "sources": "https://github.com/philoufilou/Logic-Chips"
   },
   "license": "MIT",
-  "icon": "assets/icon.png",
+  "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
