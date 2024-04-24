@@ -16,6 +16,9 @@
   "entrypoints": {
     "main": [
       "com.ichphilipp.logicchips.LogicChipsFabric"
+    ],
+    "client": [
+      "com.ichphilipp.logicchips.LogicChipsClientFabric"
     ]
   },
   "depends": {
