@@ -20,11 +20,12 @@ public class LogicChipsForge {
 
         LogicChips.init();
 
+        eventBus.addListener(this::onClientSetup);
         MinecraftForge.EVENT_BUS.register(this);
     }
 
     @SubscribeEvent
-    public static void onClientSetup(final FMLClientSetupEvent event) {
+    public void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() ->
             ItemBlockRenderTypes.setRenderLayer(AllBlocks.GATE_FRAME.get(), RenderType.cutout())
         );
