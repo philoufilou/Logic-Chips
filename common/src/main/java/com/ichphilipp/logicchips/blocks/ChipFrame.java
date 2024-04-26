@@ -1,8 +1,10 @@
 package com.ichphilipp.logicchips.blocks;
 
 import com.ichphilipp.logicchips.utils.GateFrameTypes;
+
 import java.util.HashMap;
 import java.util.Random;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -30,30 +32,30 @@ public class ChipFrame extends DiodeBlock {
 
     public static final EnumProperty<GateFrameTypes> TYPE = EnumProperty.create(
         "type",
-        (Class<GateFrameTypes>) GateFrameTypes.class
+        GateFrameTypes.class
     );
     public static final BooleanProperty LEFT_INPUT = BooleanProperty.create("left");
     public static final BooleanProperty RIGHT_INPUT = BooleanProperty.create("right");
     public static final BooleanProperty BOTTOM_INPUT = BooleanProperty.create("bottom");
     public static final HashMap<Item, GateFrameTypes> __1__ = new HashMap<>();
-    public static final HashMap<String, Item> __2__ = new HashMap<>();
-
-    public static void add(GateFrameTypes gateFrameTypes, Item item) {
-        __1__.put(item, gateFrameTypes);
-        __2__.put(gateFrameTypes.toString(), item);
-    }
+    public static final HashMap<String, Item> name2chip = new HashMap<>();
 
     public ChipFrame(Properties properties) {
         super(properties);
         this.registerDefaultState(
-                this.stateDefinition.any()
-                    .setValue(FACING, Direction.NORTH)
-                    .setValue(TYPE, GateFrameTypes.empty)
-                    .setValue(LEFT_INPUT, false)
-                    .setValue(RIGHT_INPUT, false)
-                    .setValue(BOTTOM_INPUT, false)
-                    .setValue(POWERED, false)
-            );
+            this.stateDefinition.any()
+                .setValue(FACING, Direction.NORTH)
+                .setValue(TYPE, GateFrameTypes.empty)
+                .setValue(LEFT_INPUT, false)
+                .setValue(RIGHT_INPUT, false)
+                .setValue(BOTTOM_INPUT, false)
+                .setValue(POWERED, false)
+        );
+    }
+
+    public static void add(GateFrameTypes gateFrameTypes, Item item) {
+        __1__.put(item, gateFrameTypes);
+        name2chip.put(gateFrameTypes.toString(), item);
     }
 
     @Override
@@ -66,6 +68,9 @@ public class ChipFrame extends DiodeBlock {
         arg.add(FACING, TYPE, POWERED, LEFT_INPUT, RIGHT_INPUT, BOTTOM_INPUT);
     }
 
+    /**
+     * Forge only
+     */
     public boolean canConnectRedstone(
         BlockState blockState,
         BlockGetter world,
@@ -77,9 +82,9 @@ public class ChipFrame extends DiodeBlock {
         Direction facing = blockState.getValue(FACING);
         return (
             side == facing ||
-            (side == facing.getClockWise() && (connect == 2 || connect == 3)) ||
-            (side == facing.getCounterClockWise() && (connect == 2 || connect == 3)) ||
-            (side == facing.getOpposite() && (connect == 1 || connect == 3))
+                (side == facing.getClockWise() && (connect == 2 || connect == 3)) ||
+                (side == facing.getCounterClockWise() && (connect == 2 || connect == 3)) ||
+                (side == facing.getOpposite() && (connect == 1 || connect == 3))
         );
     }
 
@@ -119,7 +124,7 @@ public class ChipFrame extends DiodeBlock {
                 blockpos.relative(facing.getCounterClockWise()),
                 facing.getCounterClockWise()
             ) >
-            0;
+                0;
         boolean BOTTOM = getAlternateSignalAt(world, blockpos.relative(facing), facing) > 0;
         boolean LEFT =
             getAlternateSignalAt(world, blockpos.relative(facing.getClockWise()), facing.getClockWise()) > 0;
@@ -136,23 +141,24 @@ public class ChipFrame extends DiodeBlock {
 
     public void dropChip(Level world, BlockPos blockPos, BlockState blockState) {
         Comparable<GateFrameTypes> type = blockState.getValue(TYPE);
-        if (type != GateFrameTypes.empty) {
-            if (__2__.containsKey(type.toString())) {
-                double d0 = (double) (world.random.nextFloat() * 0.7F) + (double) 0.15F;
-                double d1 = (double) (world.random.nextFloat() * 0.7F) + (double) 0.060000002F + 0.6D;
-                double d2 = (double) (world.random.nextFloat() * 0.7F) + (double) 0.15F;
-                ItemEntity itementity = new ItemEntity(
-                    world,
-                    (double) blockPos.getX() + d0,
-                    (double) blockPos.getY() + d1,
-                    (double) blockPos.getZ() + d2,
-                    new ItemStack(__2__.get(type.toString()))
-                );
-                itementity.setDefaultPickUpDelay();
-                world.addFreshEntity(itementity);
-            }
-            this.updateNeighborsInFront(world, blockPos, blockState);
+        if (type == GateFrameTypes.empty) {
+            return;
         }
+        if (name2chip.containsKey(type.toString())) {
+            double d0 = (double) (world.random.nextFloat() * 0.7F) + (double) 0.15F;
+            double d1 = (double) (world.random.nextFloat() * 0.7F) + (double) 0.060000002F + 0.6D;
+            double d2 = (double) (world.random.nextFloat() * 0.7F) + (double) 0.15F;
+            ItemEntity itementity = new ItemEntity(
+                world,
+                (double) blockPos.getX() + d0,
+                (double) blockPos.getY() + d1,
+                (double) blockPos.getZ() + d2,
+                new ItemStack(name2chip.get(type.toString()))
+            );
+            itementity.setDefaultPickUpDelay();
+            world.addFreshEntity(itementity);
+        }
+        this.updateNeighborsInFront(world, blockPos, blockState);
     }
 
     @Override
@@ -214,18 +220,19 @@ public class ChipFrame extends DiodeBlock {
 
     @Override
     public void animateTick(BlockState blockState, Level level, BlockPos blockPos, Random randomSource) {
-        if (blockState.getValue(POWERED)) {
-            Direction direction = blockState.getValue(FACING);
-            double d0 = (double) blockPos.getX() + 0.5D + (randomSource.nextDouble() - 0.5D) * 0.2D;
-            double d1 = (double) blockPos.getY() + 0.4D + (randomSource.nextDouble() - 0.5D) * 0.2D;
-            double d2 = (double) blockPos.getZ() + 0.5D + (randomSource.nextDouble() - 0.5D) * 0.2D;
-            float f = -5.0F;
-            if (randomSource.nextBoolean()) {
-                f /= 16.0F;
-                d0 += (f * (float) direction.getStepX());
-                d2 += (f * (float) direction.getStepZ());
-            }
-            level.addParticle(DustParticleOptions.REDSTONE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+        if (!blockState.getValue(POWERED)) {
+            return;
         }
+        Direction direction = blockState.getValue(FACING);
+        double d0 = (double) blockPos.getX() + 0.5D + (randomSource.nextDouble() - 0.5D) * 0.2D;
+        double d1 = (double) blockPos.getY() + 0.4D + (randomSource.nextDouble() - 0.5D) * 0.2D;
+        double d2 = (double) blockPos.getZ() + 0.5D + (randomSource.nextDouble() - 0.5D) * 0.2D;
+        float f = -5.0F;
+        if (randomSource.nextBoolean()) {
+            f /= 16.0F;
+            d0 += (f * (float) direction.getStepX());
+            d2 += (f * (float) direction.getStepZ());
+        }
+        level.addParticle(DustParticleOptions.REDSTONE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
     }
 }
