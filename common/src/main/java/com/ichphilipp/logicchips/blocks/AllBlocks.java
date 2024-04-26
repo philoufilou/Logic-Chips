@@ -1,7 +1,7 @@
 package com.ichphilipp.logicchips.blocks;
 
 import com.ichphilipp.logicchips.LogicChips;
-import com.ichphilipp.logicchips.items.AllItems;
+
 import java.util.function.Supplier;
 import me.shedaniel.architectury.registry.DeferredRegister;
 import net.minecraft.resources.ResourceLocation;
@@ -31,7 +31,7 @@ public class AllBlocks {
     }
 
     private static <T extends Block> void registerBlockItem(String name, Supplier<T> block) {
-        AllItems.ITEM_REG.register(
+        LogicChips.ITEM_REG.register(
             new ResourceLocation(LogicChips.MOD_ID, name),
             () -> new BlockItem(block.get(), new Item.Properties().tab(LogicChips.ITEM_GROUP))
         );

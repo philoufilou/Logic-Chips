@@ -1,7 +1,6 @@
 package com.ichphilipp.logicchips;
 
 import com.ichphilipp.logicchips.blocks.AllBlocks;
-import com.ichphilipp.logicchips.items.AllItems;
 import me.shedaniel.architectury.platform.forge.EventBuses;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -18,8 +17,7 @@ public class LogicChipsForge {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         EventBuses.registerModEventBus(LogicChips.MOD_ID, eventBus);
 
-        AllBlocks.init();
-        AllItems.init();
+        LogicChips.init();
 
         eventBus.addListener(this::onClientSetup);
         MinecraftForge.EVENT_BUS.register(this);

@@ -1,5 +1,6 @@
 package com.ichphilipp.logicchips.items;
 
+import com.ichphilipp.logicchips.LogicChips;
 import com.ichphilipp.logicchips.api.TriInputGate;
 import com.ichphilipp.logicchips.utils.GateFrameTypes;
 import net.minecraft.world.item.Item;
@@ -43,13 +44,13 @@ public enum LogicChipItem implements Supplier<Item> {
     LogicChipItem(GateFrameTypes type) {
         this.key = this.name().toLowerCase(); // OR_GATE_3 -> or_gate_3
         this.logic = type.Outputformal();
-        this.item = AllItems.ITEM_REG.register(this.key, () -> new Chip(Chip.DEFAULT_PROP, type));
+        this.item = LogicChips.ITEM_REG.register(this.key, () -> new Chip(Chip.DEFAULT_PROP, type));
     }
 
     LogicChipItem() {
         this.key = this.name().toLowerCase(); // CHIP -> chip
         this.logic = null;
-        this.item = AllItems.ITEM_REG.register(this.key, () -> new Item(Chip.DEFAULT_PROP));
+        this.item = LogicChips.ITEM_REG.register(this.key, () -> new Item(Chip.DEFAULT_PROP));
     }
 
 }
