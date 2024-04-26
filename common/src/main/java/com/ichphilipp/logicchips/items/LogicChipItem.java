@@ -1,7 +1,8 @@
 package com.ichphilipp.logicchips.items;
 
+import com.ichphilipp.logicchips.LogicChips;
 import com.ichphilipp.logicchips.RegistryMgr;
-import com.ichphilipp.logicchips.api.TriInputGate;
+import com.ichphilipp.logicchips.api.TriInputLogic;
 import com.ichphilipp.logicchips.utils.GateFrameTypes;
 import net.minecraft.world.item.Item;
 import org.jetbrains.annotations.Nullable;
@@ -33,24 +34,24 @@ public enum LogicChipItem implements Supplier<Item> {
     }
 
     @Nullable
-    public TriInputGate logic() {
+    public TriInputLogic logic() {
         return logic;
     }
 
     private final String key;
-    private final TriInputGate logic;
+    private final TriInputLogic logic;
     private final Supplier<Item> item;
 
     LogicChipItem(GateFrameTypes type) {
         this.key = this.name().toLowerCase(); // OR_GATE_3 -> or_gate_3
         this.logic = type.Outputformal();
-        this.item = RegistryMgr.ITEM_REG.register(this.key, () -> new Chip(Chip.DEFAULT_PROP, type));
+        this.item = RegistryMgr.ITEM_REG.register(this.key, () -> new Chip(LogicChips.DEFAULT_ITEM_PROP, type));
     }
 
     LogicChipItem() {
         this.key = this.name().toLowerCase(); // CHIP -> chip
         this.logic = null;
-        this.item = RegistryMgr.ITEM_REG.register(this.key, () -> new Item(Chip.DEFAULT_PROP));
+        this.item = RegistryMgr.ITEM_REG.register(this.key, () -> new Item(LogicChips.DEFAULT_ITEM_PROP));
     }
 
     public static void init() {

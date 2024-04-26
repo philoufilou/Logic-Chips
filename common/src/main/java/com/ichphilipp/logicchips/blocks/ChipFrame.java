@@ -3,6 +3,7 @@ package com.ichphilipp.logicchips.blocks;
 import com.ichphilipp.logicchips.utils.GateFrameTypes;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import net.minecraft.core.BlockPos;
@@ -37,8 +38,8 @@ public class ChipFrame extends DiodeBlock {
     public static final BooleanProperty LEFT_INPUT = BooleanProperty.create("left");
     public static final BooleanProperty RIGHT_INPUT = BooleanProperty.create("right");
     public static final BooleanProperty BOTTOM_INPUT = BooleanProperty.create("bottom");
-    public static final HashMap<Item, GateFrameTypes> __1__ = new HashMap<>();
-    public static final HashMap<String, Item> name2chip = new HashMap<>();
+    public static final Map<Item, GateFrameTypes> chip2logic = new HashMap<>();
+    public static final Map<String, Item> name2chip = new HashMap<>();
 
     public ChipFrame(Properties properties) {
         super(properties);
@@ -54,7 +55,7 @@ public class ChipFrame extends DiodeBlock {
     }
 
     public static void add(GateFrameTypes gateFrameTypes, Item item) {
-        __1__.put(item, gateFrameTypes);
+        chip2logic.put(item, gateFrameTypes);
         name2chip.put(gateFrameTypes.toString(), item);
     }
 
@@ -133,7 +134,7 @@ public class ChipFrame extends DiodeBlock {
             blockpos,
             blockstate.setValue(LEFT_INPUT, LEFT).setValue(RIGHT_INPUT, RIGHT).setValue(BOTTOM_INPUT, BOTTOM)
         );
-        if (__1__.containsValue(type)) {
+        if (chip2logic.containsValue(type)) {
             return GateFrameTypes.valueOf(type.toString()).Outputformal().apply(LEFT, BOTTOM, RIGHT);
         }
         return false;
@@ -178,9 +179,9 @@ public class ChipFrame extends DiodeBlock {
         boolean isClientSide = world.isClientSide;
 
         /// NOTE: INSERT ITEM ////////////////////////////////////////////////////////////////////////////////
-        if (type == GateFrameTypes.empty && __1__.containsKey(handitem)) {
+        if (type == GateFrameTypes.empty && chip2logic.containsKey(handitem)) {
             if (!isClientSide) {
-                BlockState newBlockstate = blockState.setValue(TYPE, __1__.get(handitem));
+                BlockState newBlockstate = blockState.setValue(TYPE, chip2logic.get(handitem));
                 world.setBlock(
                     blockPos,
                     newBlockstate.setValue(POWERED, this.isPowered(newBlockstate, world, blockPos)),

@@ -30,6 +30,6 @@ public class RegistryMgr {
     }
 
     private static <T extends Block> void registerBlockItem(String name, Supplier<T> block) {
-        ITEM_REG.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(LogicChips.ITEM_GROUP)));
+        ITEM_REG.register(name, () -> new BlockItem(block.get(), LogicChips.DEFAULT_BLOCK_PROP));
     }
 }
