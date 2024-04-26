@@ -23,6 +23,8 @@ import org.jetbrains.annotations.Nullable;
 
 public class Chip extends Item {
 
+    public static final Properties DEFAULT_PROP = new Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16);
+
     public Chip(Properties properties, GateFrameTypes types) {
         super(properties);
         ChipFrame.add(types, this);

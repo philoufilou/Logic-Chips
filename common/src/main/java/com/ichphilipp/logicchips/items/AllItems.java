@@ -35,99 +35,21 @@ public class AllItems {
 
     //prettier-ignore
     static {
-        CHIP = ITEM_REG.register("chip", () -> new Item(new Item.Properties().tab(LogicChips.ITEM_GROUP)));
-        NOT_GATE = ITEM_REG.register(
-            "not_gate",
-            () -> new Chip(
-                new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                GateFrameTypes.not
-            )
-        );
-        AND_GATE = ITEM_REG.register(
-            "and_gate",
-            () -> new Chip(
-                new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                GateFrameTypes.and
-            )
-        );
-        NAND_GATE = ITEM_REG.register(
-            "nand_gate",
-            () -> new Chip(
-                new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                GateFrameTypes.nand
-            )
-        );
-        OR_GATE = ITEM_REG.register(
-            "or_gate",
-            () -> new Chip(
-                new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                GateFrameTypes.or
-            )
-        );
-        NOR_GATE = ITEM_REG.register(
-            "nor_gate",
-            () -> new Chip(
-                new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                GateFrameTypes.nor
-            )
-        );
-        XOR_GATE = ITEM_REG.register(
-            "xor_gate",
-            () -> new Chip(
-                new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                GateFrameTypes.xor
-            )
-        );
-        XNOR_GATE = ITEM_REG.register(
-            "xnor_gate",
-            () -> new Chip(
-                new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                GateFrameTypes.xnor
-            )
-        );
+        CHIP = ITEM_REG.register("chip", () -> new Item(Chip.DEFAULT_PROP));
+        NOT_GATE = ITEM_REG.register("not_gate", () -> new Chip(Chip.DEFAULT_PROP, GateFrameTypes.not));
+        AND_GATE = ITEM_REG.register("and_gate", () -> new Chip(Chip.DEFAULT_PROP, GateFrameTypes.and));
+        NAND_GATE = ITEM_REG.register("nand_gate", () -> new Chip(Chip.DEFAULT_PROP, GateFrameTypes.nand));
+        OR_GATE = ITEM_REG.register("or_gate", () -> new Chip(Chip.DEFAULT_PROP, GateFrameTypes.or));
+        NOR_GATE = ITEM_REG.register("nor_gate", () -> new Chip(Chip.DEFAULT_PROP, GateFrameTypes.nor));
+        XOR_GATE = ITEM_REG.register("xor_gate", () -> new Chip(Chip.DEFAULT_PROP, GateFrameTypes.xor));
+        XNOR_GATE = ITEM_REG.register("xnor_gate", () -> new Chip(Chip.DEFAULT_PROP, GateFrameTypes.xnor));
 
-        AND_GATE_3 = ITEM_REG.register(
-            "and_gate_3",
-            () -> new Chip(
-                new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                GateFrameTypes.and_3
-            )
-        );
-        NAND_GATE_3 = ITEM_REG.register(
-            "nand_gate_3",
-            () -> new Chip(
-                new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                GateFrameTypes.nand_3
-            )
-        );
-        OR_GATE_3 = ITEM_REG.register(
-            "or_gate_3",
-            () -> new Chip(
-                new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                GateFrameTypes.or_3
-            )
-        );
-        NOR_GATE_3 = ITEM_REG.register(
-            "nor_gate_3",
-            () -> new Chip(
-                new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                GateFrameTypes.nor_3
-            )
-        );
-        XOR_GATE_3 = ITEM_REG.register(
-            "xor_gate_3",
-            () -> new Chip(
-                new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                GateFrameTypes.xor_3
-            )
-        );
-        XNOR_GATE_3 = ITEM_REG.register(
-            "xnor_gate_3",
-            () -> new Chip(
-                new Item.Properties().tab(LogicChips.ITEM_GROUP).stacksTo(16),
-                GateFrameTypes.xnor_3
-            )
-        );
+        AND_GATE_3 = ITEM_REG.register("and_gate_3", () -> new Chip(Chip.DEFAULT_PROP, GateFrameTypes.and_3));
+        NAND_GATE_3 = ITEM_REG.register("nand_gate_3", () -> new Chip(Chip.DEFAULT_PROP, GateFrameTypes.nand_3));
+        OR_GATE_3 = ITEM_REG.register("or_gate_3", () -> new Chip(Chip.DEFAULT_PROP, GateFrameTypes.or_3));
+        NOR_GATE_3 = ITEM_REG.register("nor_gate_3", () -> new Chip(Chip.DEFAULT_PROP, GateFrameTypes.nor_3));
+        XOR_GATE_3 = ITEM_REG.register("xor_gate_3", () -> new Chip(Chip.DEFAULT_PROP, GateFrameTypes.xor_3));
+        XNOR_GATE_3 = ITEM_REG.register("xnor_gate_3", () -> new Chip(Chip.DEFAULT_PROP, GateFrameTypes.xnor_3));
     }
 
     public static void init() {
