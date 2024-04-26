@@ -1,6 +1,7 @@
 package com.ichphilipp.logicchips.utils;
 
 // import net.minecraft.util.IStringSerializable;
+import com.ichphilipp.logicchips.api.TriInputGate;
 import net.minecraft.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
 
@@ -21,12 +22,12 @@ public enum GateFrameTypes implements StringRepresentable {
     xnor_3("xnor_3", (L, B, R) -> ((L ? 1 : 0) + (B ? 1 : 0) + (R ? 1 : 0)) % 2 == 0, 3);
 
     private final String name;
-    private final TriFunction<Boolean, Boolean, Boolean, Boolean> formel;
+    private final TriInputGate formel;
     private final int canconnect;
 
     GateFrameTypes(
         String blockstate,
-        TriFunction<Boolean, Boolean, Boolean, Boolean> formel,
+        TriInputGate formel,
         int canconnect
     ) {
         this.name = blockstate;
@@ -34,7 +35,7 @@ public enum GateFrameTypes implements StringRepresentable {
         this.canconnect = canconnect;
     }
 
-    public TriFunction<Boolean, Boolean, Boolean, Boolean> Outputformal() {
+    public TriInputGate Outputformal() {
         return this.formel;
     }
 

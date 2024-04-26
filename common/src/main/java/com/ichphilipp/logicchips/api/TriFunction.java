@@ -1,4 +1,4 @@
-package com.ichphilipp.logicchips.utils;
+package com.ichphilipp.logicchips.api;
 
 import java.util.Objects;
 import java.util.function.Function;
