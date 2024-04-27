@@ -46,7 +46,7 @@ public class ChipFrame extends DiodeBlock {
         this.registerDefaultState(
             this.stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
-                .setValue(TYPE, GateFrameTypes.empty)
+                .setValue(TYPE, GateFrameTypes.EMPTY)
                 .setValue(LEFT_INPUT, false)
                 .setValue(RIGHT_INPUT, false)
                 .setValue(BOTTOM_INPUT, false)
@@ -119,30 +119,26 @@ public class ChipFrame extends DiodeBlock {
     public boolean isPowered(@NotNull BlockState blockstate, Level world, @NotNull BlockPos blockpos) {
         Direction facing = blockstate.getValue(FACING);
         Comparable<GateFrameTypes> type = blockstate.getValue(TYPE);
-        boolean RIGHT =
-            getAlternateSignalAt(
-                world,
-                blockpos.relative(facing.getCounterClockWise()),
-                facing.getCounterClockWise()
-            ) >
-                0;
+        boolean RIGHT = getAlternateSignalAt(world,
+            blockpos.relative(facing.getCounterClockWise()),
+            facing.getCounterClockWise()
+        ) > 0;
         boolean BOTTOM = getAlternateSignalAt(world, blockpos.relative(facing), facing) > 0;
-        boolean LEFT =
-            getAlternateSignalAt(world, blockpos.relative(facing.getClockWise()), facing.getClockWise()) > 0;
+        boolean LEFT = getAlternateSignalAt(world, blockpos.relative(facing.getClockWise()), facing.getClockWise()) > 0;
 
         world.setBlockAndUpdate(
             blockpos,
             blockstate.setValue(LEFT_INPUT, LEFT).setValue(RIGHT_INPUT, RIGHT).setValue(BOTTOM_INPUT, BOTTOM)
         );
         if (chip2logic.containsValue(type)) {
-            return GateFrameTypes.valueOf(type.toString()).Outputformal().apply(LEFT, BOTTOM, RIGHT);
+            return GateFrameTypes.valueOf(type.toString()).logic().apply(LEFT, BOTTOM, RIGHT);
         }
         return false;
     }
 
     public void dropChip(Level world, BlockPos blockPos, BlockState blockState) {
         Comparable<GateFrameTypes> type = blockState.getValue(TYPE);
-        if (type == GateFrameTypes.empty) {
+        if (type == GateFrameTypes.EMPTY) {
             return;
         }
         if (name2chip.containsKey(type.toString())) {
@@ -168,18 +164,18 @@ public class ChipFrame extends DiodeBlock {
         @NotNull Level world,
         @NotNull BlockPos blockPos,
         Player player,
-        @NotNull InteractionHand Hand,
-        @NotNull BlockHitResult p_225533_6_
+        @NotNull InteractionHand hand,
+        @NotNull BlockHitResult hit
     ) {
         Comparable<GateFrameTypes> type = blockState.getValue(TYPE);
 
-        ItemStack hand = player.getItemInHand(Hand);
-        Item handitem = hand.getItem();
+        ItemStack stack = player.getItemInHand(hand);
+        Item handitem = stack.getItem();
         boolean instabuild = !player.abilities.instabuild;
         boolean isClientSide = world.isClientSide;
 
         /// NOTE: INSERT ITEM ////////////////////////////////////////////////////////////////////////////////
-        if (type == GateFrameTypes.empty && chip2logic.containsKey(handitem)) {
+        if (type == GateFrameTypes.EMPTY && chip2logic.containsKey(handitem)) {
             if (!isClientSide) {
                 BlockState newBlockstate = blockState.setValue(TYPE, chip2logic.get(handitem));
                 world.setBlock(
@@ -188,18 +184,18 @@ public class ChipFrame extends DiodeBlock {
                     3
                 );
                 if (instabuild) {
-                    hand.shrink(1);
+                    stack.shrink(1);
                 }
                 world.playSound(null, blockPos, SoundEvents.ITEM_FRAME_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
             }
             return InteractionResult.sidedSuccess(isClientSide);
         }
         /// NOTE: DROP ITEM ////////////////////////////////////////////////////////////////////////////////
-        else if (type != GateFrameTypes.empty) {
+        else if (type != GateFrameTypes.EMPTY) {
             if (!isClientSide) {
                 world.setBlock(
                     blockPos,
-                    blockState.setValue(TYPE, GateFrameTypes.empty).setValue(POWERED, false),
+                    blockState.setValue(TYPE, GateFrameTypes.EMPTY).setValue(POWERED, false),
                     3
                 );
                 if (instabuild) {

@@ -2,7 +2,7 @@ package com.ichphilipp.logicchips.items;
 
 import com.ichphilipp.logicchips.LogicChips;
 import com.ichphilipp.logicchips.RegistryMgr;
-import com.ichphilipp.logicchips.api.TriInputLogic;
+import com.ichphilipp.logicchips.api.TriBoolLogic;
 import com.ichphilipp.logicchips.utils.GateFrameTypes;
 import me.shedaniel.architectury.registry.RegistrySupplier;
 import net.minecraft.world.item.Item;
@@ -14,20 +14,20 @@ public enum LogicChipsItem implements Supplier<Item> {
     //chip base
     CHIP(),
     //dual-input gate
-    NOT_GATE(GateFrameTypes.not),
-    AND_GATE(GateFrameTypes.and),
-    NAND_GATE(GateFrameTypes.nand),
-    OR_GATE(GateFrameTypes.or),
-    NOR_GATE(GateFrameTypes.nor),
-    XOR_GATE(GateFrameTypes.xor),
-    XNOR_GATE(GateFrameTypes.xnor),
+    NOT_GATE(GateFrameTypes.NOT),
+    AND_GATE(GateFrameTypes.AND),
+    NAND_GATE(GateFrameTypes.NAND),
+    OR_GATE(GateFrameTypes.OR),
+    NOR_GATE(GateFrameTypes.NOR),
+    XOR_GATE(GateFrameTypes.XOR),
+    XNOR_GATE(GateFrameTypes.XNOR),
     //tri-input gate
-    AND_GATE_3(GateFrameTypes.and_3),
-    NAND_GATE_3(GateFrameTypes.nand_3),
-    OR_GATE_3(GateFrameTypes.or_3),
-    NOR_GATE_3(GateFrameTypes.nor_3),
-    XOR_GATE_3(GateFrameTypes.xor_3),
-    XNOR_GATE_3(GateFrameTypes.xnor_3);
+    AND_GATE_3(GateFrameTypes.AND_3),
+    NAND_GATE_3(GateFrameTypes.NAND_3),
+    OR_GATE_3(GateFrameTypes.OR_3),
+    NOR_GATE_3(GateFrameTypes.NOR_3),
+    XOR_GATE_3(GateFrameTypes.XOR_3),
+    XNOR_GATE_3(GateFrameTypes.XNOR_3);
 
     @Override
     public Item get() {
@@ -35,12 +35,12 @@ public enum LogicChipsItem implements Supplier<Item> {
     }
 
     @Nullable
-    public TriInputLogic logic() {
+    public TriBoolLogic logic() {
         return logic;
     }
 
     private final String key;
-    private final TriInputLogic logic;
+    private final TriBoolLogic logic;
     private final RegistrySupplier<Item> item;
 
     /**
@@ -49,7 +49,7 @@ public enum LogicChipsItem implements Supplier<Item> {
      */
     LogicChipsItem(GateFrameTypes type) {
         this.key = this.name().toLowerCase(); // OR_GATE_3 -> or_gate_3
-        this.logic = type.Outputformal();
+        this.logic = type.logic();
         this.item = RegistryMgr.ITEM_REG.register(this.key, () -> new Chip(LogicChips.DEFAULT_ITEM_PROP, type));
     }
 

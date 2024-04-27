@@ -31,7 +31,7 @@ public class RegistryMgr {
         return BLOCK_REG.register(name, block);
     }
 
-    public static <T extends Block> RegistrySupplier<BlockItem> registerBlockItem(String name, Supplier<T> block) {
+    public static <T extends Block> RegistrySupplier<BlockItem> registerBlockItem(String name, RegistrySupplier<T> block) {
         return ITEM_REG.register(name, () -> new BlockItem(block.get(), LogicChips.DEFAULT_BLOCK_PROP));
     }
 }
