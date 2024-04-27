@@ -1,6 +1,7 @@
 package com.ichphilipp.logicchips;
 
-import com.ichphilipp.logicchips.items.LogicChipItem;
+import com.ichphilipp.logicchips.blocks.LogicChipsBlock;
+import com.ichphilipp.logicchips.items.LogicChipsItem;
 import me.shedaniel.architectury.registry.DeferredRegister;
 import net.minecraft.core.Registry;
 import net.minecraft.world.item.BlockItem;
@@ -13,7 +14,9 @@ import java.util.function.Supplier;
 
 public class RegistryMgr {
 
-    public static final Map<String, LogicChipItem> ITEMS = new HashMap<>();
+    public static final Map<String, LogicChipsItem> ITEMS = new HashMap<>();
+    public static final Map<String, LogicChipsBlock> BLOCKS = new HashMap<>();
+
     public static final DeferredRegister<Item> ITEM_REG = DeferredRegister.create(
         LogicChips.MOD_ID,
         Registry.ITEM_REGISTRY

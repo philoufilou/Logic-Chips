@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
 
-public enum LogicChipItem implements Supplier<Item> {
+public enum LogicChipsItem implements Supplier<Item> {
     //chip base
     CHIP(),
     //dual-input gate
@@ -42,13 +42,20 @@ public enum LogicChipItem implements Supplier<Item> {
     private final TriInputLogic logic;
     private final Supplier<Item> item;
 
-    LogicChipItem(GateFrameTypes type) {
+    /**
+     * register a chip item
+     * @param type determines the logic and corresponding blockstate name of such chip
+     */
+    LogicChipsItem(GateFrameTypes type) {
         this.key = this.name().toLowerCase(); // OR_GATE_3 -> or_gate_3
         this.logic = type.Outputformal();
         this.item = RegistryMgr.ITEM_REG.register(this.key, () -> new Chip(LogicChips.DEFAULT_ITEM_PROP, type));
     }
 
-    LogicChipItem() {
+    /**
+     * register an item with its name specified by the name of enum constant
+     */
+    LogicChipsItem() {
         this.key = this.name().toLowerCase(); // CHIP -> chip
         this.logic = null;
         this.item = RegistryMgr.ITEM_REG.register(this.key, () -> new Item(LogicChips.DEFAULT_ITEM_PROP));
@@ -56,7 +63,7 @@ public enum LogicChipItem implements Supplier<Item> {
 
     public static void init() {
         RegistryMgr.ITEM_REG.register();
-        for (LogicChipItem item : LogicChipItem.values()) {
+        for (LogicChipsItem item : LogicChipsItem.values()) {
             RegistryMgr.ITEMS.put(item.key, item);
         }
     }

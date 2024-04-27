@@ -1,6 +1,6 @@
 package com.ichphilipp.logicchips;
 
-import com.ichphilipp.logicchips.blocks.AllBlocks;
+import com.ichphilipp.logicchips.blocks.LogicChipsBlock;
 import me.shedaniel.architectury.platform.forge.EventBuses;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -27,7 +27,7 @@ public class LogicChipsForge {
     @SubscribeEvent
     public void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() ->
-            ItemBlockRenderTypes.setRenderLayer(AllBlocks.GATE_FRAME.get(), RenderType.cutout())
+            ItemBlockRenderTypes.setRenderLayer(LogicChipsBlock.GATE_FRAME.get(), RenderType.cutout())
         );
     }
 }
