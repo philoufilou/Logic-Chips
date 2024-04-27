@@ -1,19 +1,18 @@
 modLoader = "javafml"
 loaderVersion = "[36,)"
-#issueTrackerURL = ""
 license = "MIT"
 
 [[mods]]
 modId = "logicchips"
 version = "${version}"
 displayName = "Logic Chips"
-authors = "IchPhilipp"
+authors = "IchPhilipp & ZZZank"
 description = '''
-Logic Gates with 2 or 3 inputs
+Logic Gates with for fancy redstone logic
 '''
-issueTrackerURL="https://github.com/philoufilou/Logic-Chips/issues" #optional
-displayURL="https://github.com/philoufilou/Logic-Chips" #optional
-logoFile="icon.png" #optional
+issueTrackerURL="https://github.com/philoufilou/Logic-Chips/issues"
+displayURL="https://github.com/philoufilou/Logic-Chips"
+logoFile="icon.png"
 
 [[dependencies.logicchips]]
 modId = "forge"

@@ -3,9 +3,10 @@
   "id": "logicchips",
   "version": "${version}",
   "name": "Logic Chips",
-  "description": "Logic Gates with 2 or 3 inputs",
+  "description": "Logic Gates with for fancy redstone logic",
   "authors": [
-    "IchPhilipp"
+    "IchPhilipp",
+    "ZZZank"
   ],
   "contact": {
     "sources": "https://github.com/philoufilou/Logic-Chips"
