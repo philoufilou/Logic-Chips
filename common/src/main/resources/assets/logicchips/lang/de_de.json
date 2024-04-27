@@ -19,7 +19,7 @@
   "item.logicchips.xor_gate_3": "XOR Chip §c3 Eingänge",
   "item.logicchips.xnor_gate_3": "XNOR Chip §c3 Eingänge",
 
-  "tooltip.shift": "§fDrücke §eShift §ffür mehr Informationen",
+  "tooltip.logicchips.shift": "§fDrücke §eShift §ffür mehr Informationen",
 
   "tooltip.logicchips.not_gate": "Der §eNOT Chip§r “invertiert” das Eingangssignal",
   "tooltip.logicchips.and_gate": "Der §eAND Chip§r gibt nur ein Signal ab, wenn alle Eingänge ein Signal haben",

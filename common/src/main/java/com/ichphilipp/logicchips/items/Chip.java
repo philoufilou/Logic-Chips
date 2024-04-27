@@ -35,13 +35,10 @@ public class Chip extends Item {
         @NotNull List<Component> pTooltipComponents,
         @NotNull TooltipFlag pIsAdvanced
     ) {
-        if (Screen.hasShiftDown()) {
-            pTooltipComponents.add(
-                new TranslatableComponent(String.format("tooltip.%s.%s", LogicChips.MOD_ID, pStack.getItem()))
-            );
-        } else {
-            pTooltipComponents.add(new TranslatableComponent("tooltip.shift"));
-        }
+        String langKey = Screen.hasShiftDown()
+            ? String.format("tooltip.%s.%s", LogicChips.MOD_ID, pStack.getItem())
+            : "tooltip.logicchips.shift";
+        pTooltipComponents.add(new TranslatableComponent(langKey));
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 }
