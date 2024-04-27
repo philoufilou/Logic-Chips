@@ -3,6 +3,7 @@ package com.ichphilipp.logicchips;
 import com.ichphilipp.logicchips.blocks.LogicChipsBlock;
 import com.ichphilipp.logicchips.items.LogicChipsItem;
 import me.shedaniel.architectury.registry.DeferredRegister;
+import me.shedaniel.architectury.registry.RegistrySupplier;
 import net.minecraft.core.Registry;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -26,13 +27,11 @@ public class RegistryMgr {
         Registry.BLOCK_REGISTRY
     );
 
-    public static <T extends Block> Supplier<T> registerBlock(String name, Supplier<T> block) {
-        Supplier<T> toReturn = BLOCK_REG.register(name, block);
-        registerBlockItem(name, toReturn);
-        return toReturn;
+    public static <T extends Block> RegistrySupplier<T> registerBlock(String name, Supplier<T> block) {
+        return BLOCK_REG.register(name, block);
     }
 
-    private static <T extends Block> void registerBlockItem(String name, Supplier<T> block) {
-        ITEM_REG.register(name, () -> new BlockItem(block.get(), LogicChips.DEFAULT_BLOCK_PROP));
+    public static <T extends Block> RegistrySupplier<BlockItem> registerBlockItem(String name, Supplier<T> block) {
+        return ITEM_REG.register(name, () -> new BlockItem(block.get(), LogicChips.DEFAULT_BLOCK_PROP));
     }
 }

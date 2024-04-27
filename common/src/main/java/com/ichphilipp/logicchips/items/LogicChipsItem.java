@@ -4,6 +4,7 @@ import com.ichphilipp.logicchips.LogicChips;
 import com.ichphilipp.logicchips.RegistryMgr;
 import com.ichphilipp.logicchips.api.TriInputLogic;
 import com.ichphilipp.logicchips.utils.GateFrameTypes;
+import me.shedaniel.architectury.registry.RegistrySupplier;
 import net.minecraft.world.item.Item;
 import org.jetbrains.annotations.Nullable;
 
@@ -40,7 +41,7 @@ public enum LogicChipsItem implements Supplier<Item> {
 
     private final String key;
     private final TriInputLogic logic;
-    private final Supplier<Item> item;
+    private final RegistrySupplier<Item> item;
 
     /**
      * register a chip item
