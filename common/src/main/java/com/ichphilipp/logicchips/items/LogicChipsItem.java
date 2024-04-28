@@ -1,7 +1,7 @@
 package com.ichphilipp.logicchips.items;
 
 import com.ichphilipp.logicchips.LogicChips;
-import com.ichphilipp.logicchips.RegistryMgr;
+import com.ichphilipp.logicchips.utils.RegistryMgr;
 import com.ichphilipp.logicchips.api.TriBoolLogic;
 import com.ichphilipp.logicchips.utils.ChipType;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -50,7 +50,7 @@ public enum LogicChipsItem implements Supplier<Item> {
     LogicChipsItem(ChipType type) {
         this.key = this.name().toLowerCase(); // OR_GATE_3 -> or_gate_3
         this.logic = type.logic();
-        this.item = RegistryMgr.ITEM_REG.register(this.key, () -> new Chip(LogicChips.DEFAULT_ITEM_PROP, type));
+        this.item = RegistryMgr.registerItem(this.key, () -> new Chip(LogicChips.DEFAULT_ITEM_PROP, type));
     }
 
     /**
@@ -59,7 +59,7 @@ public enum LogicChipsItem implements Supplier<Item> {
     LogicChipsItem() {
         this.key = this.name().toLowerCase(); // CHIP -> chip
         this.logic = null;
-        this.item = RegistryMgr.ITEM_REG.register(this.key, () -> new Item(LogicChips.DEFAULT_ITEM_PROP));
+        this.item = RegistryMgr.registerItem(this.key, () -> new Item(LogicChips.DEFAULT_ITEM_PROP));
     }
 
     public static void init() {

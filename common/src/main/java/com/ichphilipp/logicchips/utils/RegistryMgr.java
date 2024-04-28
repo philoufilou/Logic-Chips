@@ -1,5 +1,6 @@
-package com.ichphilipp.logicchips;
+package com.ichphilipp.logicchips.utils;
 
+import com.ichphilipp.logicchips.LogicChips;
 import com.ichphilipp.logicchips.blocks.LogicChipsBlock;
 import com.ichphilipp.logicchips.items.LogicChipsItem;
 import dev.architectury.registry.registries.DeferredRegister;
@@ -26,6 +27,10 @@ public class RegistryMgr {
         LogicChips.MOD_ID,
         Registry.BLOCK_REGISTRY
     );
+
+    public static <T extends Item> RegistrySupplier<T> registerItem(String name, Supplier<T> item) {
+        return ITEM_REG.register(name, item);
+    }
 
     public static <T extends Block> RegistrySupplier<T> registerBlock(String name, Supplier<T> block) {
         return BLOCK_REG.register(name, block);

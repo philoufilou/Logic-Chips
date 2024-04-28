@@ -1,6 +1,6 @@
 package com.ichphilipp.logicchips.blocks;
 
-import com.ichphilipp.logicchips.RegistryMgr;
+import com.ichphilipp.logicchips.utils.RegistryMgr;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
