@@ -1,7 +1,7 @@
 package com.ichphilipp.logicchips;
 
 import com.ichphilipp.logicchips.blocks.LogicChipsBlock;
-import me.shedaniel.architectury.platform.forge.EventBuses;
+import dev.architectury.platform.forge.EventBuses;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.common.MinecraftForge;
