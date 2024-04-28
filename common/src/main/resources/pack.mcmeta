@@ -1,6 +1,6 @@
 {
     "pack": {
-        "description": "Logic Gates with 2 or 3 inputs",
-        "pack_format": 6
+        "description": "Logic Gates for fancy redstone logic",
+        "pack_format": 8
     }
 }
