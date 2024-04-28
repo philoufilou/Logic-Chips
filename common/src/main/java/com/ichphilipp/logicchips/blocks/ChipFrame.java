@@ -165,7 +165,7 @@ public class ChipFrame extends DiodeBlock {
         val type = blockState.getValue(TYPE);
         val stack = player.getItemInHand(hand);
         val handitem = stack.getItem();
-        val instabuild = !player.abilities.instabuild;
+        val instabuild = !player.getAbilities().instabuild;
         val isClientSide = world.isClientSide;
 
         /// NOTE: INSERT ITEM ////////////////////////////////////////////////////////////////////////////////

@@ -2,8 +2,8 @@ package com.ichphilipp.logicchips;
 
 import com.ichphilipp.logicchips.blocks.LogicChipsBlock;
 import com.ichphilipp.logicchips.items.LogicChipsItem;
-import me.shedaniel.architectury.registry.DeferredRegister;
-import me.shedaniel.architectury.registry.RegistrySupplier;
+import dev.architectury.registry.registries.DeferredRegister;
+import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.Registry;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;

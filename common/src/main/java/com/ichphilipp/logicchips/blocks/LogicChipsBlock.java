@@ -1,7 +1,7 @@
 package com.ichphilipp.logicchips.blocks;
 
 import com.ichphilipp.logicchips.RegistryMgr;
-import me.shedaniel.architectury.registry.RegistrySupplier;
+import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;

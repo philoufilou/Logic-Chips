@@ -2,7 +2,7 @@ package com.ichphilipp.logicchips;
 
 import com.ichphilipp.logicchips.blocks.LogicChipsBlock;
 import com.ichphilipp.logicchips.items.LogicChipsItem;
-import me.shedaniel.architectury.registry.CreativeTabs;
+import dev.architectury.registry.CreativeTabRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -13,7 +13,7 @@ public class LogicChips {
 
     public static final String MOD_ID = "logicchips";
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
-    public static final CreativeModeTab ITEM_GROUP = CreativeTabs.create(
+    public static final CreativeModeTab ITEM_GROUP = CreativeTabRegistry.create(
         new ResourceLocation(MOD_ID, "tab"),
         () -> LogicChipsItem.AND_GATE.get().getDefaultInstance()
     );

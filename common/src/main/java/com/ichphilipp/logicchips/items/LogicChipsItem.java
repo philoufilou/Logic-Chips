@@ -4,7 +4,7 @@ import com.ichphilipp.logicchips.LogicChips;
 import com.ichphilipp.logicchips.RegistryMgr;
 import com.ichphilipp.logicchips.api.TriBoolLogic;
 import com.ichphilipp.logicchips.utils.ChipType;
-import me.shedaniel.architectury.registry.RegistrySupplier;
+import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.world.item.Item;
 import org.jetbrains.annotations.Nullable;
 
