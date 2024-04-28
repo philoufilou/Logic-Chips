@@ -4,6 +4,8 @@ import com.ichphilipp.logicchips.LogicChips;
 import com.ichphilipp.logicchips.blocks.ChipFrame;
 import com.ichphilipp.logicchips.utils.*;
 import java.util.List;
+
+import lombok.val;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -11,13 +13,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-// import net.minecraft.client.gui.screen.Screen;
-// import net.minecraft.client.util.ITooltipFlag;
-// import net.minecraft.item.Item;
-// import net.minecraft.item.ItemStack;
-// import net.minecraft.util.text.ITextComponent;
-// import net.minecraft.util.text.TranslationTextComponent;
-// import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -35,7 +30,7 @@ public class Chip extends Item {
         @NotNull List<Component> pTooltipComponents,
         @NotNull TooltipFlag pIsAdvanced
     ) {
-        String langKey = Screen.hasShiftDown()
+        val langKey = Screen.hasShiftDown()
             ? String.format("tooltip.%s.%s", LogicChips.MOD_ID, pStack.getItem())
             : "tooltip.logicchips.shift";
         pTooltipComponents.add(new TranslatableComponent(langKey));

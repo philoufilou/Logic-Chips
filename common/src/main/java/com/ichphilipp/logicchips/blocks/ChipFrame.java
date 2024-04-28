@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import lombok.val;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -78,9 +79,9 @@ public class ChipFrame extends DiodeBlock {
         BlockPos pos,
         @Nullable Direction side
     ) {
-        Comparable<GateFrameTypes> type = blockState.getValue(TYPE);
-        int connect = GateFrameTypes.valueOf(type.toString()).canConnectTo();
-        Direction facing = blockState.getValue(FACING);
+        val type = blockState.getValue(TYPE);
+        val connect = GateFrameTypes.valueOf(type.toString()).canConnectTo();
+        val facing = blockState.getValue(FACING);
         return (
             side == facing ||
                 (side == facing.getClockWise() && (connect == 2 || connect == 3)) ||
@@ -117,14 +118,14 @@ public class ChipFrame extends DiodeBlock {
     // }
 
     public boolean isPowered(@NotNull BlockState blockstate, Level world, @NotNull BlockPos blockpos) {
-        Direction facing = blockstate.getValue(FACING);
-        Comparable<GateFrameTypes> type = blockstate.getValue(TYPE);
-        boolean RIGHT = getAlternateSignalAt(world,
+        val facing = blockstate.getValue(FACING);
+        val type = blockstate.getValue(TYPE);
+        val RIGHT = getAlternateSignalAt(world,
             blockpos.relative(facing.getCounterClockWise()),
             facing.getCounterClockWise()
         ) > 0;
-        boolean BOTTOM = getAlternateSignalAt(world, blockpos.relative(facing), facing) > 0;
-        boolean LEFT = getAlternateSignalAt(world, blockpos.relative(facing.getClockWise()), facing.getClockWise()) > 0;
+        val BOTTOM = getAlternateSignalAt(world, blockpos.relative(facing), facing) > 0;
+        val LEFT = getAlternateSignalAt(world, blockpos.relative(facing.getClockWise()), facing.getClockWise()) > 0;
 
         world.setBlockAndUpdate(
             blockpos,
@@ -137,7 +138,7 @@ public class ChipFrame extends DiodeBlock {
     }
 
     public void dropChip(Level world, BlockPos blockPos, BlockState blockState) {
-        Comparable<GateFrameTypes> type = blockState.getValue(TYPE);
+        val type = blockState.getValue(TYPE);
         if (type == GateFrameTypes.EMPTY) {
             return;
         }
@@ -167,12 +168,11 @@ public class ChipFrame extends DiodeBlock {
         @NotNull InteractionHand hand,
         @NotNull BlockHitResult hit
     ) {
-        Comparable<GateFrameTypes> type = blockState.getValue(TYPE);
-
-        ItemStack stack = player.getItemInHand(hand);
-        Item handitem = stack.getItem();
-        boolean instabuild = !player.abilities.instabuild;
-        boolean isClientSide = world.isClientSide;
+        val type = blockState.getValue(TYPE);
+        val stack = player.getItemInHand(hand);
+        val handitem = stack.getItem();
+        val instabuild = !player.abilities.instabuild;
+        val isClientSide = world.isClientSide;
 
         /// NOTE: INSERT ITEM ////////////////////////////////////////////////////////////////////////////////
         if (type == GateFrameTypes.EMPTY && chip2logic.containsKey(handitem)) {
