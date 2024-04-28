@@ -1,11 +1,10 @@
 package com.ichphilipp.logicchips.utils;
 
-// import net.minecraft.util.IStringSerializable;
 import com.ichphilipp.logicchips.api.TriBoolLogic;
 import net.minecraft.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
 
-public enum GateFrameTypes implements StringRepresentable {
+public enum ChipType implements StringRepresentable, TriBoolLogic {
     EMPTY((L, B, R) -> false, 0),
     NOT((L, B, R) -> !B, 1),
     AND((L, B, R) -> L && R, 2),
@@ -25,10 +24,7 @@ public enum GateFrameTypes implements StringRepresentable {
     private final TriBoolLogic logic;
     private final int canConnect;
 
-    GateFrameTypes(
-        TriBoolLogic logic,
-        int canConnect
-    ) {
+    ChipType(TriBoolLogic logic, int canConnect) {
         this.key = this.name().toLowerCase();
         this.logic = logic;
         this.canConnect = canConnect;
@@ -50,5 +46,10 @@ public enum GateFrameTypes implements StringRepresentable {
     @Override
     public @NotNull String getSerializedName() {
         return this.key;
+    }
+
+    @Override
+    public boolean apply(boolean left, boolean middle, boolean right) {
+        return this.logic.apply(left, middle, right);
     }
 }

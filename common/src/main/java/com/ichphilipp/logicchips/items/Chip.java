@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class Chip extends Item {
 
-    public Chip(Properties properties, GateFrameTypes types) {
+    public Chip(Properties properties, ChipType types) {
         super(properties);
         ChipFrame.add(types, this);
     }

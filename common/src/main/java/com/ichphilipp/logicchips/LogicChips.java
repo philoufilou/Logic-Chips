@@ -20,8 +20,7 @@ public class LogicChips {
     public static final Item.Properties DEFAULT_BLOCK_PROP = new Item.Properties().tab(ITEM_GROUP);
     public static final Item.Properties DEFAULT_ITEM_PROP = new Item.Properties().tab(ITEM_GROUP).stacksTo(16);
 
-    private LogicChips() {
-    }
+    private LogicChips() {}
 
     public static void init() {
         LogicChipsBlock.init();

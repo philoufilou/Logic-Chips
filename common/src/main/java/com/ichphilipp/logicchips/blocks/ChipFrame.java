@@ -1,6 +1,6 @@
 package com.ichphilipp.logicchips.blocks;
 
-import com.ichphilipp.logicchips.utils.GateFrameTypes;
+import com.ichphilipp.logicchips.utils.ChipType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,14 +32,11 @@ import org.jetbrains.annotations.Nullable;
 
 public class ChipFrame extends DiodeBlock {
 
-    public static final EnumProperty<GateFrameTypes> TYPE = EnumProperty.create(
-        "type",
-        GateFrameTypes.class
-    );
+    public static final EnumProperty<ChipType> TYPE = EnumProperty.create("type", ChipType.class);
     public static final BooleanProperty LEFT_INPUT = BooleanProperty.create("left");
     public static final BooleanProperty RIGHT_INPUT = BooleanProperty.create("right");
     public static final BooleanProperty BOTTOM_INPUT = BooleanProperty.create("bottom");
-    public static final Map<Item, GateFrameTypes> chip2logic = new HashMap<>();
+    public static final Map<Item, ChipType> chip2logic = new HashMap<>();
     public static final Map<String, Item> name2chip = new HashMap<>();
 
     public ChipFrame(Properties properties) {
@@ -47,7 +44,7 @@ public class ChipFrame extends DiodeBlock {
         this.registerDefaultState(
             this.stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
-                .setValue(TYPE, GateFrameTypes.EMPTY)
+                .setValue(TYPE, ChipType.EMPTY)
                 .setValue(LEFT_INPUT, false)
                 .setValue(RIGHT_INPUT, false)
                 .setValue(BOTTOM_INPUT, false)
@@ -55,9 +52,9 @@ public class ChipFrame extends DiodeBlock {
         );
     }
 
-    public static void add(GateFrameTypes gateFrameTypes, Item item) {
-        chip2logic.put(item, gateFrameTypes);
-        name2chip.put(gateFrameTypes.toString(), item);
+    public static void add(ChipType chipType, Item item) {
+        chip2logic.put(item, chipType);
+        name2chip.put(chipType.toString(), item);
     }
 
     @Override
@@ -80,7 +77,7 @@ public class ChipFrame extends DiodeBlock {
         @Nullable Direction side
     ) {
         val type = blockState.getValue(TYPE);
-        val connect = GateFrameTypes.valueOf(type.toString()).canConnectTo();
+        val connect = ChipType.valueOf(type.toString()).canConnectTo();
         val facing = blockState.getValue(FACING);
         return (
             side == facing ||
@@ -92,10 +89,7 @@ public class ChipFrame extends DiodeBlock {
 
     @Override
     protected int getInputSignal(@NotNull Level world, @NotNull BlockPos pos, @NotNull BlockState state) {
-        if (this.isPowered(state, world, pos)) {
-            return 15;
-        }
-        return 0;
+        return this.isPowered(state, world, pos) ? 15 : 0;
     }
 
     @Override
@@ -124,22 +118,22 @@ public class ChipFrame extends DiodeBlock {
             blockpos.relative(facing.getCounterClockWise()),
             facing.getCounterClockWise()
         ) > 0;
-        val BOTTOM = getAlternateSignalAt(world, blockpos.relative(facing), facing) > 0;
+        val BACK = getAlternateSignalAt(world, blockpos.relative(facing), facing) > 0;
         val LEFT = getAlternateSignalAt(world, blockpos.relative(facing.getClockWise()), facing.getClockWise()) > 0;
 
         world.setBlockAndUpdate(
             blockpos,
-            blockstate.setValue(LEFT_INPUT, LEFT).setValue(RIGHT_INPUT, RIGHT).setValue(BOTTOM_INPUT, BOTTOM)
+            blockstate.setValue(LEFT_INPUT, LEFT).setValue(RIGHT_INPUT, RIGHT).setValue(BOTTOM_INPUT, BACK)
         );
         if (chip2logic.containsValue(type)) {
-            return GateFrameTypes.valueOf(type.toString()).logic().apply(LEFT, BOTTOM, RIGHT);
+            return ChipType.valueOf(type.toString()).apply(LEFT, BACK, RIGHT);
         }
         return false;
     }
 
     public void dropChip(Level world, BlockPos blockPos, BlockState blockState) {
         val type = blockState.getValue(TYPE);
-        if (type == GateFrameTypes.EMPTY) {
+        if (type == ChipType.EMPTY) {
             return;
         }
         if (name2chip.containsKey(type.toString())) {
@@ -175,7 +169,7 @@ public class ChipFrame extends DiodeBlock {
         val isClientSide = world.isClientSide;
 
         /// NOTE: INSERT ITEM ////////////////////////////////////////////////////////////////////////////////
-        if (type == GateFrameTypes.EMPTY && chip2logic.containsKey(handitem)) {
+        if (type == ChipType.EMPTY && chip2logic.containsKey(handitem)) {
             if (!isClientSide) {
                 BlockState newBlockstate = blockState.setValue(TYPE, chip2logic.get(handitem));
                 world.setBlock(
@@ -191,11 +185,11 @@ public class ChipFrame extends DiodeBlock {
             return InteractionResult.sidedSuccess(isClientSide);
         }
         /// NOTE: DROP ITEM ////////////////////////////////////////////////////////////////////////////////
-        else if (type != GateFrameTypes.EMPTY) {
+        else if (type != ChipType.EMPTY) {
             if (!isClientSide) {
                 world.setBlock(
                     blockPos,
-                    blockState.setValue(TYPE, GateFrameTypes.EMPTY).setValue(POWERED, false),
+                    blockState.setValue(TYPE, ChipType.EMPTY).setValue(POWERED, false),
                     3
                 );
                 if (instabuild) {
@@ -220,16 +214,16 @@ public class ChipFrame extends DiodeBlock {
         if (!blockState.getValue(POWERED)) {
             return;
         }
-        Direction direction = blockState.getValue(FACING);
-        double d0 = (double) blockPos.getX() + 0.5D + (randomSource.nextDouble() - 0.5D) * 0.2D;
-        double d1 = (double) blockPos.getY() + 0.4D + (randomSource.nextDouble() - 0.5D) * 0.2D;
-        double d2 = (double) blockPos.getZ() + 0.5D + (randomSource.nextDouble() - 0.5D) * 0.2D;
-        float f = -5.0F;
+        val direction = blockState.getValue(FACING);
+        double x = (double) blockPos.getX() + 0.5D + (randomSource.nextDouble() - 0.5D) * 0.2D;
+        double y = (double) blockPos.getY() + 0.4D + (randomSource.nextDouble() - 0.5D) * 0.2D;
+        double z = (double) blockPos.getZ() + 0.5D + (randomSource.nextDouble() - 0.5D) * 0.2D;
+        float scale = -5.0F;
         if (randomSource.nextBoolean()) {
-            f /= 16.0F;
-            d0 += (f * (float) direction.getStepX());
-            d2 += (f * (float) direction.getStepZ());
+            scale /= 16.0F;
+            x += (scale * direction.getStepX());
+            z += (scale * direction.getStepZ());
         }
-        level.addParticle(DustParticleOptions.REDSTONE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+        level.addParticle(DustParticleOptions.REDSTONE, x, y, z, 0.0D, 0.0D, 0.0D);
     }
 }

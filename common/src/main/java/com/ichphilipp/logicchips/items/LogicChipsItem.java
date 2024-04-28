@@ -3,7 +3,7 @@ package com.ichphilipp.logicchips.items;
 import com.ichphilipp.logicchips.LogicChips;
 import com.ichphilipp.logicchips.RegistryMgr;
 import com.ichphilipp.logicchips.api.TriBoolLogic;
-import com.ichphilipp.logicchips.utils.GateFrameTypes;
+import com.ichphilipp.logicchips.utils.ChipType;
 import me.shedaniel.architectury.registry.RegistrySupplier;
 import net.minecraft.world.item.Item;
 import org.jetbrains.annotations.Nullable;
@@ -14,20 +14,20 @@ public enum LogicChipsItem implements Supplier<Item> {
     //chip base
     CHIP(),
     //dual-input gate
-    NOT_GATE(GateFrameTypes.NOT),
-    AND_GATE(GateFrameTypes.AND),
-    NAND_GATE(GateFrameTypes.NAND),
-    OR_GATE(GateFrameTypes.OR),
-    NOR_GATE(GateFrameTypes.NOR),
-    XOR_GATE(GateFrameTypes.XOR),
-    XNOR_GATE(GateFrameTypes.XNOR),
+    NOT_GATE(ChipType.NOT),
+    AND_GATE(ChipType.AND),
+    NAND_GATE(ChipType.NAND),
+    OR_GATE(ChipType.OR),
+    NOR_GATE(ChipType.NOR),
+    XOR_GATE(ChipType.XOR),
+    XNOR_GATE(ChipType.XNOR),
     //tri-input gate
-    AND_GATE_3(GateFrameTypes.AND_3),
-    NAND_GATE_3(GateFrameTypes.NAND_3),
-    OR_GATE_3(GateFrameTypes.OR_3),
-    NOR_GATE_3(GateFrameTypes.NOR_3),
-    XOR_GATE_3(GateFrameTypes.XOR_3),
-    XNOR_GATE_3(GateFrameTypes.XNOR_3);
+    AND_GATE_3(ChipType.AND_3),
+    NAND_GATE_3(ChipType.NAND_3),
+    OR_GATE_3(ChipType.OR_3),
+    NOR_GATE_3(ChipType.NOR_3),
+    XOR_GATE_3(ChipType.XOR_3),
+    XNOR_GATE_3(ChipType.XNOR_3);
 
     @Override
     public Item get() {
@@ -47,7 +47,7 @@ public enum LogicChipsItem implements Supplier<Item> {
      * register a chip item
      * @param type determines the logic and corresponding blockstate name of such chip
      */
-    LogicChipsItem(GateFrameTypes type) {
+    LogicChipsItem(ChipType type) {
         this.key = this.name().toLowerCase(); // OR_GATE_3 -> or_gate_3
         this.logic = type.logic();
         this.item = RegistryMgr.ITEM_REG.register(this.key, () -> new Chip(LogicChips.DEFAULT_ITEM_PROP, type));
