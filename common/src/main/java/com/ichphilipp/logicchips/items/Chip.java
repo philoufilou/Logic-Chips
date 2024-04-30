@@ -8,7 +8,6 @@ import java.util.List;
 import lombok.val;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -33,7 +32,7 @@ public class Chip extends Item {
         val langKey = Screen.hasShiftDown()
             ? String.format("tooltip.%s.%s", LogicChips.MOD_ID, pStack.getItem())
             : "tooltip.logicchips.shift";
-        pTooltipComponents.add(new TranslatableComponent(langKey));
+        pTooltipComponents.add(Component.translatable(langKey));
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 }
