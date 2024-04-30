@@ -36,6 +36,7 @@ jobs:
       with:
         name: Artifacts
         path: |
-            common/build/libs
-            forge/build/libs
-            fabric/build/libs
+          build/libs
+          common/build/libs
+          forge/build/libs
+          fabric/build/libs
