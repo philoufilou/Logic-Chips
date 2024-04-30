@@ -50,7 +50,7 @@ public enum LogicChipsItem implements Supplier<Item> {
     LogicChipsItem(ChipType type) {
         this.key = this.name().toLowerCase(); // OR_GATE_3 -> or_gate_3
         this.logic = type.logic();
-        this.item = RegistryMgr.registerItem(this.key, () -> new Chip(LogicChips.DEFAULT_ITEM_PROP, type));
+        this.item = RegistryMgr.registerItem(this.key, () -> new Chip(LogicChips.DEFAULT_CHIP_PROP, type));
     }
 
     /**
@@ -59,7 +59,7 @@ public enum LogicChipsItem implements Supplier<Item> {
     LogicChipsItem() {
         this.key = this.name().toLowerCase(); // CHIP -> chip
         this.logic = null;
-        this.item = RegistryMgr.registerItem(this.key, () -> new Item(LogicChips.DEFAULT_ITEM_PROP));
+        this.item = RegistryMgr.registerItem(this.key);
     }
 
     public static void init() {
