@@ -17,8 +17,8 @@ public class LogicChips {
         new ResourceLocation(MOD_ID, "tab"),
         () -> LogicChipsItem.AND_GATE.get().getDefaultInstance()
     );
-    public static final Item.Properties DEFAULT_BLOCK_PROP = new Item.Properties().tab(ITEM_GROUP);
-    public static final Item.Properties DEFAULT_ITEM_PROP = new Item.Properties().tab(ITEM_GROUP).stacksTo(16);
+    public static final Item.Properties DEFAULT_ITEM_PROP = new Item.Properties().tab(ITEM_GROUP);
+    public static final Item.Properties DEFAULT_CHIP_PROP = new Item.Properties().tab(ITEM_GROUP).stacksTo(16);
 
     private LogicChips() {}
 
