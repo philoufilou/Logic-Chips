@@ -14,20 +14,20 @@ public enum LogicChipsItem implements Supplier<Item> {
     //chip base
     CHIP(),
     //dual-input gate
-    NOT_GATE(ChipType.NOT),
-    AND_GATE(ChipType.AND),
-    NAND_GATE(ChipType.NAND),
-    OR_GATE(ChipType.OR),
-    NOR_GATE(ChipType.NOR),
-    XOR_GATE(ChipType.XOR),
-    XNOR_GATE(ChipType.XNOR),
+    NOT_GATE(ChipType.not),
+    AND_GATE(ChipType.and),
+    NAND_GATE(ChipType.nand),
+    OR_GATE(ChipType.or),
+    NOR_GATE(ChipType.nor),
+    XOR_GATE(ChipType.xor),
+    XNOR_GATE(ChipType.xnor),
     //tri-input gate
-    AND_GATE_3(ChipType.AND_3),
-    NAND_GATE_3(ChipType.NAND_3),
-    OR_GATE_3(ChipType.OR_3),
-    NOR_GATE_3(ChipType.NOR_3),
-    XOR_GATE_3(ChipType.XOR_3),
-    XNOR_GATE_3(ChipType.XNOR_3);
+    AND_GATE_3(ChipType.and_3),
+    NAND_GATE_3(ChipType.nand_3),
+    OR_GATE_3(ChipType.or_3),
+    NOR_GATE_3(ChipType.nor_3),
+    XOR_GATE_3(ChipType.xor_3),
+    XNOR_GATE_3(ChipType.xnor_3);
 
     @Override
     public Item get() {
