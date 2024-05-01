@@ -111,19 +111,26 @@ public class ChipFrame extends DiodeBlock {
     //     // Tested on Forge36.2.41
     // }
 
-    public boolean isPowered(@NotNull BlockState blockstate, Level world, @NotNull BlockPos blockpos) {
+    public boolean isPowered(@NotNull BlockState blockstate, Level world, @NotNull BlockPos pos) {
         val facing = blockstate.getValue(FACING);
         val type = blockstate.getValue(TYPE);
-        val RIGHT = getAlternateSignalAt(world,
-            blockpos.relative(facing.getCounterClockWise()),
-            facing.getCounterClockWise()
-        ) > 0;
-        val BACK = getAlternateSignalAt(world, blockpos.relative(facing), facing) > 0;
-        val LEFT = getAlternateSignalAt(world, blockpos.relative(facing.getClockWise()), facing.getClockWise()) > 0;
+        val RIGHT = 0 != world.getControlInputSignal(
+            pos.relative(facing.getCounterClockWise()),
+            facing.getCounterClockWise(),
+            this.sideInputDiodesOnly()
+        );
+        val BACK = 0 != world.getControlInputSignal(pos.relative(facing), facing, this.sideInputDiodesOnly());
+        val LEFT = 0 != world.getControlInputSignal(
+            pos.relative(facing.getClockWise()),
+            facing.getClockWise(),
+            this.sideInputDiodesOnly()
+        );
 
         world.setBlockAndUpdate(
-            blockpos,
-            blockstate.setValue(LEFT_INPUT, LEFT).setValue(RIGHT_INPUT, RIGHT).setValue(BOTTOM_INPUT, BACK)
+            pos,
+            blockstate.setValue(LEFT_INPUT, LEFT)
+                .setValue(RIGHT_INPUT, RIGHT)
+                .setValue(BOTTOM_INPUT, BACK)
         );
         if (chip2logic.containsValue(type)) {
             return ChipType.valueOf(type.toString()).apply(LEFT, BACK, RIGHT);
@@ -137,15 +144,15 @@ public class ChipFrame extends DiodeBlock {
             return;
         }
         if (name2chip.containsKey(type.toString())) {
-            double d0 = (double) (world.random.nextFloat() * 0.7F) + (double) 0.15F;
-            double d1 = (double) (world.random.nextFloat() * 0.7F) + (double) 0.060000002F + 0.6D;
-            double d2 = (double) (world.random.nextFloat() * 0.7F) + (double) 0.15F;
+            val dx = (world.random.nextFloat() * 0.7D) + 0.15D;
+            val dy = (world.random.nextFloat() * 0.7D) + 0.060000002D + 0.6D;
+            val dz = (world.random.nextFloat() * 0.7D) + 0.15D;
             ItemEntity itementity = new ItemEntity(
                 world,
-                (double) blockPos.getX() + d0,
-                (double) blockPos.getY() + d1,
-                (double) blockPos.getZ() + d2,
-                new ItemStack(name2chip.get(type.toString()))
+                blockPos.getX() + dx,
+                blockPos.getY() + dy,
+                blockPos.getZ() + dz,
+                name2chip.get(type.toString()).getDefaultInstance().copy()
             );
             itementity.setDefaultPickUpDelay();
             world.addFreshEntity(itementity);
