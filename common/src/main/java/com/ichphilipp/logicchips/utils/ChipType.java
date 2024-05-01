@@ -4,28 +4,29 @@ import com.ichphilipp.logicchips.api.TriBoolLogic;
 import net.minecraft.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * minecraft seems not accepting upper case name
+ */
 public enum ChipType implements StringRepresentable, TriBoolLogic {
-    EMPTY((L, B, R) -> false, 0),
-    NOT((L, B, R) -> !B, 1),
-    AND((L, B, R) -> L && R, 2),
-    NAND((L, B, R) -> !(L && R), 2),
-    OR((L, B, R) -> L || R, 2),
-    NOR((L, B, R) -> !(L || R), 2),
-    XOR((L, B, R) -> L ^ R, 2),
-    XNOR((L, B, R) -> L == R, 2),
-    AND_3((L, B, R) -> L && B && R, 2),
-    NAND_3((L, B, R) -> !(L && B && R), 3),
-    OR_3((L, B, R) -> L || B || R, 3),
-    NOR_3((L, B, R) -> !(L || B || R), 3),
-    XOR_3((L, B, R) -> ((L ? 1 : 0) + (B ? 1 : 0) + (R ? 1 : 0)) % 2 == 1, 3),
-    XNOR_3((L, B, R) -> ((L ? 1 : 0) + (B ? 1 : 0) + (R ? 1 : 0)) % 2 == 0, 3);
+    empty((L, B, R) -> false, 0),
+    not((L, B, R) -> !B, 1),
+    and((L, B, R) -> L && R, 2),
+    nand((L, B, R) -> !(L && R), 2),
+    or((L, B, R) -> L || R, 2),
+    nor((L, B, R) -> !(L || R), 2),
+    xor((L, B, R) -> L ^ R, 2),
+    xnor((L, B, R) -> L == R, 2),
+    and_3((L, B, R) -> L && B && R, 2),
+    nand_3((L, B, R) -> !(L && B && R), 3),
+    or_3((L, B, R) -> L || B || R, 3),
+    nor_3((L, B, R) -> !(L || B || R), 3),
+    xor_3((L, B, R) -> ((L ? 1 : 0) + (B ? 1 : 0) + (R ? 1 : 0)) % 2 == 1, 3),
+    xnor_3((L, B, R) -> ((L ? 1 : 0) + (B ? 1 : 0) + (R ? 1 : 0)) % 2 == 0, 3);
 
-    private final String key;
     private final TriBoolLogic logic;
     private final int canConnect;
 
     ChipType(TriBoolLogic logic, int canConnect) {
-        this.key = this.name().toLowerCase();
         this.logic = logic;
         this.canConnect = canConnect;
     }
@@ -39,13 +40,8 @@ public enum ChipType implements StringRepresentable, TriBoolLogic {
     }
 
     @Override
-    public String toString() {
-        return this.key;
-    }
-
-    @Override
     public @NotNull String getSerializedName() {
-        return this.key;
+        return this.name();
     }
 
     @Override

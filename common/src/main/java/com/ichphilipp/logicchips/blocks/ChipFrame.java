@@ -17,7 +17,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -44,7 +43,7 @@ public class ChipFrame extends DiodeBlock {
         this.registerDefaultState(
             this.stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
-                .setValue(TYPE, ChipType.EMPTY)
+                .setValue(TYPE, ChipType.empty)
                 .setValue(LEFT_INPUT, false)
                 .setValue(RIGHT_INPUT, false)
                 .setValue(BOTTOM_INPUT, false)
@@ -133,7 +132,7 @@ public class ChipFrame extends DiodeBlock {
 
     public void dropChip(Level world, BlockPos blockPos, BlockState blockState) {
         val type = blockState.getValue(TYPE);
-        if (type == ChipType.EMPTY) {
+        if (type == ChipType.empty) {
             return;
         }
         if (name2chip.containsKey(type.toString())) {
@@ -169,7 +168,7 @@ public class ChipFrame extends DiodeBlock {
         val isClientSide = world.isClientSide;
 
         /// NOTE: INSERT ITEM ////////////////////////////////////////////////////////////////////////////////
-        if (type == ChipType.EMPTY && chip2logic.containsKey(handitem)) {
+        if (type == ChipType.empty && chip2logic.containsKey(handitem)) {
             if (!isClientSide) {
                 BlockState newBlockstate = blockState.setValue(TYPE, chip2logic.get(handitem));
                 world.setBlock(
@@ -185,11 +184,11 @@ public class ChipFrame extends DiodeBlock {
             return InteractionResult.sidedSuccess(isClientSide);
         }
         /// NOTE: DROP ITEM ////////////////////////////////////////////////////////////////////////////////
-        else if (type != ChipType.EMPTY) {
+        else if (type != ChipType.empty) {
             if (!isClientSide) {
                 world.setBlock(
                     blockPos,
-                    blockState.setValue(TYPE, ChipType.EMPTY).setValue(POWERED, false),
+                    blockState.setValue(TYPE, ChipType.empty).setValue(POWERED, false),
                     3
                 );
                 if (instabuild) {
