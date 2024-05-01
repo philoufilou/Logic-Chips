@@ -63,7 +63,6 @@ public enum LogicChipsItem implements Supplier<Item> {
     }
 
     public static void init() {
-        RegistryMgr.ITEM_REG.register();
         for (LogicChipsItem item : LogicChipsItem.values()) {
             RegistryMgr.ITEMS.put(item.key, item);
         }

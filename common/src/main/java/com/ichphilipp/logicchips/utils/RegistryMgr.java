@@ -7,6 +7,7 @@ import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
@@ -19,6 +20,9 @@ public class RegistryMgr {
     public static final Map<String, LogicChipsItem> ITEMS = new HashMap<>();
     public static final Map<String, LogicChipsBlock> BLOCKS = new HashMap<>();
 
+    public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(
+        LogicChips.MOD_ID, Registries.CREATIVE_MODE_TAB
+    );
     public static final DeferredRegister<Item> ITEM_REG = DeferredRegister.create(
         LogicChips.MOD_ID, Registries.ITEM
     );
@@ -40,5 +44,11 @@ public class RegistryMgr {
 
     public static <T extends Block> RegistrySupplier<BlockItem> registerBlockItem(String name, RegistrySupplier<T> block) {
         return ITEM_REG.register(name, () -> new BlockItem(block.get(), LogicChips.DEFAULT_ITEM_PROP));
+    }
+
+    public static void init() {
+        TABS.register();
+        ITEM_REG.register();
+        BLOCK_REG.register();
     }
 }

@@ -33,7 +33,6 @@ public enum LogicChipsBlock implements Supplier<Block> {
     }
 
     public static void init() {
-        RegistryMgr.BLOCK_REG.register();
         for (LogicChipsBlock block : LogicChipsBlock.values()) {
             RegistryMgr.BLOCKS.put(block.key, block);
         }
