@@ -8,7 +8,7 @@ version = "${version}"
 displayName = "Logic Chips"
 authors = "IchPhilipp & ZZZank"
 description = '''
-Logic Gates with for fancy redstone logic
+Logic Gates for fancy redstone logic
 '''
 issueTrackerURL="https://github.com/philoufilou/Logic-Chips/issues"
 displayURL="https://github.com/philoufilou/Logic-Chips"
