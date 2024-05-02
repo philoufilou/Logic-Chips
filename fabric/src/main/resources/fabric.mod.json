@@ -3,7 +3,7 @@
   "id": "logicchips",
   "version": "${version}",
   "name": "Logic Chips",
-  "description": "Logic Gates with for fancy redstone logic",
+  "description": "Logic Gates for fancy redstone logic",
   "authors": [
     "IchPhilipp",
     "ZZZank"
