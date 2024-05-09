@@ -38,5 +38,5 @@ jobs:
         path: |
           build/libs
           common/build/libs
-          neoforge/build/libs
+          forge/build/libs
           fabric/build/libs
