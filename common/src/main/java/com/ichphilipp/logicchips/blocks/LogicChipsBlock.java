@@ -11,7 +11,7 @@ import java.util.function.Supplier;
 
 public enum LogicChipsBlock implements Supplier<Block> {
     //TODO: check if using repeater's prop is a good idea
-    GATE_FRAME(() -> new ChipFrame(BlockBehaviour.Properties.copy(Blocks.REPEATER)));
+    GATE_FRAME(() -> new ChipFrame(BlockBehaviour.Properties.ofFullCopy(Blocks.REPEATER)));
 
     private final String key;
     private final RegistrySupplier<Block> block;

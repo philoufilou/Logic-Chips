@@ -5,6 +5,7 @@ import com.ichphilipp.logicchips.utils.ChipType;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.mojang.serialization.MapCodec;
 import lombok.val;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -14,9 +15,11 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -30,6 +33,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class ChipFrame extends DiodeBlock {
+    public static final MapCodec<ChipFrame> CODEC = simpleCodec(ChipFrame::new);
 
     public static final EnumProperty<ChipType> TYPE = EnumProperty.create("type", ChipType.class);
     public static final BooleanProperty LEFT_INPUT = BooleanProperty.create("left");
@@ -49,6 +53,11 @@ public class ChipFrame extends DiodeBlock {
                 .setValue(BOTTOM_INPUT, false)
                 .setValue(POWERED, false)
         );
+    }
+
+    @Override
+    protected MapCodec<? extends DiodeBlock> codec() {
+        return CODEC;
     }
 
     public static void add(ChipType chipType, Item item) {
@@ -160,48 +169,26 @@ public class ChipFrame extends DiodeBlock {
     }
 
     @Override
-    public @NotNull InteractionResult use(
+    protected InteractionResult useWithoutItem(
         BlockState blockState,
-        @NotNull Level world,
-        @NotNull BlockPos blockPos,
+        Level level,
+        BlockPos blockPos,
         Player player,
-        @NotNull InteractionHand hand,
-        @NotNull BlockHitResult hit
-    ) {
+        BlockHitResult blockHitResult) {
         val type = blockState.getValue(TYPE);
-        val stack = player.getItemInHand(hand);
-        val handitem = stack.getItem();
-        val instabuild = !player.getAbilities().instabuild;
-        val isClientSide = world.isClientSide;
-
-        /// NOTE: INSERT ITEM ////////////////////////////////////////////////////////////////////////////////
-        if (type == ChipType.empty && chip2logic.containsKey(handitem)) {
+        val isClientSide = level.isClientSide;
+        val instabuild = player.getAbilities().instabuild;
+        if (type != ChipType.empty) {
             if (!isClientSide) {
-                BlockState newBlockstate = blockState.setValue(TYPE, chip2logic.get(handitem));
-                world.setBlock(
-                    blockPos,
-                    newBlockstate.setValue(POWERED, this.isPowered(newBlockstate, world, blockPos)),
-                    3
-                );
-                if (instabuild) {
-                    stack.shrink(1);
-                }
-                world.playSound(null, blockPos, SoundEvents.ITEM_FRAME_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
-            }
-            return InteractionResult.sidedSuccess(isClientSide);
-        }
-        /// NOTE: DROP ITEM ////////////////////////////////////////////////////////////////////////////////
-        else if (type != ChipType.empty) {
-            if (!isClientSide) {
-                world.setBlock(
+                level.setBlock(
                     blockPos,
                     blockState.setValue(TYPE, ChipType.empty).setValue(POWERED, false),
                     3
                 );
                 if (instabuild) {
-                    this.dropChip(world, blockPos, blockState);
+                    this.dropChip(level, blockPos, blockState);
                 }
-                world.playSound(
+                level.playSound(
                     null,
                     blockPos,
                     SoundEvents.ITEM_FRAME_REMOVE_ITEM,
@@ -213,6 +200,61 @@ public class ChipFrame extends DiodeBlock {
             return InteractionResult.sidedSuccess(isClientSide);
         }
         return InteractionResult.PASS;
+    }
+
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack,
+        BlockState blockState,
+        Level level,
+        BlockPos blockPos,
+        Player player,
+        InteractionHand interactionHand,
+        BlockHitResult blockHitResult
+    ) {
+        val type = blockState.getValue(TYPE);
+        val handitem = stack.getItem();
+        val instabuild = !player.getAbilities().instabuild;
+        val isClientSide = level.isClientSide;
+
+        /// NOTE: INSERT ITEM ////////////////////////////////////////////////////////////////////////////////
+        if (type == ChipType.empty && chip2logic.containsKey(handitem)) {
+            if (!isClientSide) {
+                BlockState newBlockstate = blockState.setValue(TYPE, chip2logic.get(handitem));
+                level.setBlock(
+                    blockPos,
+                    newBlockstate.setValue(POWERED, this.isPowered(newBlockstate, level, blockPos)),
+                    3
+                );
+                if (instabuild) {
+                    stack.shrink(1);
+                }
+                level.playSound(null, blockPos, SoundEvents.ITEM_FRAME_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
+            }
+            return ItemInteractionResult.sidedSuccess(isClientSide);
+        }
+        /// NOTE: DROP ITEM ////////////////////////////////////////////////////////////////////////////////
+        else if (type != ChipType.empty) {
+            if (!isClientSide) {
+                level.setBlock(
+                    blockPos,
+                    blockState.setValue(TYPE, ChipType.empty).setValue(POWERED, false),
+                    3
+                );
+                if (instabuild) {
+                    this.dropChip(level, blockPos, blockState);
+                }
+                level.playSound(
+                    null,
+                    blockPos,
+                    SoundEvents.ITEM_FRAME_REMOVE_ITEM,
+                    SoundSource.BLOCKS,
+                    1.0F,
+                    1.0F
+                );
+            }
+            return ItemInteractionResult.sidedSuccess(isClientSide);
+        }
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     @Override

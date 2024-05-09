@@ -11,9 +11,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 public class Chip extends Item {
 
@@ -23,16 +20,11 @@ public class Chip extends Item {
     }
 
     @Override
-    public void appendHoverText(
-        @NotNull ItemStack pStack,
-        @Nullable Level pLevel,
-        @NotNull List<Component> pTooltipComponents,
-        @NotNull TooltipFlag pIsAdvanced
-    ) {
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag tooltipFlag) {
         val langKey = Screen.hasShiftDown()
-            ? String.format("tooltip.%s.%s", LogicChips.MOD_ID, pStack.getItem())
+            ? String.format("tooltip.%s.%s", LogicChips.MOD_ID, stack.getItem())
             : "tooltip.logicchips.shift";
-        pTooltipComponents.add(Component.translatable(langKey));
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        list.add(Component.translatable(langKey));
+        super.appendHoverText(stack, context, list, tooltipFlag);
     }
 }
