@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[${neoforge_version_base},)"
+loaderVersion = "[${fancymodloader_version},)"
 license = "MIT"
 
 [[mods]]
@@ -15,7 +15,7 @@ displayURL="https://github.com/philoufilou/Logic-Chips"
 logoFile="icon.png"
 
 [[dependencies.logicchips]]
-modId = "forge"
+modId = "neoforge"
 mandatory = true
 versionRange = "[${neoforge_version_base},)"
 ordering = "NONE"
