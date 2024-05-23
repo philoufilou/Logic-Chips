@@ -56,7 +56,7 @@ public class ChipFrame extends DiodeBlock {
     }
 
     @Override
-    protected MapCodec<? extends DiodeBlock> codec() {
+    protected @NotNull MapCodec<? extends DiodeBlock> codec() {
         return CODEC;
     }
 
@@ -169,7 +169,7 @@ public class ChipFrame extends DiodeBlock {
     }
 
     @Override
-    protected InteractionResult useWithoutItem(
+    protected @NotNull InteractionResult useWithoutItem(
         BlockState blockState,
         Level level,
         BlockPos blockPos,
@@ -203,7 +203,7 @@ public class ChipFrame extends DiodeBlock {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack,
+    protected @NotNull ItemInteractionResult useItemOn(ItemStack stack,
         BlockState blockState,
         Level level,
         BlockPos blockPos,
