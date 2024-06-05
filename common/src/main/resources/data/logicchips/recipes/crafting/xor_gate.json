@@ -19,6 +19,6 @@
 	}
   ],
   "result": {
-    "item": "logicchips:xor_gate"
+    "id": "logicchips:xor_gate"
   }
 }

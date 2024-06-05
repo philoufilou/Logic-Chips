@@ -1,5 +1,5 @@
 {
-	"type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shaped",
   "pattern": [
     " A ",
     "ABA",
@@ -14,7 +14,7 @@
     }
   },
   "result": {
-    "item": "logicchips:chip",
+    "id": "logicchips:chip",
     "count": 4
   }
 }

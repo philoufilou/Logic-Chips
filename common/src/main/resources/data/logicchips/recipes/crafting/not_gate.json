@@ -19,6 +19,6 @@
 	}
   ],
   "result": {
-    "item": "logicchips:not_gate"
+    "id": "logicchips:not_gate"
   }
 }
