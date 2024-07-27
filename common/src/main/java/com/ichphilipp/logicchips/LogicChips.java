@@ -19,7 +19,7 @@ public class LogicChips {
         "tab",
         () -> CreativeTabRegistry.create(
             Component.translatable("itemGroup.logicchips.tab"), // Tab Name
-            () -> LogicChipsItem.AND_GATE.get().getDefaultInstance()// Icon
+            () -> LogicChipsItem.and_gate.get().getDefaultInstance()// Icon
         )
     );
     public static final Item.Properties DEFAULT_ITEM_PROP = new Item.Properties().arch$tab(TAB);
