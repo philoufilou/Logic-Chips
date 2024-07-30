@@ -6,6 +6,7 @@ import com.ichphilipp.logicchips.utils.RegistryMgr;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import org.apache.logging.log4j.LogManager;
@@ -19,7 +20,7 @@ public class LogicChips {
         "tab",
         () -> CreativeTabRegistry.create(
             Component.translatable("itemGroup.logicchips.tab"), // Tab Name
-            () -> LogicChipsItem.and_gate.get().getDefaultInstance()// Icon
+            () -> LogicChipsItem.AND_GATE.get().getDefaultInstance()// Icon
         )
     );
     public static final Item.Properties DEFAULT_ITEM_PROP = new Item.Properties().arch$tab(TAB);
@@ -31,5 +32,9 @@ public class LogicChips {
         RegistryMgr.init();
         LogicChipsBlock.init();
         LogicChipsItem.init();
+    }
+
+    public static ResourceLocation rl(String path) {
+        return new ResourceLocation(MOD_ID, path);
     }
 }
