@@ -8,6 +8,7 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.world.item.Item;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Locale;
 import java.util.function.Supplier;
 
 public enum LogicChipsItem implements Supplier<Item> {
@@ -48,7 +49,7 @@ public enum LogicChipsItem implements Supplier<Item> {
      * @param type determines the logic and corresponding blockstate name of such chip
      */
     LogicChipsItem(ChipType type) {
-        this.key = this.name().toLowerCase(); // OR_GATE_3 -> or_gate_3
+        this.key = this.name().toLowerCase(Locale.ENGLISH); // OR_GATE_3 -> or_gate_3
         this.logic = type.logic();
         this.item = RegistryMgr.registerItem(this.key, () -> new Chip(LogicChips.DEFAULT_CHIP_PROP, type));
     }
