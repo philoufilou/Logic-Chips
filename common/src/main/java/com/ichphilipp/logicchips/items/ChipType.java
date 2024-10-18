@@ -1,4 +1,4 @@
-package com.ichphilipp.logicchips.utils;
+package com.ichphilipp.logicchips.items;
 
 import com.ichphilipp.logicchips.api.TriBoolLogic;
 import lombok.val;

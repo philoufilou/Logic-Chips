@@ -1,7 +1,5 @@
 package com.ichphilipp.logicchips.items;
 
-import com.ichphilipp.logicchips.utils.ChipType;
-
 /**
  * @author ZZZank
  */

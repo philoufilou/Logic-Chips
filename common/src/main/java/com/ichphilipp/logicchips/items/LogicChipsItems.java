@@ -1,7 +1,6 @@
 package com.ichphilipp.logicchips.items;
 
 import com.ichphilipp.logicchips.LogicChips;
-import com.ichphilipp.logicchips.utils.ChipType;
 import com.ichphilipp.logicchips.utils.RegistryMgr;
 import dev.architectury.registry.registries.RegistrySupplier;
 import lombok.AccessLevel;
@@ -13,7 +12,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
-import java.util.Locale;
 import java.util.Map;
 import java.util.function.Supplier;
 

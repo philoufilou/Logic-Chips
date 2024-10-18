@@ -2,8 +2,7 @@ package com.ichphilipp.logicchips.items;
 
 import com.ichphilipp.logicchips.LogicChips;
 import com.ichphilipp.logicchips.api.TriBoolLogic;
-import com.ichphilipp.logicchips.blocks.ChipFrame;
-import com.ichphilipp.logicchips.utils.*;
+
 import java.util.List;
 
 import lombok.val;

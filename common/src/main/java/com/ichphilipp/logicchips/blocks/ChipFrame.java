@@ -2,7 +2,7 @@ package com.ichphilipp.logicchips.blocks;
 
 import com.ichphilipp.logicchips.items.Chip;
 import com.ichphilipp.logicchips.items.LogicChipsItems;
-import com.ichphilipp.logicchips.utils.ChipType;
+import com.ichphilipp.logicchips.items.ChipType;
 
 import lombok.val;
 import net.minecraft.core.BlockPos;
