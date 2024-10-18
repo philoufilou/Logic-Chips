@@ -1,6 +1,7 @@
 package com.ichphilipp.logicchips.items;
 
 import com.ichphilipp.logicchips.LogicChips;
+import com.ichphilipp.logicchips.api.TriBoolLogic;
 import com.ichphilipp.logicchips.blocks.ChipFrame;
 import com.ichphilipp.logicchips.utils.*;
 import java.util.List;
@@ -15,10 +16,20 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class Chip extends Item {
+public class Chip extends Item implements ChipFrameCompatible {
+
+    private final ChipType type;
+    private final boolean leftConnectable;
+    private final boolean midConnectable;
+    private final boolean rightConnectable;
 
     public Chip(Properties properties, ChipType types) {
         super(properties);
+        this.type = types;
+        val con = type.canConnectTo();
+        leftConnectable = con == 2;
+        midConnectable = con == 1 || con == 3;
+        rightConnectable = con == 2;
         ChipFrame.add(types, this);
     }
 
@@ -38,5 +49,25 @@ public class Chip extends Item {
             : "tooltip.logicchips.shift";
         pTooltipComponents.add(Component.translatable(langKey));
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+    }
+
+    @Override
+    public boolean acceptRedstoneAtLeft() {
+        return leftConnectable;
+    }
+
+    @Override
+    public boolean acceptRedstoneAtRear() {
+        return midConnectable;
+    }
+
+    @Override
+    public boolean acceptRedstoneAtRight() {
+        return rightConnectable;
+    }
+
+    @Override
+    public TriBoolLogic logic() {
+        return this.type.logic();
     }
 }
