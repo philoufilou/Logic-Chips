@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class Chip extends Item implements ChipFrameCompatible {
 
-    private final ChipType type;
+    public final ChipType type;
     private final boolean leftConnectable;
     private final boolean midConnectable;
     private final boolean rightConnectable;
@@ -30,7 +30,6 @@ public class Chip extends Item implements ChipFrameCompatible {
         leftConnectable = con == 2;
         midConnectable = con == 1 || con == 3;
         rightConnectable = con == 2;
-        ChipFrame.add(types, this);
     }
 
     public Chip(ChipType type) {

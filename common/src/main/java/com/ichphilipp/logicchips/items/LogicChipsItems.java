@@ -54,11 +54,7 @@ public final class LogicChipsItems {
     }
 
     public static RegistrySupplier<Chip> registerChip(@NotNull ChipType chipType) {
-        val typeName = chipType.name().toLowerCase(Locale.ROOT);
-        val name = typeName.endsWith("_3")
-            ? typeName.replace("_3", "_gate_3") //or_3 -> or_gate_3
-            : typeName + "_gate";
-        return registerImpl(name, () -> new Chip(chipType));
+        return registerImpl(chipType.toChipName(), () -> new Chip(chipType));
     }
 
     private static <T extends Item> RegistrySupplier<T> registerImpl(

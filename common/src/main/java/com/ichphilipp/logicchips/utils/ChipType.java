@@ -1,8 +1,11 @@
 package com.ichphilipp.logicchips.utils;
 
 import com.ichphilipp.logicchips.api.TriBoolLogic;
+import lombok.val;
 import net.minecraft.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Locale;
 
 /**
  * minecraft seems not accepting upper case name
@@ -49,5 +52,12 @@ public enum ChipType implements StringRepresentable, TriBoolLogic {
     @Override
     public boolean apply(boolean left, boolean middle, boolean right) {
         return this.logic.apply(left, middle, right);
+    }
+
+    public String toChipName() {
+        val typeName = this.name().toLowerCase(Locale.ROOT);
+        return typeName.endsWith("_3")
+            ? typeName.substring(0, typeName.length() - "_3".length()) + "_gate_3" //or_3 -> or_gate_3
+            : typeName + "_gate";
     }
 }
