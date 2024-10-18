@@ -1,7 +1,7 @@
 package com.ichphilipp.logicchips;
 
 import com.ichphilipp.logicchips.blocks.LogicChipsBlock;
-import com.ichphilipp.logicchips.items.LogicChipsItem;
+import com.ichphilipp.logicchips.items.LogicChipsItems;
 import com.ichphilipp.logicchips.utils.RegistryMgr;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -11,6 +11,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
 public class LogicChips {
 
@@ -20,7 +21,7 @@ public class LogicChips {
         "tab",
         () -> CreativeTabRegistry.create(
             Component.translatable("itemGroup.logicchips.tab"), // Tab Name
-            () -> LogicChipsItem.AND_GATE.get().getDefaultInstance()// Icon
+            () -> LogicChipsItems.AND_GATE.get().getDefaultInstance()// Icon
         )
     );
     public static final Item.Properties DEFAULT_ITEM_PROP = new Item.Properties().arch$tab(TAB);
@@ -31,10 +32,9 @@ public class LogicChips {
     public static void init() {
         RegistryMgr.init();
         LogicChipsBlock.init();
-        LogicChipsItem.init();
     }
 
-    public static ResourceLocation rl(String path) {
+    public static ResourceLocation rl(@NotNull String path) {
         return new ResourceLocation(MOD_ID, path);
     }
 }

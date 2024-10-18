@@ -22,6 +22,10 @@ public class Chip extends Item {
         ChipFrame.add(types, this);
     }
 
+    public Chip(ChipType type) {
+        this(LogicChips.DEFAULT_CHIP_PROP, type);
+    }
+
     @Override
     public void appendHoverText(
         @NotNull ItemStack pStack,
