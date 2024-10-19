@@ -1,6 +1,7 @@
 package com.ichphilipp.logicchips.items;
 
 import com.ichphilipp.logicchips.api.TriBoolLogic;
+import com.ichphilipp.logicchips.utils.BitWiseUtil;
 import lombok.val;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -66,10 +67,6 @@ public class DynamicChip extends Chip {
     private static final TextColor DARK_RED = TextColor.parseColor("#400000");
     private static final TextColor REGULAR_RED = TextColor.fromLegacyFormat(ChatFormatting.RED);
 
-    private static @NotNull MutableComponent signal(ChatFormatting formatting) {
-        return Component.literal("█").setStyle(Style.EMPTY.withColor(formatting));
-    }
-
     private static @NotNull MutableComponent signal(TextColor color) {
         return Component.literal("█").setStyle(Style.EMPTY.withColor(color));
     }
@@ -98,8 +95,6 @@ public class DynamicChip extends Chip {
             throw new IllegalArgumentException();
         }
         val logics = Arrays.copyOf(logicData, 8);
-        return (left, middle, right) -> left
-            ? middle ? right ? logics[0] : logics[1] : right ? logics[2] : logics[3]
-            : middle ? right ? logics[4] : logics[5] : right ? logics[6] : logics[7];
+        return (left, middle, right) -> logics[BitWiseUtil.wrap(left, middle, right)];
     }
 }
