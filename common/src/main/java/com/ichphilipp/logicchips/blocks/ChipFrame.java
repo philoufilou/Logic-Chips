@@ -131,9 +131,10 @@ public class ChipFrame extends DiodeBlock {
                 .setValue(BOTTOM_INPUT, signalMid)
         );
         if (type == ChipType.dynamic) {
-            val logics = blockstate.getValue(LOGIC);
-            val shift = BitWiseUtil.wrap(signalLeft, signalMid, signalRight);
-            return (logics >> shift) != 0;
+            return BitWiseUtil.get(
+                blockstate.getValue(LOGIC),
+                BitWiseUtil.wrap(signalLeft, signalMid, signalRight)
+            );
         }
         return type.logic.apply(signalLeft, signalMid, signalRight);
     }

@@ -36,6 +36,7 @@ public class DynamicChip extends Chip {
         if (logicData == null) {
             return;
         }
+        val logic = BitWiseUtil.wrap(logicData);
         val allBool = new boolean[]{false, true};
         for (val left : allBool) {
             for (val mid : allBool) {
@@ -47,7 +48,7 @@ public class DynamicChip extends Chip {
                         .append(" + ")
                         .append(signal(right ? REGULAR_YELLOW : DARK_YELLOW))
                         .append(" -> ")
-                        .append(signal(logicData[BitWiseUtil.wrap(left, mid, right)] ? REGULAR_RED : DARK_RED))
+                        .append(signal(BitWiseUtil.get(logic, BitWiseUtil.wrap(left, mid, right)) ? REGULAR_RED : DARK_RED))
                     ;
                     tooltips.add(tip);
                 }
