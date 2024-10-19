@@ -224,9 +224,7 @@ public class ChipFrame extends DiodeBlock {
                     blockState.setValue(TYPE, ChipType.empty).setValue(POWERED, false),
                     3
                 );
-                if (instabuild) {
-                    this.dropChip(world, blockPos, blockState);
-                }
+                dropChip(world, blockPos, blockState);
                 world.playSound(
                     null,
                     blockPos,
