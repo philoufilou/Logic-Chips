@@ -1,9 +1,11 @@
 package com.ichphilipp.logicchips.blocks;
 
 import com.ichphilipp.logicchips.items.Chip;
+import com.ichphilipp.logicchips.items.DynamicChip;
 import com.ichphilipp.logicchips.items.LogicChipsItems;
 import com.ichphilipp.logicchips.items.ChipType;
 
+import com.ichphilipp.logicchips.utils.BitWiseUtil;
 import lombok.val;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -23,6 +25,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -33,6 +36,10 @@ public class ChipFrame extends DiodeBlock {
     public static final BooleanProperty LEFT_INPUT = BooleanProperty.create("left");
     public static final BooleanProperty RIGHT_INPUT = BooleanProperty.create("right");
     public static final BooleanProperty BOTTOM_INPUT = BooleanProperty.create("bottom");
+    /**
+     * dont use {@link Integer#MAX_VALUE} as max, it will make your java heap space explode
+     */
+    public static final IntegerProperty LOGIC = IntegerProperty.create("logic", 0, (int) Math.pow(2, 8));
 
     public ChipFrame(Properties properties) {
         super(properties);
@@ -44,6 +51,7 @@ public class ChipFrame extends DiodeBlock {
                 .setValue(RIGHT_INPUT, false)
                 .setValue(BOTTOM_INPUT, false)
                 .setValue(POWERED, false)
+                .setValue(LOGIC, 0)
         );
     }
 
@@ -54,7 +62,7 @@ public class ChipFrame extends DiodeBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> arg) {
-        arg.add(FACING, TYPE, POWERED, LEFT_INPUT, RIGHT_INPUT, BOTTOM_INPUT);
+        arg.add(FACING, TYPE, POWERED, LEFT_INPUT, RIGHT_INPUT, BOTTOM_INPUT, LOGIC);
     }
 
     /**
@@ -122,6 +130,11 @@ public class ChipFrame extends DiodeBlock {
                 .setValue(RIGHT_INPUT, signalRight)
                 .setValue(BOTTOM_INPUT, signalMid)
         );
+        if (type == ChipType.dynamic) {
+            val logics = blockstate.getValue(LOGIC);
+            val shift = BitWiseUtil.wrap(signalLeft, signalMid, signalRight);
+            return (logics >> shift) != 0;
+        }
         return type.apply(signalLeft, signalMid, signalRight);
     }
 
@@ -158,10 +171,22 @@ public class ChipFrame extends DiodeBlock {
         /// NOTE: INSERT ITEM ////////////////////////////////////////////////////////////////////////////////
         if (type == ChipType.empty && handitem instanceof Chip) {
             if (!isClientSide) {
-                val newBlockstate = blockState.setValue(TYPE, ((Chip) handitem).type);
+                val newType = ((Chip) handitem).type;
+
+                BlockState newBlockstate = blockState;
+                if (newType == ChipType.dynamic) {
+                    val logicRaw = DynamicChip.readLogicFromName(stack.getHoverName());
+                    if (logicRaw == null) {
+                        return InteractionResult.PASS;
+                    }
+                    newBlockstate = blockState.setValue(LOGIC, BitWiseUtil.wrap(logicRaw));
+                }
+
                 world.setBlock(
                     blockPos,
-                    newBlockstate.setValue(POWERED, this.isPowered(newBlockstate, world, blockPos)),
+                    newBlockstate
+                        .setValue(TYPE, newType)
+                        .setValue(POWERED, this.isPowered(newBlockstate, world, blockPos)),
                     3
                 );
                 if (instabuild) {
