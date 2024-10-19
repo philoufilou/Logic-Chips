@@ -75,7 +75,7 @@ public class ChipFrame extends DiodeBlock {
         @Nullable Direction side
     ) {
         val type = blockState.getValue(TYPE);
-        val connect = ChipType.valueOf(type.toString()).canConnectTo();
+        val connect = ChipType.valueOf(type.toString()).canConnect;
         val facing = blockState.getValue(FACING);
         return (
             side == facing ||

@@ -25,7 +25,7 @@ public class Chip extends Item implements ChipFrameCompatible {
     public Chip(Properties properties, ChipType types) {
         super(properties);
         this.type = types;
-        val con = type.canConnectTo();
+        val con = type.canConnect;
         leftConnectable = con == 2;
         midConnectable = con == 1 || con == 3;
         rightConnectable = con == 2;
@@ -66,6 +66,6 @@ public class Chip extends Item implements ChipFrameCompatible {
 
     @Override
     public TriBoolLogic logic() {
-        return this.type.logic();
+        return this.type.logic;
     }
 }
