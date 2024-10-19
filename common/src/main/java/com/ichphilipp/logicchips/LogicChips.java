@@ -30,8 +30,9 @@ public class LogicChips {
     private LogicChips() {}
 
     public static void init() {
-        RegistryMgr.init();
         LogicChipsBlock.init();
+        LogicChipsItems.getAll(); //trigger initialization
+        RegistryMgr.init();
     }
 
     public static ResourceLocation rl(@NotNull String path) {
