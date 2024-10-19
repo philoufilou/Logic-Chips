@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Locale;
 
 /**
- * minecraft seems not accepting upper case name
+ * dont change its name unless you can replace all name usage (java/model/?)
  */
 public enum ChipType implements StringRepresentable {
     empty((L, B, R) -> false, 0),
@@ -31,11 +31,15 @@ public enum ChipType implements StringRepresentable {
 
     @Nullable
     public final TriBoolLogic logic;
-    public final int canConnect;
+    public final boolean canConnectLeft;
+    public final boolean canConnectMid;
+    public final boolean canConnectRight;
 
-    ChipType(TriBoolLogic logic, int canConnect) {
+    ChipType(@Nullable TriBoolLogic logic, int canConnect) {
         this.logic = logic;
-        this.canConnect = canConnect;
+        canConnectLeft = canConnect == 2 || canConnect == 3;
+        canConnectRight = canConnect == 2 || canConnect == 3;
+        canConnectMid = canConnect == 1 || canConnect == 3;
     }
 
     @Override

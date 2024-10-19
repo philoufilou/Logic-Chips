@@ -75,14 +75,11 @@ public class ChipFrame extends DiodeBlock {
         @Nullable Direction side
     ) {
         val type = blockState.getValue(TYPE);
-        val connect = type.canConnect;
         val facing = blockState.getValue(FACING);
-        return (
-            side == facing ||
-                (side == facing.getClockWise() && (connect == 2 || connect == 3)) ||
-                (side == facing.getCounterClockWise() && (connect == 2 || connect == 3)) ||
-                (side == facing.getOpposite() && (connect == 1 || connect == 3))
-        );
+        return side == facing
+            || (type.canConnectRight && side == facing.getClockWise())
+            || (type.canConnectLeft && side == facing.getCounterClockWise())
+            || (type.canConnectMid && side == facing.getOpposite());
     }
 
     @Override
