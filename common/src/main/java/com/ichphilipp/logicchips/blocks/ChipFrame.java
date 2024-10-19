@@ -10,6 +10,7 @@ import lombok.val;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -17,6 +18,7 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -146,10 +148,29 @@ public class ChipFrame extends DiodeBlock {
             blockPos.getX(),
             blockPos.getY(),
             blockPos.getZ(),
-            //todo: dynamic chip
-            LogicChipsItems.getAll().get(type.toChipName()).get().getDefaultInstance().copyWithCount(1)
+            computeStackForDrop(blockState)
         );
         this.updateNeighborsInFront(world, blockPos, blockState);
+    }
+
+    private static ItemStack computeStackForDrop(BlockState blockState) {
+        val type = blockState.getValue(TYPE);
+        if (type == ChipType.dynamic) {
+            final int logic = blockState.getValue(LOGIC);
+            val builder = new StringBuilder(DynamicChip.LOGIC_BITS_SIZE);
+            for (int i = 0; i < DynamicChip.LOGIC_BITS_SIZE; i++) {
+                builder.append(BitWiseUtil.get(logic, i) ? '1' : '0');
+            }
+            return LogicChipsItems.DYNAMIC.get()
+                .getDefaultInstance()
+                .copyWithCount(1)
+                .setHoverName(Component.literal(builder.toString()));
+        }
+        return LogicChipsItems.getAll()
+            .get(type.toChipName())
+            .get()
+            .getDefaultInstance()
+            .copyWithCount(1);
     }
 
     @Override

@@ -20,6 +20,8 @@ import java.util.List;
  */
 public class DynamicChip extends Chip {
 
+    public static final int LOGIC_BITS_SIZE = 8;
+
     public DynamicChip() {
         super(ChipType.dynamic);
     }
@@ -71,12 +73,11 @@ public class DynamicChip extends Chip {
 
     public static boolean @Nullable [] readLogicFromName(@NotNull Component hoverName) {
         val string = hoverName.getString();
-        val size = 8;
-        if (string.length() < size) {
+        if (string.length() < LOGIC_BITS_SIZE) {
             return null;
         }
-        val logics = new boolean[size];
-        for (int i = 0; i < size; i++) {
+        val logics = new boolean[LOGIC_BITS_SIZE];
+        for (int i = 0; i < LOGIC_BITS_SIZE; i++) {
             val c = string.charAt(i);
             if (c == '0') {
                 logics[i] = false;
