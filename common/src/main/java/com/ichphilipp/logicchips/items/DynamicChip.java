@@ -1,6 +1,5 @@
 package com.ichphilipp.logicchips.items;
 
-import com.ichphilipp.logicchips.api.TriBoolLogic;
 import com.ichphilipp.logicchips.utils.BitWiseUtil;
 import lombok.val;
 import net.minecraft.ChatFormatting;
@@ -14,7 +13,6 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -38,7 +36,6 @@ public class DynamicChip extends Chip {
         if (logicData == null) {
             return;
         }
-        val logic = buildLogic(logicData);
         val allBool = new boolean[]{false, true};
         for (val left : allBool) {
             for (val mid : allBool) {
@@ -50,7 +47,7 @@ public class DynamicChip extends Chip {
                         .append(" + ")
                         .append(signal(right ? REGULAR_YELLOW : DARK_YELLOW))
                         .append(" -> ")
-                        .append(signal(logic.apply(left, mid, right) ? REGULAR_RED : DARK_RED))
+                        .append(signal(logicData[BitWiseUtil.wrap(left, mid, right)] ? REGULAR_RED : DARK_RED))
                     ;
                     tooltips.add(tip);
                 }
@@ -71,13 +68,14 @@ public class DynamicChip extends Chip {
         return Component.literal("█").setStyle(Style.EMPTY.withColor(color));
     }
 
-    public static boolean @Nullable [] readLogicFromName(@NotNull Component displayName) {
-        val string = displayName.getString();
-        if (string.length() < 8) {
+    public static boolean @Nullable [] readLogicFromName(@NotNull Component hoverName) {
+        val string = hoverName.getString();
+        val size = 8;
+        if (string.length() < size) {
             return null;
         }
-        val logics = new boolean[8];
-        for (int i = 0; i < 8; i++) {
+        val logics = new boolean[size];
+        for (int i = 0; i < size; i++) {
             val c = string.charAt(i);
             if (c == '0') {
                 logics[i] = false;
@@ -88,13 +86,5 @@ public class DynamicChip extends Chip {
             }
         }
         return logics;
-    }
-
-    private static TriBoolLogic buildLogic(boolean[] logicData) {
-        if (logicData == null || logicData.length < 8) {
-            throw new IllegalArgumentException();
-        }
-        val logics = Arrays.copyOf(logicData, 8);
-        return (left, middle, right) -> logics[BitWiseUtil.wrap(left, middle, right)];
     }
 }
