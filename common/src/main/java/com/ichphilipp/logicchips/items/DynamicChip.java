@@ -41,13 +41,14 @@ public class DynamicChip extends Chip {
         for (val left : allBool) {
             for (val mid : allBool) {
                 for (val right : allBool) {
-                    val tip = selectSignal(left, SIGNAL_LEFT)
+                    val tip = Component.empty()
+                        .append(selectSignal(left, ChatFormatting.AQUA))
                         .append(" + ")
-                        .append(selectSignal(mid, SIGNAL_MID))
+                        .append(selectSignal(mid, ChatFormatting.LIGHT_PURPLE))
                         .append(" + ")
-                        .append(selectSignal(right, SIGNAL_RIGHT))
+                        .append(selectSignal(right, ChatFormatting.YELLOW))
                         .append(" -> ")
-                        .append(selectSignal(logic.apply(left, mid, right), SIGNAL_OUT))
+                        .append(selectSignal(logic.apply(left, mid, right), ChatFormatting.RED))
                     ;
                     tooltips.add(tip);
                 }
@@ -55,18 +56,9 @@ public class DynamicChip extends Chip {
         }
     }
 
-    private static final MutableComponent SIGNAL_OFF = signalComponent(ChatFormatting.GRAY);
-    private static final MutableComponent SIGNAL_LEFT = signalComponent(ChatFormatting.AQUA);
-    private static final MutableComponent SIGNAL_MID = signalComponent(ChatFormatting.LIGHT_PURPLE);
-    private static final MutableComponent SIGNAL_RIGHT = signalComponent(ChatFormatting.YELLOW);
-    private static final MutableComponent SIGNAL_OUT = signalComponent(ChatFormatting.RED);
-
-    private static MutableComponent selectSignal(boolean condition, MutableComponent whenTrue) {
-        return condition ? whenTrue : SIGNAL_OFF;
-    }
-
-    private static MutableComponent signalComponent(ChatFormatting color) {
-        return Component.literal("█").setStyle(Style.EMPTY.withColor(color));
+    private static MutableComponent selectSignal(boolean condition, ChatFormatting color) {
+        return Component.literal("█")
+            .setStyle(Style.EMPTY.withColor(condition ? color : ChatFormatting.GRAY));
     }
 
     public static boolean @Nullable [] readLogicFromName(@NotNull Component displayName) {
