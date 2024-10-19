@@ -130,7 +130,7 @@ public class ChipFrame extends DiodeBlock {
                 .setValue(RIGHT_INPUT, signalRight)
                 .setValue(BOTTOM_INPUT, signalMid)
         );
-        if (type == ChipType.dynamic) {
+        if (type.logic == null) {
             return BitWiseUtil.get(
                 blockstate.getValue(LOGIC),
                 BitWiseUtil.wrap(signalLeft, signalMid, signalRight)
@@ -149,6 +149,7 @@ public class ChipFrame extends DiodeBlock {
             blockPos.getX(),
             blockPos.getY(),
             blockPos.getZ(),
+            //todo: dynamic chip
             LogicChipsItems.getAll().get(type.toChipName()).get().getDefaultInstance().copyWithCount(1)
         );
         this.updateNeighborsInFront(world, blockPos, blockState);

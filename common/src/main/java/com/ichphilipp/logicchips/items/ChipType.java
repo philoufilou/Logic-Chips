@@ -4,6 +4,7 @@ import com.ichphilipp.logicchips.api.TriBoolLogic;
 import lombok.val;
 import net.minecraft.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Locale;
 
@@ -25,9 +26,10 @@ public enum ChipType implements StringRepresentable {
     nor_3((L, B, R) -> !(L || B || R), 3),
     xor_3((L, B, R) -> ((L ? 1 : 0) + (B ? 1 : 0) + (R ? 1 : 0)) % 2 == 1, 3),
     xnor_3((L, B, R) -> ((L ? 1 : 0) + (B ? 1 : 0) + (R ? 1 : 0)) % 2 == 0, 3),
-    dynamic(empty.logic, 3),
+    dynamic(null, 3),
     ;
 
+    @Nullable
     public final TriBoolLogic logic;
     public final int canConnect;
 
