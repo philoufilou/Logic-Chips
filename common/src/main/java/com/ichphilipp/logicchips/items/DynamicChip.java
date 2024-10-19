@@ -34,7 +34,6 @@ public class DynamicChip extends Chip {
         super.appendHoverText(stack, level, tooltips, flag);
         val logicData = readLogicFromName(stack.getHoverName());
         if (logicData == null) {
-            tooltips.add(Component.literal("Rename in an anvil to setup custom logic. Valid name must starts with '0' or '1' numbers, 8 numbers in total"));
             return;
         }
         val logic = buildLogic(logicData);

@@ -18,6 +18,7 @@
   "item.logicchips.nor_gate_3": "NOR Chip §c3 inputs",
   "item.logicchips.xor_gate_3": "XOR Chip §c3 inputs",
   "item.logicchips.xnor_gate_3": "XNOR Chip §c3 inputs",
+  "item.logicchips.dynamic_gate": "Dynamic Chip §c3 inputs",
 
   "tooltip.logicchips.shift": "§fPress §eShift §ffor more Informations",
 
@@ -34,6 +35,7 @@
   "tooltip.logicchips.nor_gate_3": "The §eNOR Chip§r gives an Output, when there is no input signal",
   "tooltip.logicchips.xor_gate_3": "The §eXOR Chip§r gives an Output, only when the total input signals is an odd number",
   "tooltip.logicchips.xnor_gate_3": "The §eXNOR Chip§r gives an Output, only when the total input signals is an even number",
+  "tooltip.logicchips.dynamic_gate": "Rename in an anvil to setup custom logic for §eDynamic Chip§r. Valid name must starts with '0' or '1' numbers, 8 numbers in total",
 
   "item.logicchips.cap_1": "Capacitor §c1 RPL/S*",
   "item.logicchips.cap_05": "Capacitor §c0.5 RPL/S*",
