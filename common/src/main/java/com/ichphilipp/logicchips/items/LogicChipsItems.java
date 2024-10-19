@@ -46,11 +46,11 @@ public final class LogicChipsItems {
         return Collections.unmodifiableMap(ALL);
     }
 
-    public static RegistrySupplier<Item> register(@NotNull String name) {
+    static RegistrySupplier<Item> register(@NotNull String name) {
         return registerImpl(name, () -> new Item(LogicChips.DEFAULT_ITEM_PROP));
     }
 
-    public static RegistrySupplier<Chip> registerChip(@NotNull ChipType chipType) {
+    static RegistrySupplier<Chip> registerChip(@NotNull ChipType chipType) {
         return registerImpl(chipType.toChipName(), () -> new Chip(chipType));
     }
 
@@ -58,19 +58,14 @@ public final class LogicChipsItems {
         @NotNull String name,
         @NotNull Supplier<T> supplier
     ) {
-        preCondition(name);
-        val registered = RegistryMgr.registerItem(name, supplier);
-        ALL.put(name, registered);
-        return registered;
-    }
-
-    private static void preCondition(String name) {
         if (name == null) {
             throw new IllegalArgumentException("item registry name should not be null");
         }
         if (ALL.containsKey(name)) {
             throw new IllegalArgumentException("item registry name '" + name + "' already existed");
         }
-        val tryBuild = new ResourceLocation(LogicChips.MOD_ID, name);
+        val registered = RegistryMgr.registerItem(name, supplier);
+        ALL.put(name, registered);
+        return registered;
     }
 }

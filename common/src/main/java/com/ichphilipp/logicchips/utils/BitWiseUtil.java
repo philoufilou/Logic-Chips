@@ -27,9 +27,9 @@ public interface BitWiseUtil {
         return first ? second ? 3 : 2 : second ? 1 : 0;
     }
 
-    static int wrap(boolean left, boolean middle, boolean right) {
-        return left
-            ? middle ? right ? 7 : 6 : right ? 5 : 4
-            : middle ? right ? 3 : 2 : right ? 1 : 0;
+    static int wrap(boolean first, boolean second, boolean third) {
+        return first
+            ? second ? third ? 7 : 6 : third ? 5 : 4
+            : second ? third ? 3 : 2 : third ? 1 : 0;
     }
 }

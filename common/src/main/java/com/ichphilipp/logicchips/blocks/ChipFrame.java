@@ -135,7 +135,7 @@ public class ChipFrame extends DiodeBlock {
             val shift = BitWiseUtil.wrap(signalLeft, signalMid, signalRight);
             return (logics >> shift) != 0;
         }
-        return type.apply(signalLeft, signalMid, signalRight);
+        return type.logic.apply(signalLeft, signalMid, signalRight);
     }
 
     public void dropChip(Level world, BlockPos blockPos, BlockState blockState) {

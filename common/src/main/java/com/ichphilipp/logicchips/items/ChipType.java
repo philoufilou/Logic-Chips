@@ -10,7 +10,7 @@ import java.util.Locale;
 /**
  * minecraft seems not accepting upper case name
  */
-public enum ChipType implements StringRepresentable, TriBoolLogic {
+public enum ChipType implements StringRepresentable {
     empty((L, B, R) -> false, 0),
     not((L, B, R) -> !B, 1),
     and((L, B, R) -> L && R, 2),
@@ -39,11 +39,6 @@ public enum ChipType implements StringRepresentable, TriBoolLogic {
     @Override
     public @NotNull String getSerializedName() {
         return this.name();
-    }
-
-    @Override
-    public boolean apply(boolean left, boolean middle, boolean right) {
-        return this.logic.apply(left, middle, right);
     }
 
     public String toChipName() {
