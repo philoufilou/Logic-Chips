@@ -27,11 +27,11 @@ public class DynamicChip extends Chip {
     @Override
     public void appendHoverText(
         @NotNull ItemStack stack,
-        @Nullable Level level,
+        TooltipContext context,
         @NotNull List<Component> tooltips,
         @NotNull TooltipFlag flag
     ) {
-        super.appendHoverText(stack, level, tooltips, flag);
+        super.appendHoverText(stack, context, tooltips, flag);
         val logicData = readLogicFromName(stack.getHoverName());
         if (logicData == null) {
             return;
@@ -56,13 +56,13 @@ public class DynamicChip extends Chip {
         }
     }
 
-    private static final TextColor DARK_YELLOW = TextColor.parseColor("#404000");
+    private static final TextColor DARK_YELLOW = TextColor.parseColor("#404000").getOrThrow();
     private static final TextColor REGULAR_YELLOW = TextColor.fromLegacyFormat(ChatFormatting.YELLOW);
-    private static final TextColor DARK_AQUA = TextColor.parseColor("#004040");
+    private static final TextColor DARK_AQUA = TextColor.parseColor("#004040").getOrThrow();
     private static final TextColor REGULAR_AQUA = TextColor.fromLegacyFormat(ChatFormatting.AQUA);
-    private static final TextColor DARK_PURPLE = TextColor.parseColor("#400040");
+    private static final TextColor DARK_PURPLE = TextColor.parseColor("#400040").getOrThrow();
     private static final TextColor REGULAR_PURPLE = TextColor.fromLegacyFormat(ChatFormatting.LIGHT_PURPLE);
-    private static final TextColor DARK_RED = TextColor.parseColor("#400000");
+    private static final TextColor DARK_RED = TextColor.parseColor("#400000").getOrThrow();
     private static final TextColor REGULAR_RED = TextColor.fromLegacyFormat(ChatFormatting.RED);
 
     private static @NotNull MutableComponent signal(TextColor color) {
