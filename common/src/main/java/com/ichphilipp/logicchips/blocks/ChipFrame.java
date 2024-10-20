@@ -10,6 +10,8 @@ import com.mojang.serialization.MapCodec;
 import lombok.val;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.component.DataComponentPatch;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -169,10 +171,15 @@ public class ChipFrame extends DiodeBlock {
             for (int i = 0; i < DynamicChip.LOGIC_BITS_SIZE; i++) {
                 builder.append(BitWiseUtil.get(logic, i) ? '1' : '0');
             }
-            return LogicChipsItems.DYNAMIC.get()
+            val toBeReturn = LogicChipsItems.DYNAMIC.get()
                 .getDefaultInstance()
-                .copyWithCount(1)
-                .setHoverName(Component.literal(builder.toString()));
+                .copyWithCount(1);
+            toBeReturn.applyComponents(
+                DataComponentPatch.builder()
+                    .set(DataComponents.CUSTOM_NAME, Component.literal(builder.toString()))
+                    .build()
+            );
+            return toBeReturn;
         }
         return LogicChipsItems.getAll()
             .get(type.toChipName())
