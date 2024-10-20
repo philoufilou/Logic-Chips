@@ -169,6 +169,10 @@ public class ChipFrame extends DiodeBlock {
         Player player,
         BlockHitResult blockHitResult
     ) {
+        return popChip(blockState, level, blockPos);
+    }
+
+    private @NotNull InteractionResult popChip(BlockState blockState, Level level, BlockPos blockPos) {
         val type = blockState.getValue(TYPE);
         if (type == ChipType.empty) {
             return InteractionResult.PASS;
@@ -205,7 +209,23 @@ public class ChipFrame extends DiodeBlock {
         val type = blockState.getValue(TYPE);
         val isClientSide = level.isClientSide;
 
-        if (type != ChipType.empty || !(stack.getItem() instanceof Chip chip)) {
+        if (type != ChipType.empty) {
+            return popChip(blockState, level, blockPos).consumesAction()
+                ? ItemInteractionResult.sidedSuccess(isClientSide)
+                : ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        }
+
+        return insertChip(stack, blockState, level, blockPos, isClientSide);
+    }
+
+    private @NotNull ItemInteractionResult insertChip(
+        ItemStack toInsert,
+        BlockState blockState,
+        Level level,
+        BlockPos blockPos,
+        boolean isClientSide
+    ) {
+        if (!(toInsert.getItem() instanceof Chip chip)) {
             return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         }
         if (!isClientSide) {
@@ -213,7 +233,7 @@ public class ChipFrame extends DiodeBlock {
 
             BlockState newBlockstate = blockState;
             if (newType == ChipType.dynamic) {
-                val logicRaw = DynamicChip.readLogicFromName(stack.getHoverName());
+                val logicRaw = DynamicChip.readLogicFromName(toInsert.getHoverName());
                 if (logicRaw == null) {
                     return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
                 }
@@ -226,7 +246,7 @@ public class ChipFrame extends DiodeBlock {
                     .setValue(TYPE, newType)
                     .setValue(POWERED, this.isPowered(newBlockstate, level, blockPos))
             );
-            stack.shrink(1);
+            toInsert.shrink(1);
             level.playSound(null, blockPos, SoundEvents.ITEM_FRAME_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
         }
         return ItemInteractionResult.sidedSuccess(isClientSide);
