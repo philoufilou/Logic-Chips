@@ -218,7 +218,7 @@
                 "left": "false",
                 "bottom": "false",
                 "right": "false",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -231,7 +231,7 @@
                 "left": "true",
                 "bottom": "false",
                 "right": "false",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -244,7 +244,7 @@
                 "left": "false",
                 "bottom": "true",
                 "right": "false",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -257,7 +257,7 @@
                 "left": "false",
                 "bottom": "false",
                 "right": "true",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -270,7 +270,7 @@
                 "left": "true",
                 "bottom": "false",
                 "right": "true",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -283,7 +283,7 @@
                 "left": "true",
                 "bottom": "true",
                 "right": "false",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -296,7 +296,7 @@
                 "left": "false",
                 "bottom": "true",
                 "right": "true",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -309,7 +309,7 @@
                 "left": "true",
                 "bottom": "true",
                 "right": "true",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -392,7 +392,7 @@
                 "left": "false",
                 "bottom": "false",
                 "right": "false",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -405,7 +405,7 @@
                 "left": "true",
                 "bottom": "false",
                 "right": "false",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -418,7 +418,7 @@
                 "left": "false",
                 "bottom": "true",
                 "right": "false",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -431,7 +431,7 @@
                 "left": "false",
                 "bottom": "false",
                 "right": "true",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -444,7 +444,7 @@
                 "left": "true",
                 "bottom": "false",
                 "right": "true",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -457,7 +457,7 @@
                 "left": "true",
                 "bottom": "true",
                 "right": "false",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -470,7 +470,7 @@
                 "left": "false",
                 "bottom": "true",
                 "right": "true",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -483,7 +483,7 @@
                 "left": "true",
                 "bottom": "true",
                 "right": "true",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -566,7 +566,7 @@
                 "left": "false",
                 "bottom": "false",
                 "right": "false",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -579,7 +579,7 @@
                 "left": "true",
                 "bottom": "false",
                 "right": "false",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -592,7 +592,7 @@
                 "left": "false",
                 "bottom": "true",
                 "right": "false",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -605,7 +605,7 @@
                 "left": "false",
                 "bottom": "false",
                 "right": "true",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -618,7 +618,7 @@
                 "left": "true",
                 "bottom": "false",
                 "right": "true",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -631,7 +631,7 @@
                 "left": "true",
                 "bottom": "true",
                 "right": "false",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -644,7 +644,7 @@
                 "left": "false",
                 "bottom": "true",
                 "right": "true",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -657,7 +657,7 @@
                 "left": "true",
                 "bottom": "true",
                 "right": "true",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -740,7 +740,7 @@
                 "left": "false",
                 "bottom": "false",
                 "right": "false",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -753,7 +753,7 @@
                 "left": "true",
                 "bottom": "false",
                 "right": "false",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -766,7 +766,7 @@
                 "left": "false",
                 "bottom": "true",
                 "right": "false",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -779,7 +779,7 @@
                 "left": "false",
                 "bottom": "false",
                 "right": "true",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -792,7 +792,7 @@
                 "left": "true",
                 "bottom": "false",
                 "right": "true",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -805,7 +805,7 @@
                 "left": "true",
                 "bottom": "true",
                 "right": "false",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -818,7 +818,7 @@
                 "left": "false",
                 "bottom": "true",
                 "right": "true",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -831,7 +831,7 @@
                 "left": "true",
                 "bottom": "true",
                 "right": "true",
-                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3"
+                "type": "and_3|nand_3|or_3|nor_3|xor_3|xnor_3|dynamic"
             }
         },
         {
@@ -1352,6 +1352,46 @@
             "when": {
                 "facing": "south",
                 "type": "xnor_3"
+            }
+        },
+        {
+            "apply": {
+                "model": "logicchips:block/gate_frame/chips/dynamic",
+                "y": 0
+            },
+            "when": {
+                "facing": "south",
+                "type": "dynamic"
+            }
+        },
+        {
+            "apply": {
+                "model": "logicchips:block/gate_frame/chips/dynamic",
+                "y": 90
+            },
+            "when": {
+                "facing": "west",
+                "type": "dynamic"
+            }
+        },
+        {
+            "apply": {
+                "model": "logicchips:block/gate_frame/chips/dynamic",
+                "y": 180
+            },
+            "when": {
+                "facing": "north",
+                "type": "dynamic"
+            }
+        },
+        {
+            "apply": {
+                "model": "logicchips:block/gate_frame/chips/dynamic",
+                "y": 270
+            },
+            "when": {
+                "facing": "east",
+                "type": "dynamic"
             }
         }
     ]

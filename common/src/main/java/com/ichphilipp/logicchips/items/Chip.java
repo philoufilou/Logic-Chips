@@ -1,7 +1,6 @@
 package com.ichphilipp.logicchips.items;
 
 import com.ichphilipp.logicchips.LogicChips;
-import com.ichphilipp.logicchips.blocks.ChipFrame;
 import com.ichphilipp.logicchips.utils.*;
 import java.util.List;
 
@@ -15,9 +14,11 @@ import net.minecraft.world.item.TooltipFlag;
 
 public class Chip extends Item {
 
-    public Chip(Properties properties, ChipType types) {
-        super(properties);
-        ChipFrame.add(types, this);
+    public final ChipType type;
+
+    public Chip(ChipType type) {
+        super(LogicChips.DEFAULT_CHIP_PROP);
+        this.type = type;
     }
 
     @Override
