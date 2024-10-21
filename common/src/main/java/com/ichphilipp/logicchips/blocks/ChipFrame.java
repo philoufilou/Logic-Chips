@@ -1,22 +1,23 @@
 package com.ichphilipp.logicchips.blocks;
 
-import com.ichphilipp.logicchips.utils.ChipType;
+import com.ichphilipp.logicchips.items.Chip;
+import com.ichphilipp.logicchips.items.DynamicChip;
+import com.ichphilipp.logicchips.items.LogicChipsItems;
+import com.ichphilipp.logicchips.items.ChipType;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-
+import com.ichphilipp.logicchips.utils.BitWiseUtil;
 import lombok.val;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -26,9 +27,12 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Random;
 
 public class ChipFrame extends DiodeBlock {
 
@@ -36,8 +40,10 @@ public class ChipFrame extends DiodeBlock {
     public static final BooleanProperty LEFT_INPUT = BooleanProperty.create("left");
     public static final BooleanProperty RIGHT_INPUT = BooleanProperty.create("right");
     public static final BooleanProperty BOTTOM_INPUT = BooleanProperty.create("bottom");
-    public static final Map<Item, ChipType> chip2logic = new HashMap<>();
-    public static final Map<String, Item> name2chip = new HashMap<>();
+    /**
+     * dont use {@link Integer#MAX_VALUE} as max, it will make your java heap space explode
+     */
+    public static final IntegerProperty LOGIC = IntegerProperty.create("logic", 0, (int) Math.pow(2, 8));
 
     public ChipFrame(Properties properties) {
         super(properties);
@@ -49,12 +55,8 @@ public class ChipFrame extends DiodeBlock {
                 .setValue(RIGHT_INPUT, false)
                 .setValue(BOTTOM_INPUT, false)
                 .setValue(POWERED, false)
+                .setValue(LOGIC, 0)
         );
-    }
-
-    public static void add(ChipType chipType, Item item) {
-        chip2logic.put(item, chipType);
-        name2chip.put(chipType.toString(), item);
     }
 
     @Override
@@ -64,7 +66,7 @@ public class ChipFrame extends DiodeBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> arg) {
-        arg.add(FACING, TYPE, POWERED, LEFT_INPUT, RIGHT_INPUT, BOTTOM_INPUT);
+        arg.add(FACING, TYPE, POWERED, LEFT_INPUT, RIGHT_INPUT, BOTTOM_INPUT, LOGIC);
     }
 
     /**
@@ -77,14 +79,11 @@ public class ChipFrame extends DiodeBlock {
         @Nullable Direction side
     ) {
         val type = blockState.getValue(TYPE);
-        val connect = ChipType.valueOf(type.toString()).canConnectTo();
         val facing = blockState.getValue(FACING);
-        return (
-            side == facing ||
-                (side == facing.getClockWise() && (connect == 2 || connect == 3)) ||
-                (side == facing.getCounterClockWise() && (connect == 2 || connect == 3)) ||
-                (side == facing.getOpposite() && (connect == 1 || connect == 3))
-        );
+        return side == facing
+            || (type.canConnectRight && side == facing.getClockWise())
+            || (type.canConnectLeft && side == facing.getCounterClockWise())
+            || (type.canConnectMid && side == facing.getOpposite());
     }
 
     @Override
@@ -114,21 +113,35 @@ public class ChipFrame extends DiodeBlock {
     public boolean isPowered(@NotNull BlockState blockstate, Level world, @NotNull BlockPos blockpos) {
         val facing = blockstate.getValue(FACING);
         val type = blockstate.getValue(TYPE);
-        val RIGHT = getAlternateSignalAt(world,
+        val signalRight = 0 != getAlternateSignalAt(
+            world,
             blockpos.relative(facing.getCounterClockWise()),
             facing.getCounterClockWise()
-        ) > 0;
-        val BACK = getAlternateSignalAt(world, blockpos.relative(facing), facing) > 0;
-        val LEFT = getAlternateSignalAt(world, blockpos.relative(facing.getClockWise()), facing.getClockWise()) > 0;
+        );
+        val signalMid = 0 != getAlternateSignalAt(
+            world,
+            blockpos.relative(facing),
+            facing
+        );
+        val signalLeft = 0 != getAlternateSignalAt(
+            world,
+            blockpos.relative(facing.getClockWise()),
+            facing.getClockWise()
+        );
 
         world.setBlockAndUpdate(
             blockpos,
-            blockstate.setValue(LEFT_INPUT, LEFT).setValue(RIGHT_INPUT, RIGHT).setValue(BOTTOM_INPUT, BACK)
+            blockstate.setValue(LEFT_INPUT, signalLeft)
+                .setValue(RIGHT_INPUT, signalRight)
+                .setValue(BOTTOM_INPUT, signalMid)
         );
-        if (chip2logic.containsValue(type)) {
-            return ChipType.valueOf(type.toString()).apply(LEFT, BACK, RIGHT);
+        if (type.logic == null) {
+            return BitWiseUtil.get(
+                blockstate.getValue(LOGIC),
+                BitWiseUtil.wrap(signalLeft, signalMid, signalRight)
+            );
         }
-        return false;
+        return type.logic.apply(signalLeft, signalMid, signalRight);
     }
 
     public void dropChip(Level world, BlockPos blockPos, BlockState blockState) {
@@ -136,21 +149,32 @@ public class ChipFrame extends DiodeBlock {
         if (type == ChipType.empty) {
             return;
         }
-        if (name2chip.containsKey(type.toString())) {
-            double d0 = (double) (world.random.nextFloat() * 0.7F) + (double) 0.15F;
-            double d1 = (double) (world.random.nextFloat() * 0.7F) + (double) 0.060000002F + 0.6D;
-            double d2 = (double) (world.random.nextFloat() * 0.7F) + (double) 0.15F;
-            ItemEntity itementity = new ItemEntity(
-                world,
-                (double) blockPos.getX() + d0,
-                (double) blockPos.getY() + d1,
-                (double) blockPos.getZ() + d2,
-                new ItemStack(name2chip.get(type.toString()))
-            );
-            itementity.setDefaultPickUpDelay();
-            world.addFreshEntity(itementity);
-        }
+        Containers.dropItemStack(
+            world,
+            blockPos.getX(),
+            blockPos.getY(),
+            blockPos.getZ(),
+            computeStackForDrop(blockState)
+        );
         this.updateNeighborsInFront(world, blockPos, blockState);
+    }
+
+    private static ItemStack computeStackForDrop(BlockState blockState) {
+        val type = blockState.getValue(TYPE);
+        if (type == ChipType.dynamic) {
+            final int logic = blockState.getValue(LOGIC);
+            val builder = new StringBuilder(DynamicChip.LOGIC_BITS_SIZE);
+            for (int i = 0; i < DynamicChip.LOGIC_BITS_SIZE; i++) {
+                builder.append(BitWiseUtil.get(logic, i) ? '1' : '0');
+            }
+            return LogicChipsItems.DYNAMIC.get()
+                .getDefaultInstance()
+                .setHoverName(new TextComponent(builder.toString()));
+        }
+        return LogicChipsItems.getAll()
+            .get(type.toChipName())
+            .get()
+            .getDefaultInstance();
     }
 
     @Override
@@ -165,21 +189,30 @@ public class ChipFrame extends DiodeBlock {
         val type = blockState.getValue(TYPE);
         val stack = player.getItemInHand(hand);
         val handitem = stack.getItem();
-        val instabuild = !player.abilities.instabuild;
         val isClientSide = world.isClientSide;
 
         /// NOTE: INSERT ITEM ////////////////////////////////////////////////////////////////////////////////
-        if (type == ChipType.empty && chip2logic.containsKey(handitem)) {
+        if (type == ChipType.empty && handitem instanceof Chip) {
             if (!isClientSide) {
-                BlockState newBlockstate = blockState.setValue(TYPE, chip2logic.get(handitem));
+                val newType = ((Chip) handitem).type;
+
+                BlockState newBlockstate = blockState;
+                if (newType == ChipType.dynamic) {
+                    val logicRaw = DynamicChip.readLogicFromName(stack.getHoverName());
+                    if (logicRaw == null) {
+                        return InteractionResult.PASS;
+                    }
+                    newBlockstate = blockState.setValue(LOGIC, BitWiseUtil.wrap(logicRaw));
+                }
+
                 world.setBlock(
                     blockPos,
-                    newBlockstate.setValue(POWERED, this.isPowered(newBlockstate, world, blockPos)),
+                    newBlockstate
+                        .setValue(TYPE, newType)
+                        .setValue(POWERED, this.isPowered(newBlockstate, world, blockPos)),
                     3
                 );
-                if (instabuild) {
-                    stack.shrink(1);
-                }
+                stack.shrink(1);
                 world.playSound(null, blockPos, SoundEvents.ITEM_FRAME_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
             }
             return InteractionResult.sidedSuccess(isClientSide);
@@ -192,9 +225,7 @@ public class ChipFrame extends DiodeBlock {
                     blockState.setValue(TYPE, ChipType.empty).setValue(POWERED, false),
                     3
                 );
-                if (instabuild) {
-                    this.dropChip(world, blockPos, blockState);
-                }
+                dropChip(world, blockPos, blockState);
                 world.playSound(
                     null,
                     blockPos,
@@ -210,16 +241,16 @@ public class ChipFrame extends DiodeBlock {
     }
 
     @Override
-    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, Random randomSource) {
+    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, Random random) {
         if (!blockState.getValue(POWERED)) {
             return;
         }
         val direction = blockState.getValue(FACING);
-        double x = (double) blockPos.getX() + 0.5D + (randomSource.nextDouble() - 0.5D) * 0.2D;
-        double y = (double) blockPos.getY() + 0.4D + (randomSource.nextDouble() - 0.5D) * 0.2D;
-        double z = (double) blockPos.getZ() + 0.5D + (randomSource.nextDouble() - 0.5D) * 0.2D;
+        double x = (double) blockPos.getX() + 0.5D + (random.nextDouble() - 0.5D) * 0.2D;
+        double y = (double) blockPos.getY() + 0.4D + (random.nextDouble() - 0.5D) * 0.2D;
+        double z = (double) blockPos.getZ() + 0.5D + (random.nextDouble() - 0.5D) * 0.2D;
         float scale = -5.0F;
-        if (randomSource.nextBoolean()) {
+        if (random.nextBoolean()) {
             scale /= 16.0F;
             x += (scale * direction.getStepX());
             z += (scale * direction.getStepZ());

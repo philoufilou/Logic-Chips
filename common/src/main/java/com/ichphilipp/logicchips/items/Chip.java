@@ -1,8 +1,7 @@
 package com.ichphilipp.logicchips.items;
 
 import com.ichphilipp.logicchips.LogicChips;
-import com.ichphilipp.logicchips.blocks.ChipFrame;
-import com.ichphilipp.logicchips.utils.*;
+
 import java.util.List;
 
 import lombok.val;
@@ -18,22 +17,24 @@ import org.jetbrains.annotations.Nullable;
 
 public class Chip extends Item {
 
-    public Chip(Properties properties, ChipType types) {
-        super(properties);
-        ChipFrame.add(types, this);
+    public final ChipType type;
+
+    public Chip(ChipType type) {
+        super(LogicChips.DEFAULT_CHIP_PROP);
+        this.type = type;
     }
 
     @Override
     public void appendHoverText(
-        @NotNull ItemStack pStack,
-        @Nullable Level pLevel,
-        @NotNull List<Component> pTooltipComponents,
-        @NotNull TooltipFlag pIsAdvanced
+        @NotNull ItemStack stack,
+        @Nullable Level level,
+        @NotNull List<Component> tooltips,
+        @NotNull TooltipFlag flag
     ) {
         val langKey = Screen.hasShiftDown()
-            ? String.format("tooltip.%s.%s", LogicChips.MOD_ID, pStack.getItem())
+            ? String.format("tooltip.%s.%s", LogicChips.MOD_ID, stack.getItem())
             : "tooltip.logicchips.shift";
-        pTooltipComponents.add(new TranslatableComponent(langKey));
-        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        tooltips.add(new TranslatableComponent(langKey));
+        super.appendHoverText(stack, level, tooltips, flag);
     }
 }
