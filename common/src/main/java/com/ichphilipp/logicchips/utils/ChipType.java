@@ -21,7 +21,9 @@ public enum ChipType implements StringRepresentable, TriBoolLogic {
     or_3((L, B, R) -> L || B || R, 3),
     nor_3((L, B, R) -> !(L || B || R), 3),
     xor_3((L, B, R) -> ((L ? 1 : 0) + (B ? 1 : 0) + (R ? 1 : 0)) % 2 == 1, 3),
-    xnor_3((L, B, R) -> ((L ? 1 : 0) + (B ? 1 : 0) + (R ? 1 : 0)) % 2 == 0, 3);
+    xnor_3((L, B, R) -> ((L ? 1 : 0) + (B ? 1 : 0) + (R ? 1 : 0)) % 2 == 0, 3),
+    dynamic(null, 3)
+    ;
 
     private final TriBoolLogic logic;
     private final int canConnect;
