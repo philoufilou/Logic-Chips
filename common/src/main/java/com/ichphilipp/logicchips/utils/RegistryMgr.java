@@ -13,7 +13,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import org.apache.http.util.Asserts;
 
 import java.util.function.Supplier;
 
@@ -34,10 +33,7 @@ public class RegistryMgr {
         RegistrySupplier<? extends Block> block,
         Supplier<T> getterBE
     ) {
-        Asserts.check(
-            LogicChips.MOD_ID.equals(block.getId().getNamespace()),
-            "namespace can only be: " + LogicChips.MOD_ID
-        );
+        Asser.tEqual(LogicChips.MOD_ID, block.getId().getNamespace(), "namespace can only be: " + LogicChips.MOD_ID);
         val name = block.getId().getPath();
         return BLOCK_ENTITY_TYPE.register(
             name,
