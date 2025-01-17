@@ -60,7 +60,7 @@ public class Asser {
 
     public <T extends CharSequence> T tNotEmpty(T value, String name) {
         tNotNull(value, name);
-        if (value.isEmpty()) {
+        if (value.size() == 0) {
             throw new NullPointerException("'" + name + "' must not be empty");
         }
         return value;
