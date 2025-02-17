@@ -46,6 +46,11 @@ public class LogicChips {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
     }
 
+    @SuppressWarnings("unchecked")
+    public static <T> T duck(Object o) {
+        return (T) o;
+    }
+
     public static Item.Properties defaultItemProperties() {
         return new Item.Properties().arch$tab(TAB);
     }
