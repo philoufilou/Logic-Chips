@@ -25,8 +25,6 @@ public class LogicChips {
             () -> LogicChipsItem.AND_GATE.get().getDefaultInstance()// Icon
         )
     );
-    public static final Item.Properties DEFAULT_ITEM_PROP = new Item.Properties().arch$tab(TAB);
-    public static final Item.Properties DEFAULT_CHIP_PROP = new Item.Properties().arch$tab(TAB).stacksTo(16);
 
     private LogicChips() {
     }
@@ -46,5 +44,13 @@ public class LogicChips {
 
     public static ResourceLocation rl(@NotNull String path) {
         return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+    }
+
+    public static Item.Properties defaultItemProperties() {
+        return new Item.Properties().arch$tab(TAB);
+    }
+
+    public static Item.Properties defaultChipProperties() {
+        return defaultItemProperties().stacksTo(16);
     }
 }

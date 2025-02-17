@@ -16,7 +16,7 @@ public class Chip extends Item {
     public final ChipType type;
 
     public Chip(ChipType type) {
-        super(LogicChips.DEFAULT_CHIP_PROP);
+        super(LogicChips.defaultChipProperties());
         this.type = type;
     }
 

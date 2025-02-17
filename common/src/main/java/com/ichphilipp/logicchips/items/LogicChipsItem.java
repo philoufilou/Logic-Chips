@@ -24,7 +24,7 @@ public final class LogicChipsItem {
 
     private static final Map<String, RegistrySupplier<? extends Item>> ALL = new LinkedHashMap<>();
     public static final RegistrySupplier<Item> CHIP =
-        registerImpl("chip", () -> new Item(LogicChips.DEFAULT_ITEM_PROP));
+        registerImpl("chip", () -> new Item(LogicChips.defaultItemProperties()));
     //dual-input gate
     public static final RegistrySupplier<Chip> NOT_GATE = registerChip(ChipType.not);
     public static final RegistrySupplier<Chip> AND_GATE = registerChip(ChipType.and);

@@ -25,7 +25,7 @@ public class RegistryMgr {
         .create(LogicChips.MOD_ID, Registries.BLOCK_ENTITY_TYPE);
 
     public static <T extends Block> RegistrySupplier<BlockItem> registerBlockItem(String name, RegistrySupplier<T> block) {
-        return ITEM.register(name, () -> new BlockItem(block.get(), LogicChips.DEFAULT_ITEM_PROP));
+        return ITEM.register(name, () -> new BlockItem(block.get(), LogicChips.defaultItemProperties()));
     }
 
     public static <T extends BlockEntity> RegistrySupplier<BlockEntityType<T>> registerBE(
