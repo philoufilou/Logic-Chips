@@ -21,8 +21,8 @@ public class DynamicChip extends Chip {
 
     public static final int LOGIC_BITS_SIZE = 8;
 
-    public DynamicChip() {
-        super(ChipType.dynamic);
+    public DynamicChip(Properties properties) {
+        super(properties, ChipType.dynamic);
     }
 
     @Override
