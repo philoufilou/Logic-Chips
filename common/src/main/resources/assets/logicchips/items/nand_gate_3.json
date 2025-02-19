@@ -1,0 +1,6 @@
+{
+    "model": {
+        "type": "minecraft:model",
+        "model": "logicchips:item/nand_gate_3"
+    }
+}
