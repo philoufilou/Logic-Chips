@@ -1,6 +1,7 @@
 package com.ichphilipp.logicchips.blocks;
 
 import com.ichphilipp.logicchips.LogicChips;
+import com.ichphilipp.logicchips.items.LogicChipsItem;
 import com.ichphilipp.logicchips.utils.RegistryMgr;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.resources.ResourceKey;
@@ -32,7 +33,7 @@ public class LogicChipsBlock<T extends Block> implements Supplier<T> {
 
     public final String name;
     public final RegistrySupplier<T> block;
-    public final RegistrySupplier<BlockItem> item;
+    public final LogicChipsItem<BlockItem> item;
 
     @Override
     public T get() {
@@ -40,7 +41,7 @@ public class LogicChipsBlock<T extends Block> implements Supplier<T> {
     }
 
     public RegistrySupplier<BlockItem> item() {
-        return this.item;
+        return this.item.item;
     }
 
     private LogicChipsBlock(
@@ -53,7 +54,11 @@ public class LogicChipsBlock<T extends Block> implements Supplier<T> {
             throw new IllegalArgumentException("already registered");
         }
         this.block = RegistryMgr.BLOCK.register(this.name, () -> block.apply(modifyProperties(properties)));
-        this.item = RegistryMgr.registerBlockItem(this.name, this);
+        this.item = LogicChipsItem.registerImpl(
+            this.name,
+            prop -> new BlockItem(this.block.get(), prop),
+            LogicChips.defaultItemProperties()
+        );
         ALL.put(this.name, this);
     }
 

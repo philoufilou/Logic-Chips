@@ -56,7 +56,7 @@ public final class LogicChipsItem<T extends Item> implements Supplier<T> {
         );
     }
 
-    static <T extends Item> LogicChipsItem<T> registerImpl(
+    public static <T extends Item> LogicChipsItem<T> registerImpl(
         @NotNull String name,
         @NotNull Function<Item.Properties, T> item,
         @NotNull Item.Properties properties

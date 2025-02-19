@@ -6,7 +6,6 @@ import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import lombok.val;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -23,10 +22,6 @@ public class RegistryMgr {
         .create(LogicChips.MOD_ID, Registries.BLOCK);
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPE = DeferredRegister
         .create(LogicChips.MOD_ID, Registries.BLOCK_ENTITY_TYPE);
-
-    public static <T extends Block> RegistrySupplier<BlockItem> registerBlockItem(String name, RegistrySupplier<T> block) {
-        return ITEM.register(name, () -> new BlockItem(block.get(), LogicChips.defaultItemProperties()));
-    }
 
     public static <T extends BlockEntity> RegistrySupplier<BlockEntityType<T>> registerBE(
         RegistrySupplier<? extends Block> block,
