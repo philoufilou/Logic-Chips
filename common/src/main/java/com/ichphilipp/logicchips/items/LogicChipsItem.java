@@ -41,8 +41,8 @@ public final class LogicChipsItem<T extends Item> implements Supplier<T> {
     public static final LogicChipsItem<Chip> XOR_GATE_3 = registerChip(ChipType.xor_3);
     public static final LogicChipsItem<Chip> XNOR_GATE_3 = registerChip(ChipType.xnor_3);
     //dynamic
-    public static final LogicChipsItem<DynamicChip> DYNAMIC =
-        registerImpl(ChipType.dynamic.toChipName(), DynamicChip::new, LogicChips.defaultChipProperties());
+    public static final LogicChipsItem<DynamicChip> DYNAMIC
+        = registerImpl(ChipType.dynamic.chipName, DynamicChip::new, LogicChips.defaultChipProperties());
 
     public static Map<String, LogicChipsItem<? extends Item>> getAll() {
         return Collections.unmodifiableMap(ALL);
@@ -50,7 +50,7 @@ public final class LogicChipsItem<T extends Item> implements Supplier<T> {
 
     static LogicChipsItem<Chip> registerChip(@NotNull ChipType chipType) {
         return registerImpl(
-            chipType.toChipName(),
+            chipType.chipName,
             (prop) -> new Chip(prop, chipType),
             LogicChips.defaultChipProperties()
         );

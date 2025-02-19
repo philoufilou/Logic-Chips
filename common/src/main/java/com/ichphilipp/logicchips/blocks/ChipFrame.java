@@ -178,7 +178,7 @@ public class ChipFrame extends DiodeBlock implements EntityBlock {
             return stack;
         }
         return LogicChipsItem.getAll()
-            .get(type.toChipName())
+            .get(type.chipName)
             .get()
             .getDefaultInstance()
             .copyWithCount(1);
