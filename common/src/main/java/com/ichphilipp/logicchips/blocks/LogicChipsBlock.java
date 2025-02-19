@@ -1,9 +1,10 @@
 package com.ichphilipp.logicchips.blocks;
 
+import com.ichphilipp.logicchips.LogicChips;
 import com.ichphilipp.logicchips.utils.RegistryMgr;
 import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -22,7 +23,7 @@ public class LogicChipsBlock<T extends Block> implements Supplier<T> {
     public static final LogicChipsBlock<ChipFrame> GATE_FRAME = new LogicChipsBlock<>(
         "gate_frame",
         ChipFrame::new,
-        () -> BlockBehaviour.Properties.ofFullCopy(Blocks.REPEATER)
+        BlockBehaviour.Properties.ofFullCopy(Blocks.REPEATER)
     );
 
     public static Map<String, LogicChipsBlock<?>> getAll() {
@@ -45,25 +46,26 @@ public class LogicChipsBlock<T extends Block> implements Supplier<T> {
     private LogicChipsBlock(
         String name,
         Function<BlockBehaviour.Properties, T> block,
-        Supplier<BlockBehaviour.Properties> properties
+        BlockBehaviour.Properties properties
     ) {
         this.name = name.toLowerCase(Locale.ROOT);
         if (ALL.containsKey(name)) {
             throw new IllegalArgumentException("already registered");
         }
-        this.block = RegistryMgr.BLOCK.register(
-            this.name,
-            new Supplier<>() {
-                private final LogicChipsBlock<T> parent = LogicChipsBlock.this;
-
-                @Override
-                public T get() {
-                    return block.apply(properties.get()
-                        .setId(ResourceKey.create(Registries.BLOCK, parent.block.getId())));
-                }
-            }
-        );
-        this.item = RegistryMgr.registerBlockItem(this.name, this.block);
+        this.block = RegistryMgr.BLOCK.register(this.name, () -> block.apply(modifyProperties(properties)));
+        this.item = RegistryMgr.registerBlockItem(this.name, this);
         ALL.put(this.name, this);
+    }
+
+    public ResourceLocation id() {
+        return block.getId();
+    }
+
+    public ResourceKey<T> resourceKey() {
+        return this.block.getKey();
+    }
+
+    public BlockBehaviour.Properties modifyProperties(BlockBehaviour.Properties properties) {
+        return properties.setId(LogicChips.duck(resourceKey()));
     }
 }
