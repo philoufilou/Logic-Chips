@@ -6,12 +6,8 @@
     " A "
   ],
   "key": {
-    "A": {
-      "item": "minecraft:blackstone"
-    },
-    "B": {
-      "item": "minecraft:redstone"
-    }
+    "A": "minecraft:blackstone",
+    "B": "minecraft:redstone"
   },
   "result": {
     "id": "logicchips:chip",

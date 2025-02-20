@@ -1,22 +1,12 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "group":"NAND Gates",
+  "group": "NAND Gates",
   "ingredients": [
-	{
-	  "item":"logicchips:chip"
-	},
-	{
-	  "item":"logicchips:chip"
-	},
-	{
-	  "item":"logicchips:chip"
-	},
-	{
-	  "item":"logicchips:chip"
-	},
-	{
-	  "item":"minecraft:chorus_fruit"
-	}
+    "logicchips:chip",
+    "logicchips:chip",
+    "logicchips:chip",
+    "logicchips:chip",
+    "minecraft:chorus_fruit"
   ],
   "result": {
     "id": "logicchips:nand_gate"

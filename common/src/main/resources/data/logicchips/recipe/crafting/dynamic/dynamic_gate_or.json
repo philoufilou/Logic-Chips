@@ -1,13 +1,9 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "group":"AND Gates",
+  "group": "AND Gates",
   "ingredients": [
-	{
-	  "item":"logicchips:or_gate_3"
-	},
-	{
-	  "item":"logicchips:nor_gate_3"
-	}
+    "logicchips:or_gate_3",
+    "logicchips:nor_gate_3"
   ],
   "result": {
     "id": "logicchips:dynamic_gate"

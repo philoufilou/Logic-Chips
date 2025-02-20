@@ -1,22 +1,12 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "group":"NOR Gates",
+  "group": "NOR Gates",
   "ingredients": [
-	{
-	  "item":"logicchips:chip"
-	},
-	{
-	  "item":"logicchips:chip"
-	},
-	{
-	  "item":"logicchips:chip"
-	},
-	{
-	  "item":"logicchips:chip"
-	},
-	{
-	  "item":"minecraft:blaze_powder"
-	}
+    "logicchips:chip",
+    "logicchips:chip",
+    "logicchips:chip",
+    "logicchips:chip",
+    "minecraft:blaze_powder"
   ],
   "result": {
     "id": "logicchips:nor_gate"

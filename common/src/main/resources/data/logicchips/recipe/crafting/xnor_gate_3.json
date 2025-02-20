@@ -1,13 +1,9 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "group":"XNOR Gates",
+  "group": "XNOR Gates",
   "ingredients": [
-	{
-	  "item":"logicchips:chip"
-	},
-	{
-	  "item":"logicchips:xnor_gate"
-	}
+    "logicchips:chip",
+    "logicchips:xnor_gate"
   ],
   "result": {
     "id": "logicchips:xnor_gate_3"
